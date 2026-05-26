@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personvernerklæring — Rapportly</title>
-  <meta name="description" content="Personvernerklæring for rapportly.no — hvordan vi behandler personopplysninger innsendt via kontaktskjemaet.">
+  <meta name="description" content="Personvernerklæring for Rapportly — hvordan vi behandler personopplysninger i vår B2B SaaS-tjeneste for regnskapsbyråer.">
   <meta name="robots" content="noindex">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -123,6 +123,31 @@
     .info-label { font-weight: 700; color: var(--text); min-width: 9rem; flex-shrink: 0; }
     .info-value { color: var(--text-muted); }
 
+    /* TABLE */
+    .section table {
+      width: 100%; border-collapse: collapse;
+      margin-top: 1rem; font-size: .9rem;
+    }
+    .section table th {
+      text-align: left; padding: .625rem 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      font-weight: 700; color: var(--text); font-size: .875rem;
+    }
+    .section table td {
+      padding: .625rem 1rem; border: 1px solid var(--border);
+      color: var(--text-muted); vertical-align: top;
+    }
+    .section table tr:nth-child(even) td { background: var(--surface); }
+
+    /* HIGHLIGHT BOX */
+    .highlight-box {
+      background: oklch(96% 0.03 262); border: 1px solid oklch(82% 0.06 262);
+      border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1rem;
+    }
+    .highlight-box p {
+      color: oklch(32% 0.10 262); font-size: .9rem; margin-bottom: 0;
+    }
+
     /* FOOTER */
     .footer-outer { border-top: 1px solid var(--border); }
     footer {
@@ -142,6 +167,7 @@
       footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 2rem 1.5rem; }
       .info-item { flex-direction: column; gap: .2rem; }
       .info-label { min-width: unset; }
+      .section table { font-size: .8rem; }
     }
   </style>
 </head>
@@ -164,27 +190,18 @@
   <div class="page-header">
     <span class="page-header-label">Juridisk</span>
     <h1>Personvernerklæring</h1>
-    <p class="page-header-meta">Sist oppdatert: 23. mai 2026</p>
+    <p class="page-header-meta">Sist oppdatert: 26. mai 2026 &nbsp;·&nbsp; Versjon 2.0</p>
   </div>
 
   <!-- CONTENT -->
   <div class="content">
 
+    <!-- 1 -->
     <div class="section">
-      <h2>1. Innledning</h2>
+      <h2>1. Hvem vi er</h2>
       <p>
-        Denne personvernerklæringen beskriver hvordan Larsen Digital Solutions («vi», «oss») behandler personopplysninger i forbindelse med besøk på rapportly.no og bruk av kontaktskjemaet på nettsiden.
+        Rapportly er en B2B SaaS-tjeneste for regnskapsbyråer, drevet av <strong>Larsen Digital Solutions</strong> ved Tor Andre Larsen (enkeltpersonforetak).
       </p>
-      <p>
-        Vi behandler personopplysninger i samsvar med EUs personvernforordning (GDPR) og personopplysningsloven av 15. juni 2018.
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="section">
-      <h2>2. Behandlingsansvarlig</h2>
-      <p>Ansvarlig for behandlingen av personopplysninger på denne nettsiden er:</p>
       <div class="info-box">
         <div class="info-row">
           <div class="info-item">
@@ -193,7 +210,7 @@
           </div>
           <div class="info-item">
             <span class="info-label">E-post</span>
-            <span class="info-value">post@rapportly.no</span>
+            <span class="info-value"><a href="mailto:post@rapportly.no">post@rapportly.no</a></span>
           </div>
           <div class="info-item">
             <span class="info-label">Nettside</span>
@@ -201,115 +218,171 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="section">
-      <h2>3. Hvilke personopplysninger vi samler inn</h2>
-      <p>
-        Vi samler kun inn personopplysninger som du aktivt oppgir ved å fylle ut kontaktskjemaet på nettsiden. Dette inkluderer:
-      </p>
-      <ul>
-        <li>Navn</li>
-        <li>E-postadresse</li>
-        <li>Telefonnummer (valgfritt)</li>
-        <li>Byrånavn</li>
-        <li>Melding du sender oss (valgfritt)</li>
-      </ul>
       <p style="margin-top: 1rem;">
-        Vi samler ikke inn opplysninger automatisk utover det som er nødvendig for at nettsiden skal fungere (f.eks. tekniske loggdata via hosting-leverandøren).
+        Rapportly opptrer som <strong>databehandler</strong> på vegne av regnskapsbyråer som bruker tjenesten. Regnskapsbyrået er <strong>behandlingsansvarlig</strong> for sine klienters personopplysninger. Byråets klienter (de registrerte) har sine rettigheter overfor det respektive regnskapsbyrået, som igjen kan henvende seg til oss.
       </p>
     </div>
 
     <div class="divider"></div>
 
+    <!-- 2 -->
     <div class="section">
-      <h2>4. Formål og rettslig grunnlag</h2>
-      <p>
-        Personopplysningene brukes utelukkende for å besvare din henvendelse og følge opp eventuelle spørsmål om Rapportly.
-      </p>
-      <p>
-        Det rettslige grunnlaget for behandlingen er GDPR artikkel 6 nr. 1 bokstav b (nødvendig for å oppfylle en avtale eller gjennomføre tiltak på den registrertes anmodning) og artikkel 6 nr. 1 bokstav f (berettiget interesse i å besvare henvendelser fra potensielle kunder).
-      </p>
-    </div>
+      <h2>2. Hva vi behandler</h2>
+      <p>Vi behandler to kategorier opplysninger:</p>
 
-    <div class="divider"></div>
-
-    <div class="section">
-      <h2>5. Oppbevaringstid</h2>
-      <p>
-        Vi oppbevarer personopplysningene så lenge det er nødvendig for å besvare henvendelsen og en rimelig periode etterpå, normalt ikke lenger enn 12 måneder. Dersom det inngås en kundekontrakt, vil opplysningene oppbevares i henhold til de til enhver tid gjeldende regnskaps- og bokføringskrav.
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="section">
-      <h2>6. Deling av opplysninger</h2>
-      <p>
-        Vi deler ikke dine personopplysninger med tredjeparter for markedsføringsformål. Opplysningene kan deles med tekniske underleverandører (f.eks. hosting- og e-posttjenester) i den grad det er nødvendig for å levere tjenesten. Disse behandler data på vegne av oss og er bundet av databehandleravtaler.
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="section">
-      <h2>7. Informasjonskapsler (cookies)</h2>
-      <p>
-        Rapportly.no bruker ingen sporings- eller markedsføringskapsler. Eventuelle informasjonskapsler som settes er teknisk nødvendige for at nettsiden skal fungere korrekt.
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="section">
-      <h2>8. Dine rettigheter</h2>
-      <p>Du har følgende rettigheter etter GDPR:</p>
+      <p><strong>Brukerkontoer — regnskapsførere</strong></p>
       <ul>
-        <li><strong style="color: var(--text); font-weight: 700;">Innsyn</strong> — du kan be om innsyn i hvilke opplysninger vi har registrert om deg</li>
-        <li><strong style="color: var(--text); font-weight: 700;">Retting</strong> — du kan kreve retting av uriktige opplysninger</li>
-        <li><strong style="color: var(--text); font-weight: 700;">Sletting</strong> — du kan be oss slette opplysningene dine</li>
-        <li><strong style="color: var(--text); font-weight: 700;">Begrensning</strong> — du kan be oss begrense behandlingen i visse tilfeller</li>
-        <li><strong style="color: var(--text); font-weight: 700;">Innsigelse</strong> — du kan protestere mot behandling basert på berettiget interesse</li>
+        <li>Navn, e-postadresse og byrånavn</li>
+        <li>Krypterte tilgangsnøkler til regnskapssystemer (PowerOffice Go, Tripletex)</li>
+        <li>Tekniske logg- og sesjonsdata</li>
       </ul>
+
+      <p style="margin-top: 1rem;"><strong>Klientdata — regnskapsbyråenes klienter</strong></p>
+      <ul>
+        <li>Finansdata hentet read-only fra regnskapssystemet: resultatregnskap, balanse, kundefordringer, leverandørgjeld og MVA-data</li>
+        <li>Klientens navn og e-postadresse (for levering av rapport)</li>
+      </ul>
+
       <p style="margin-top: 1rem;">
-        For å benytte deg av rettighetene dine, ta kontakt på <a href="mailto:post@rapportly.no">post@rapportly.no</a>. Vi svarer innen 30 dager.
+        Vi henter ikke mer data enn det som er nødvendig for å generere rapporten. Finansdata mellomlagres kun under rapportgenereringen og slettes umiddelbart etter at rapporten er sendt.
       </p>
     </div>
 
     <div class="divider"></div>
 
+    <!-- 3 -->
     <div class="section">
-      <h2>9. Klagerett</h2>
+      <h2>3. Formål og rettslig grunnlag</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Formål</th>
+            <th>Rettslig grunnlag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Opprette og administrere brukerkonto for regnskapsførere</td>
+            <td>Avtale (GDPR art. 6 nr. 1 b)</td>
+          </tr>
+          <tr>
+            <td>Koble til regnskapssystemer og hente finansdata</td>
+            <td>Avtale / berettiget interesse (art. 6 nr. 1 b og f)</td>
+          </tr>
+          <tr>
+            <td>Generere og sende finansrapporter til klienter</td>
+            <td>Avtale med regnskapsbyrået (art. 6 nr. 1 b)</td>
+          </tr>
+          <tr>
+            <td>Oppbevare fakturerings- og transaksjonsdata</td>
+            <td>Rettslig forpliktelse — bokføringsloven (art. 6 nr. 1 c)</td>
+          </tr>
+          <tr>
+            <td>Teknisk drift, sikkerhet og feilsøking</td>
+            <td>Berettiget interesse (art. 6 nr. 1 f)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 4 -->
+    <div class="section">
+      <h2>4. Underleverandører</h2>
       <p>
-        Dersom du mener vi behandler dine personopplysninger i strid med personvernregelverket, har du rett til å klage til Datatilsynet.
+        Vi benytter følgende underleverandører for å levere tjenesten. Alle er bundet av databehandleravtaler i tråd med GDPR.
       </p>
-      <div class="info-box">
-        <div class="info-row">
-          <div class="info-item">
-            <span class="info-label">Datatilsynet</span>
-            <span class="info-value"><a href="https://www.datatilsynet.no" target="_blank" rel="noopener">datatilsynet.no</a></span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Telefon</span>
-            <span class="info-value">22 39 69 00</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">E-post</span>
-            <span class="info-value">postkasse@datatilsynet.no</span>
-          </div>
-        </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Leverandør</th>
+            <th>Funksjon</th>
+            <th>Region</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Supabase</td>
+            <td>Database og autentisering</td>
+            <td>EU (Frankfurt)</td>
+          </tr>
+          <tr>
+            <td>Vercel</td>
+            <td>Frontend-hosting</td>
+            <td>EU (Frankfurt)</td>
+          </tr>
+          <tr>
+            <td>Resend</td>
+            <td>E-postutsendelse av rapporter</td>
+            <td>EU</td>
+          </tr>
+          <tr>
+            <td>Anthropic</td>
+            <td>AI-generering av rapportkommentarer</td>
+            <td>USA (se seksjon 5)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 5 -->
+    <div class="section">
+      <h2>5. Overføring til tredjeland</h2>
+      <div class="highlight-box">
+        <p>
+          Finansdata fra byråenes klienters regnskaper overføres til <strong>Anthropic, Inc. (USA)</strong> for AI-generering av en kort tekstkommentar i rapporten. Overføringen er avgrenset til det som er nødvendig for å produsere denne kommentaren — data lagres ikke av Anthropic etter at svaret er returnert. Overføringen skjer på grunnlag av EUs standardavtalevilkår (SCCs) i henhold til GDPR art. 46 nr. 2 c, som sikrer tilstrekkelige garantier for vern av personopplysningene.
+        </p>
       </div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- 6 -->
     <div class="section">
-      <h2>10. Endringer</h2>
+      <h2>6. Oppbevaringstid</h2>
+      <ul>
+        <li><strong style="color: var(--text);">Brukerkontodata</strong> — oppbevares så lenge kontoen er aktiv, og slettes innen 30 dager etter at kontrakten er avsluttet og sletting er bekreftet.</li>
+        <li><strong style="color: var(--text);">Finansdata (klientdata)</strong> — mellomlagres kun under rapportgenereringen og slettes umiddelbart etter at rapporten er sendt. Genererte PDF-rapporter lagres i inntil 12 måneder for historikk og gjenbruk, med mindre kortere frist avtales.</li>
+        <li><strong style="color: var(--text);">Fakturerings- og transaksjonsdata</strong> — oppbevares i 5 år i henhold til bokføringsloven § 13.</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 7 -->
+    <div class="section">
+      <h2>7. Dine rettigheter</h2>
       <p>
-        Vi kan oppdatere denne erklæringen ved behov. Gjeldende versjon er alltid tilgjengelig på <a href="/personvern">rapportly.no/personvern</a>. Dato for siste oppdatering fremgår øverst på siden.
+        Som registrert har du etter GDPR rett til innsyn i egne opplysninger, retting av uriktige opplysninger, sletting («retten til å bli glemt»), begrensning av behandling, dataportabilitet og innsigelse mot behandling basert på berettiget interesse.
       </p>
+      <p>
+        Kontoen din — inkludert tilhørende data — kan eksporteres eller slettes på forespørsel. Send en e-post til <a href="mailto:post@rapportly.no">post@rapportly.no</a>, så behandler vi henvendelsen innen 30 dager.
+      </p>
+      <p>
+        Dersom du mener vi behandler personopplysninger i strid med GDPR, kan du klage til <a href="https://www.datatilsynet.no" target="_blank" rel="noopener">Datatilsynet</a>.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 8 -->
+    <div class="section">
+      <h2>8. Kontakt</h2>
+      <p>
+        Spørsmål om personvern rettes til:
+      </p>
+      <div class="info-box">
+        <div class="info-row">
+          <div class="info-item">
+            <span class="info-label">E-post</span>
+            <span class="info-value"><a href="mailto:post@rapportly.no">post@rapportly.no</a></span>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem;">Vi svarer normalt innen to virkedager.</p>
     </div>
 
   </div>
