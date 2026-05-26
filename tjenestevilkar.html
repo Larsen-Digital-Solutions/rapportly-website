@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tjenestevilkår — Rapportly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: oklch(97.5% 0.005 230);
+      --surface: oklch(99.5% 0.003 230);
+      --text: oklch(16% 0.008 240);
+      --text-muted: oklch(50% 0.012 240);
+      --text-subtle: oklch(68% 0.008 240);
+      --border: oklch(87% 0.008 240);
+      --primary: oklch(26% 0.10 262);
+      --accent: oklch(58% 0.22 260);
+      --r: 12px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: oklch(20% 0.08 258 / 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 999px;
+      padding: 10px 28px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      box-shadow: 0 4px 24px oklch(0% 0 0 / 0.18);
+      width: max-content;
+      max-width: calc(100vw - 40px);
+    }
+
+    nav .logo {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav ul a {
+      color: oklch(85% 0.04 240);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    nav ul a:hover {
+      color: #fff;
+    }
+
+    nav .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 7px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.875rem !important;
+      transition: opacity 0.15s !important;
+    }
+
+    nav .nav-cta:hover {
+      opacity: 0.88;
+      color: #fff !important;
+    }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      padding-top: 120px;
+      padding-bottom: 80px;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header .label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .page-header h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .page-header .meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ── CONTENT ── */
+    .content section {
+      margin-bottom: 40px;
+    }
+
+    .content h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 12px;
+      padding-top: 8px;
+    }
+
+    .content p {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-size: 0.975rem;
+    }
+
+    .content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .content ul {
+      list-style: none;
+      margin-bottom: 12px;
+    }
+
+    .content ul li {
+      color: var(--text-muted);
+      font-size: 0.975rem;
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    .content ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--text-subtle);
+    }
+
+    .content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── PRICE TABLE ── */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 12px;
+      font-size: 0.9rem;
+    }
+
+    .price-table th {
+      text-align: left;
+      font-weight: 600;
+      color: var(--text);
+      padding: 10px 16px;
+      background: oklch(93% 0.008 240);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .price-table th:first-child { border-radius: var(--r) 0 0 0; }
+    .price-table th:last-child  { border-radius: 0 var(--r) 0 0; }
+
+    .price-table td {
+      padding: 10px 16px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .price-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .price-table tr:nth-child(even) td {
+      background: oklch(96% 0.004 240 / 0.5);
+    }
+
+    /* ── DIVIDER ── */
+    .content section + section {
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px 28px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--text);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 0.825rem;
+      color: var(--text-subtle);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-legal a {
+      font-size: 0.825rem;
+      color: var(--text-subtle);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-legal a:hover {
+      color: var(--text-muted);
+    }
+
+    .footer-legal a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        gap: 20px;
+        padding: 10px 20px;
+      }
+
+      nav ul {
+        gap: 16px;
+      }
+
+      .page-header h1 {
+        font-size: 1.75rem;
+      }
+
+      .footer-top,
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">Rapportly</a>
+    <ul>
+      <li><a href="/#features">Funksjoner</a></li>
+      <li><a href="/#pricing">Priser</a></li>
+      <li><a href="mailto:post@rapportly.no">Kontakt</a></li>
+      <li><a href="/logg-inn" class="nav-cta">Logg inn</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+
+      <div class="page-header">
+        <span class="label">Juridisk</span>
+        <h1>Tjenestevilkår</h1>
+        <p class="meta">Sist oppdatert: 26. mai 2026</p>
+      </div>
+
+      <div class="content">
+
+        <section>
+          <h2>1. Om oss og disse vilkårene</h2>
+          <p>Rapportly er en SaaS-tjeneste drevet av <strong>Larsen Digital Solutions</strong> ved Tor Andre Larsen (org.nr. under registrering). Tjenesten er tilgjengelig på <a href="https://rapportly.no">rapportly.no</a>. Du kan kontakte oss på <a href="mailto:post@rapportly.no">post@rapportly.no</a>.</p>
+          <p>Ved å opprette en konto på Rapportly aksepterer du disse tjenestevilkårene i sin helhet. Vilkårene utgjør en bindende avtale mellom deg (heretter «kunden») og Larsen Digital Solutions.</p>
+          <p>Tjenesten retter seg mot profesjonelle brukere — primært regnskapsbyråer og regnskapsførere. Privatpersoner faller utenfor målgruppen.</p>
+        </section>
+
+        <section>
+          <h2>2. Tjenestens omfang</h2>
+          <p>Rapportly gir regnskapsbyråer mulighet til å:</p>
+          <ul>
+            <li>Koble til regnskapssystemer (f.eks. PowerOffice Go og Tripletex) via API-integrasjon</li>
+            <li>Generere måneds- og kvartalsrapporter automatisk</li>
+            <li>Eksportere og sende rapporter som PDF til sine klienter</li>
+            <li>Administrere klienter og rapporteringsinnstillinger via et nettbasert grensesnitt</li>
+          </ul>
+          <p>Vi forbeholder oss retten til å justere, forbedre eller avvikle enkeltfunksjoner, og vil varsle om vesentlige endringer i henhold til punkt 10.</p>
+        </section>
+
+        <section>
+          <h2>3. Brukerkonto og ansvar</h2>
+          <p>For å bruke Rapportly må du opprette en konto med gyldige kontaktopplysninger. Du er ansvarlig for:</p>
+          <ul>
+            <li>At informasjonen du oppgir er korrekt og oppdatert</li>
+            <li>Å holde passordet ditt hemmelig og beskytte kontoen mot uautorisert bruk</li>
+            <li>All aktivitet som skjer via din konto</li>
+            <li>At bruk av tjenesten skjer i tråd med gjeldende lover og regelverk, herunder regler om personvern og taushetsplikt i regnskapsbransjen</li>
+          </ul>
+          <p>Dersom du mistenker at kontoen din er kompromittert, skal du varsle oss umiddelbart på <a href="mailto:post@rapportly.no">post@rapportly.no</a>.</p>
+          <p>Vi forbeholder oss retten til å stenge kontoer som misbrukes, deler tilgang ulovlig, eller på annen måte bryter disse vilkårene.</p>
+        </section>
+
+        <section>
+          <h2>4. Betaling og fakturering</h2>
+          <p>Rapportly tilbys i følgende abonnementsplaner, fakturert månedlig:</p>
+
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th>Pris per måned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Starter</td>
+                <td>499 kr</td>
+              </tr>
+              <tr>
+                <td>Pro</td>
+                <td>999 kr</td>
+              </tr>
+              <tr>
+                <td>Byrå</td>
+                <td>1 999 kr</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Alle priser er oppgitt eksklusiv merverdiavgift (MVA). MVA legges til der det er aktuelt i henhold til norsk regelverk.</p>
+          <p>Betaling trekkes månedlig på fornyelsesdatoen. Ved manglende betaling kan tilgangen til tjenesten midlertidig suspenderes. Vi vil sende påminnelse før suspensjon iverksettes.</p>
+          <p>Det gis ikke refusjon for påbegynte betalingsperioder, med mindre annet er avtalt skriftlig.</p>
+        </section>
+
+        <section>
+          <h2>5. Oppsigelse</h2>
+          <p>Du kan si opp abonnementet ditt når som helst, uten bindingstid. Oppsigelsesfristen er <strong>30 dager</strong> regnet fra den dagen oppsigelsen mottas av oss.</p>
+          <p>Oppsigelse skjer ved å kontakte oss på <a href="mailto:post@rapportly.no">post@rapportly.no</a>. Du beholder tilgang til tjenesten ut oppsigelsesperioden.</p>
+          <p>Vi kan si opp avtalen med samme frist på 30 dager, eller med umiddelbar virkning ved vesentlig mislighold fra kundens side.</p>
+          <p>Etter avtalens opphør vil kontodata slettes i henhold til vår personvernerklæring.</p>
+        </section>
+
+        <section>
+          <h2>6. Tilgjengelighet</h2>
+          <p>Vi tilstreber høy oppetid og stabil drift av Rapportly, men vi gir ingen garantert servicenivåavtale (SLA). Planlagt vedlikehold varsles i god tid der det er mulig.</p>
+          <p>Vi er ikke ansvarlige for kortvarige driftsavbrudd som skyldes tekniske feil, tredjepartsleverandører eller andre forhold utenfor vår kontroll.</p>
+        </section>
+
+        <section>
+          <h2>7. Immaterialrett</h2>
+          <p>Alt innhold, design, kode og funksjonalitet i Rapportly — inkludert logo, grensesnitt og rapportmaler — tilhører Larsen Digital Solutions og er beskyttet av gjeldende immaterialrettslovgivning.</p>
+          <p>Kunden beholder alle rettigheter til egne data, inkludert regnskapsdata og klientinformasjon som lastes opp eller genereres gjennom tjenesten. Ved å bruke tjenesten gir du oss en begrenset lisens til å behandle disse dataene for å levere tjenesten.</p>
+          <p>Du har ikke rett til å kopiere, selge, lisensiere videre eller modifisere Rapportlys programvare eller innhold uten skriftlig samtykke.</p>
+        </section>
+
+        <section>
+          <h2>8. Ansvarsbegrensning</h2>
+          <p>Rapportly leveres «som den er». Vi garanterer ikke at tjenesten er fri for feil, eller at rapporter som genereres alltid er fullstendige og korrekte. Kunden er ansvarlig for å kvalitetssikre all informasjon som sendes til sine klienter.</p>
+          <p>Larsen Digital Solutions er ikke ansvarlig for indirekte tap, tapt fortjeneste, tap av data eller andre følgeskader som oppstår ved bruk av tjenesten.</p>
+          <p>Vårt samlede erstatningsansvar overfor kunden er under alle omstendigheter begrenset til det kunden har betalt for tjenesten de siste <strong>12 månedene</strong> forut for den hendelsen som ga opphav til kravet.</p>
+        </section>
+
+        <section>
+          <h2>9. Force majeure</h2>
+          <p>Ingen av partene er ansvarlige for forsinkelser eller manglende oppfyllelse som skyldes forhold utenfor rimelig kontroll, herunder strømbrudd, naturkatastrofer, cyberangrep fra tredjepart, pandemier, eller svikt hos kritiske underleverandører. Den rammede parten skal varsle den andre så snart som mulig.</p>
+        </section>
+
+        <section>
+          <h2>10. Endringer i vilkårene</h2>
+          <p>Vi kan endre disse tjenestevilkårene ved behov. Vesentlige endringer varsles per e-post til registrert kontaktadresse minst <strong>30 dager</strong> før de trer i kraft.</p>
+          <p>Fortsatt bruk av tjenesten etter at endringene har trådt i kraft anses som aksept av de nye vilkårene. Dersom du ikke aksepterer endringene, kan du si opp abonnementet i henhold til punkt 5.</p>
+        </section>
+
+        <section>
+          <h2>11. Lovvalg og verneting</h2>
+          <p>Disse vilkårene er underlagt norsk rett. Tvister som måtte oppstå i tilknytning til avtaleforholdet skal søkes løst ved forhandlinger. Dersom dette ikke fører frem, er Oslo tingrett avtalt verneting.</p>
+        </section>
+
+        <section>
+          <h2>12. Kontakt</h2>
+          <p>Spørsmål om disse vilkårene kan rettes til:</p>
+          <p>
+            <strong>Larsen Digital Solutions</strong><br />
+            v/ Tor Andre Larsen<br />
+            E-post: <a href="mailto:post@rapportly.no">post@rapportly.no</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a href="/" class="footer-logo">Rapportly</a>
+        <nav class="footer-nav">
+          <a href="/#features">Funksjoner</a>
+          <a href="/#pricing">Priser</a>
+          <a href="/#integrasjoner">Integrasjoner</a>
+          <a href="mailto:post@rapportly.no">Kontakt</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Larsen Digital Solutions. Alle rettigheter forbeholdt.</p>
+        <div class="footer-legal">
+          <a href="/personvern">Personvernerklæring</a>
+          <a href="/databehandleravtale">Databehandleravtale</a>
+          <a href="/tjenestevilkar" class="active">Tjenestevilkår</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

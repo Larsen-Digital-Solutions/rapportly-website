@@ -560,14 +560,24 @@
 
     .footer-outer { border-top: 1px solid var(--border); }
     footer {
-      padding: 2.5rem 6rem; max-width: 1280px; margin: 0 auto;
+      padding: 2.5rem 6rem 2rem; max-width: 1280px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .footer-top {
       display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
     }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      padding-top: 1.25rem; border-top: 1px solid var(--border);
+    }
     .footer-logo img { height: 20px; filter: brightness(0); opacity: .5; }
-    .footer-links { display: flex; gap: 1.75rem; }
-    .footer-links a { font-size: .875rem; color: var(--text-subtle); transition: color 160ms var(--ease); }
-    .footer-links a:hover { color: var(--text-muted); }
-    .footer-copy { font-size: .8125rem; color: var(--text-subtle); }
+    .footer-nav { display: flex; gap: 1.75rem; }
+    .footer-nav a { font-size: .875rem; color: var(--text-subtle); transition: color 160ms var(--ease); }
+    .footer-nav a:hover { color: var(--text-muted); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: .8rem; color: var(--text-subtle); transition: color 160ms var(--ease); }
+    .footer-legal a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: .8rem; color: var(--text-subtle); }
 
     /* ── SCROLL REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); filter: blur(3px); transition: opacity 750ms var(--ease), transform 750ms var(--ease), filter 600ms var(--ease); }
@@ -945,15 +955,22 @@
 
   <div class="footer-outer">
     <footer>
-      <a href="/" class="footer-logo"><img src="logo.png" alt="Rapportly"></a>
-      <div class="footer-links">
-        <a href="#hvordan">Slik fungerer det</a>
-        <a href="#priser">Priser</a>
-        <a href="#kontakt">Kontakt</a>
-        <a href="personvern.html">Personvernerklæring</a>
-        <a href="databehandleravtale.html">Databehandleravtale</a>
+      <div class="footer-top">
+        <a href="/" class="footer-logo"><img src="logo.png" alt="Rapportly"></a>
+        <nav class="footer-nav">
+          <a href="#hvordan">Slik fungerer det</a>
+          <a href="#priser">Priser</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
       </div>
-      <span class="footer-copy">&copy; 2026 Rapportly</span>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Rapportly · Larsen Digital Solutions</span>
+        <div class="footer-legal">
+          <a href="personvern.html">Personvernerklæring</a>
+          <a href="databehandleravtale.html">Databehandleravtale</a>
+          <a href="tjenestevilkar.html">Tjenestevilkår</a>
+        </div>
+      </div>
     </footer>
   </div>
 
