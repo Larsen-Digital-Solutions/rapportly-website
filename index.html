@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapportly — Automatiske klientrapporter for regnskapsbyråer</title>
+  <meta name="description" content="Rapportverktøy for regnskapsbyråer. Kobler seg til PowerOffice Go og genererer klientrapporter automatisk — med byråets logo og design. 999 kr per bruker.">
+  <link rel="canonical" href="https://rapportly.no/">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="preload" as="image" href="rapport demo bilder/Forside.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rapportly — Automatiske klientrapporter for regnskapsbyråer">
+  <meta property="og:description" content="Rapportverktøy for regnskapsbyråer. Kobler seg til PowerOffice Go og genererer klientrapporter automatisk — med byråets logo og design.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rapportly.no/">
+  <meta property="og:image" content="https://rapportly.no/og-image.png">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:site_name" content="Rapportly">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rapportly — Automatiske klientrapporter for regnskapsbyråer">
+  <meta name="twitter:description" content="Rapportverktøy for regnskapsbyråer. Kobler seg til PowerOffice Go og genererer klientrapporter automatisk.">
+  <meta name="twitter:image" content="https://rapportly.no/og-image.png">
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Rapportly",
+    "url": "https://rapportly.no",
+    "logo": "https://rapportly.no/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "post@rapportly.no",
+      "contactType": "customer support",
+      "availableLanguage": "Norwegian"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Rapportly",
+    "url": "https://rapportly.no"
+  }
+  </script>
+
+  <!-- JSON-LD: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Rapportly",
+    "description": "Automatiske klientrapporter for regnskapsbyråer. Henter tall direkte fra regnskapssystemet og genererer profesjonelle PDF-rapporter med byråets design.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://rapportly.no",
+    "offers": {
+      "@type": "Offer",
+      "price": "999",
+      "priceCurrency": "NOK",
+      "description": "Per bruker per måned. Opptil 50 klienter inkludert per bruker."
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Hva er Rapportly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rapportly er et rapportverktøy for regnskapsbyråer som automatisk henter tall fra ditt regnskapssystem og genererer profesjonelle klientrapporter med byråets logo og design — uten manuelt arbeid."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hvilke regnskapssystemer støtter Rapportly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rapportly støtter PowerOffice Go i dag. Tripletex, Fiken og 24SevenOffice kommer i løpet av 2026."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hva koster Rapportly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rapportly koster 999 kr per bruker per måned. Prisen inkluderer opptil 50 klienter per bruker. Ingen oppstartskostnad og ingen bindingstid."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hvor lang tid tar det å komme i gang?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vi sender invitasjonslenke til deg og kommer med forslag på rapportoppsett. Du er oppe og går innen kort tid etter du har godkjent forslag."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan vi tilpasse logo og design på rapportene?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Rapportly bruker byråets logo, farger og oppsett. Rapportene ser ut som om dere har laget dem selv."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Trenger kundene våre å gjøre noe selv?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nei. Rapportene genereres og leveres automatisk. Kundene mottar ferdige rapporter uten at de trenger å logge inn eller gjøre noe."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:           oklch(97.5% 0.005 230);
+      --surface:      oklch(99.5% 0.003 230);
+      --surface-2:    oklch(94.5% 0.008 235);
+      --text:         oklch(16%   0.008 240);
+      --text-muted:   oklch(50%   0.012 240);
+      --text-subtle:  oklch(68%   0.008 240);
+      --border:       oklch(87%   0.008 240);
+      --primary:      oklch(26%   0.10  262);
+      --accent:       oklch(58%   0.22  260);
+      --accent-hover: oklch(52%   0.22  260);
+      --accent-light: oklch(94%   0.05  262);
+      --r-sm: 6px; --r: 12px; --r-lg: 18px; --r-xl: 26px;
+      --shadow-sm: 0 1px 3px oklch(0% 0 0/.06), 0 1px 2px oklch(0% 0 0/.04);
+      --shadow:    0 4px 16px oklch(0% 0 0/.07), 0 2px 4px oklch(0% 0 0/.04);
+      --shadow-lg: 0 24px 64px oklch(0% 0 0/.14), 0 6px 16px oklch(0% 0 0/.07);
+      --ease: cubic-bezier(0.16,1,0.3,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Figtree', system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav-wrap {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center;
+      padding: 1.25rem 1.5rem; pointer-events: none;
+    }
+    .nav {
+      display: flex; align-items: center; gap: 2.5rem;
+      background: oklch(20% 0.08 258 / 0.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid oklch(35% 0.08 258); border-radius: 9999px;
+      padding: .75rem 1rem .75rem 1.5rem;
+      box-shadow: 0 4px 24px oklch(0% 0 0/.20); pointer-events: all;
+      transition: box-shadow 220ms var(--ease);
+    }
+    .nav.scrolled { box-shadow: 0 6px 32px oklch(0% 0 0/.28); }
+    .nav-logo img { height: 26px; display: block; }
+    .nav-links { display: flex; align-items: center; gap: .125rem; }
+    .nav-links a {
+      font-size: .875rem; font-weight: 500; color: oklch(72% 0.04 240);
+      padding: .375rem .75rem; border-radius: 9999px;
+      transition: color 160ms var(--ease), background 160ms var(--ease);
+    }
+    .nav-links a:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
+    .nav-login {
+      font-size: .875rem; font-weight: 500; color: oklch(72% 0.04 240);
+      padding: .375rem .75rem; border-radius: 9999px;
+      transition: color 160ms var(--ease), background 160ms var(--ease);
+    }
+    .nav-login:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
+    .nav-cta {
+      font-size: .875rem; font-weight: 700; color: oklch(16% 0.08 258);
+      background: oklch(97% 0.01 240); padding: .5625rem 1.375rem; border-radius: 9999px;
+      transition: background 160ms var(--ease), transform 160ms var(--ease);
+    }
+    .nav-cta:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero-wrap {
+      background: var(--primary);
+      position: relative; overflow: hidden;
+    }
+    .hero-bg-grid {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: radial-gradient(circle, oklch(58% .10 262 / .18) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .hero-bg-fade {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background: radial-gradient(ellipse 120% 60% at 50% 0%, transparent 20%, oklch(22% .09 262 / .92) 82%);
+    }
+    .hero {
+      max-width: 1360px; margin: 0 auto;
+      padding: 10rem 6rem 5rem;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem;
+      align-items: center; position: relative; z-index: 1;
+      min-height: 100vh;
+    }
+    .hero-content { display: flex; flex-direction: column; gap: 2rem; align-items: flex-start; }
+    .hero-heading {
+      font-size: clamp(2.75rem, 4.5vw, 5.25rem); font-weight: 900;
+      line-height: .96; letter-spacing: -.065em;
+      color: oklch(97% .01 240);
+    }
+    .hero-heading em { font-style: normal; color: var(--accent); }
+    .hero-body { font-size: 1.125rem; color: oklch(60% .05 250); line-height: 1.72; max-width: 40ch; }
+    .hero-actions { display: flex; align-items: center; gap: 1.375rem; }
+    .btn-primary {
+      display: inline-flex; align-items: center;
+      font-size: .9375rem; font-weight: 700; color: oklch(99% .01 240);
+      background: var(--accent); padding: .875rem 1.875rem; border-radius: 9999px;
+      box-shadow: 0 2px 16px oklch(58% .22 260/.3);
+      transition: background 160ms var(--ease), transform 200ms var(--ease), box-shadow 200ms var(--ease);
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 24px oklch(58% .22 260/.4); }
+    .btn-ghost { font-size: .9375rem; font-weight: 600; color: oklch(62% .05 250); transition: color 160ms var(--ease); }
+    .btn-ghost:hover { color: oklch(88% .02 240); }
+    .hero-integrations { font-size: .8125rem; font-weight: 500; color: oklch(46% .05 250); letter-spacing: .01em; }
+
+    /* ── DOCUMENT MOCKUP ── */
+    .hero-visual {
+      margin-top: 0; width: 100%;
+      display: flex; flex-direction: column; align-items: center;
+      position: relative; align-self: stretch;
+    }
+    .hero-visual-inner {
+      position: sticky; top: 6rem;
+      width: 100%; display: flex; flex-direction: column; align-items: center;
+    }
+    .doc-showcase {
+      position: relative; width: 100%; max-width: none;
+    }
+    .doc-glow {
+      position: absolute; z-index: 0; pointer-events: none;
+      width: 130%; height: 90%; top: -5%; left: -15%;
+      background: radial-gradient(ellipse at 50% 35%, oklch(58% .22 260 / .42) 0%, transparent 58%);
+      filter: blur(72px);
+    }
+    .doc-frame {
+      position: relative; z-index: 1;
+      border-radius: 16px; overflow: hidden;
+      aspect-ratio: 210 / 297;
+      box-shadow:
+        0 0 0 1px oklch(48% .12 262 / .45),
+        0 0 80px oklch(58% .22 260 / .22),
+        0 56px 140px oklch(0% 0 0 / .75);
+    }
+    .doc-slide-img {
+      display: block; width: 100%; height: 100%; object-fit: cover;
+      transition: opacity 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1);
+      will-change: opacity, transform;
+    }
+    .doc-slide-img.fading { opacity: 0; transform: translateY(16px) scale(0.97); }
+    .doc-counter-row {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; padding: 1.125rem 0 2rem;
+    }
+    .doc-counter {
+      font-size: .5625rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      color: oklch(42% .05 250); font-variant-numeric: tabular-nums;
+    }
+    .doc-nav-btn {
+      position: absolute; top: 42%; z-index: 4;
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      border: 1px solid oklch(40% .08 258);
+      background: oklch(22% .09 260 / .92); color: oklch(74% .06 250);
+      font-size: .875rem; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; line-height: 1;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 16px oklch(0% 0 0 / .4);
+      transition: background 160ms var(--ease), color 160ms var(--ease), transform 200ms var(--ease);
+    }
+    .doc-nav-btn:hover { background: oklch(36% .14 262); color: oklch(96% .02 240); }
+    #docPrev { left: -1.375rem; transform: translateY(-50%); }
+    #docNext { right: -1.375rem; transform: translateY(-50%); }
+    #docPrev:hover { transform: translateY(-50%) translateX(-2px); }
+    #docNext:hover { transform: translateY(-50%) translateX(2px); }
+    .notif-card {
+      position: absolute; bottom: 2.5rem; right: -1.5rem; z-index: 3;
+      background: oklch(21% .07 258 / .97); border: 1px solid oklch(36% .07 258);
+      border-radius: 16px; padding: 1.125rem 1.25rem;
+      box-shadow: 0 24px 64px oklch(0% 0 0 / .45), 0 4px 12px oklch(0% 0 0 / .25);
+      display: flex; flex-direction: column; gap: 1rem; min-width: 260px;
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    }
+    .notif-meta { display: flex; flex-direction: column; gap: .2rem; }
+    .notif-title { font-size: .875rem; font-weight: 700; color: oklch(93% .01 240); }
+    .notif-sub { font-size: .6875rem; color: oklch(52% .05 250); }
+    .notif-approve {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      font-size: .8125rem; font-weight: 700; color: oklch(99% .01 240);
+      background: var(--accent); padding: .625rem 1rem; border-radius: 9px;
+      box-shadow: 0 2px 10px oklch(58% .22 260 / .35);
+      transition: background 160ms var(--ease), transform 160ms var(--ease);
+      cursor: default;
+    }
+    .notif-approve:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .notif-approve-arrow { font-size: .75rem; opacity: .8; }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: var(--border); max-width: 1280px; margin: 0 auto; }
+
+    /* ── STEPS ── */
+    .steps-section { padding: 9rem 6rem; max-width: 1360px; margin: 0 auto; }
+    .steps-intro { margin-bottom: 5.5rem; }
+    .steps-intro h2 { font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.04; max-width: 18ch; }
+    .steps-intro p { font-size: 1.0625rem; color: var(--text-muted); margin-top: 1.125rem; line-height: 1.7; max-width: 48ch; }
+    .steps-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+    .step {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem 2.25rem;
+      display: flex; flex-direction: column;
+      transition: box-shadow 220ms var(--ease), transform 220ms var(--ease);
+    }
+    .step:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .step-num {
+      width: 3.25rem; height: 3.25rem;
+      background: var(--primary); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9375rem; font-weight: 900; letter-spacing: -.02em;
+      color: oklch(72% .10 262);
+      margin-bottom: 2rem; flex-shrink: 0;
+    }
+    .step-title { font-size: 1.1875rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.2; margin-bottom: .75rem; }
+    .step-body { font-size: .9375rem; color: var(--text-muted); line-height: 1.72; }
+
+    /* ── FEATURES ── */
+    .features-section { padding: 6rem 6rem 9rem; max-width: 1360px; margin: 0 auto; }
+    .features-header { margin-bottom: 5rem; }
+    .features-header h2 { font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.04; max-width: 20ch; }
+    .features-header p { font-size: 1.0625rem; color: var(--text-muted); line-height: 1.7; max-width: 50ch; margin-top: 1.125rem; }
+    .features-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem; align-items: start; }
+
+    /* Gallery */
+    .features-gallery {
+      position: relative;
+    }
+    .features-gallery-glow { display: none; }
+    .gallery-frame {
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 16px 48px oklch(0% 0 0/.55), 0 0 0 1px oklch(55% .10 262/.3);
+      background: oklch(99% .003 230);
+    }
+    .gallery-img {
+      display: block; width: 100%; height: auto;
+      transition: opacity 400ms cubic-bezier(0.16,1,0.3,1);
+      will-change: opacity;
+    }
+    .gallery-img.fading { opacity: 0; }
+    .gallery-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1.25rem; position: relative; z-index: 1; padding: 0 .25rem;
+    }
+    .gallery-label {
+      font-size: .625rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-subtle);
+      transition: opacity 300ms var(--ease);
+    }
+    .gallery-controls { display: flex; align-items: center; gap: .625rem; }
+    .gallery-arrow {
+      width: 1.75rem; height: 1.75rem; border-radius: 50%;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text-muted); cursor: pointer; font-size: .6875rem;
+      display: flex; align-items: center; justify-content: center; padding: 0;
+      transition: background 160ms var(--ease), box-shadow 160ms var(--ease);
+    }
+    .gallery-arrow:hover { background: var(--surface-2); box-shadow: var(--shadow-sm); }
+    .gallery-dots { display: flex; align-items: center; gap: .4375rem; }
+    .gallery-dot {
+      width: .4375rem; height: .4375rem; border-radius: 50%;
+      background: var(--border); border: none; cursor: pointer; padding: 0;
+      transition: background 220ms var(--ease), transform 220ms var(--ease);
+    }
+    .gallery-dot.active { background: var(--primary); transform: scale(1.3); }
+    .gallery-dot:hover:not(.active) { background: var(--text-subtle); }
+
+    /* Features body */
+    .features-body { display: flex; flex-direction: column; padding-top: .5rem; }
+    .features-lead { font-size: 1.1875rem; font-weight: 500; color: var(--text); line-height: 1.72; max-width: 44ch; margin-bottom: 3.5rem; }
+    .features-detail-list { display: flex; flex-direction: column; }
+    .features-detail { padding: 2.125rem 0; border-top: 1px solid var(--border); }
+    .features-detail:last-child { padding-bottom: 0; }
+    .features-detail-title { font-size: 1.125rem; font-weight: 700; letter-spacing: -.025em; margin-bottom: .625rem; }
+    .features-detail p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 44ch; }
+
+
+    /* ── INTEGRATION ── */
+    .integration-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .integration-inner {
+      max-width: 1360px; margin: 0 auto; padding: 6rem 6rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 6rem; flex-wrap: wrap;
+    }
+    .integration-left { max-width: 44ch; }
+    .integration-left h2 { font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 900; letter-spacing: -.045em; line-height: 1.1; }
+    .integration-left p { font-size: 1rem; color: var(--text-muted); margin-top: .875rem; line-height: 1.65; }
+    .integration-cards { display: flex; flex-direction: column; gap: .75rem; flex-shrink: 0; min-width: 320px; }
+    .int-card {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.125rem 1.375rem;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    .int-card--active {
+      background: oklch(97.5% .03 262); border-color: oklch(82% .09 262);
+      box-shadow: 0 2px 16px oklch(58% .22 260 / .10);
+    }
+    .int-card--coming { opacity: .55; }
+    .int-card-logo {
+      width: 2.875rem; height: 2.875rem; border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .875rem; font-weight: 900; flex-shrink: 0; letter-spacing: -.02em;
+    }
+    .int-logo-po { background: #E8F4FD; color: #1B6CA8; }
+    .int-logo-tx { background: oklch(93% .01 240); color: oklch(40% .01 240); }
+    .int-logo-fk { background: oklch(93% .03 150); color: oklch(38% .12 150); }
+    .int-logo-24 { background: oklch(92% .04 25); color: oklch(40% .14 25); }
+    .int-card-name { font-size: 1rem; font-weight: 700; display: block; letter-spacing: -.02em; }
+    .int-card-status { font-size: .6875rem; font-weight: 600; display: block; margin-top: .2rem; }
+    .int-status-live { color: var(--accent); }
+    .int-status-soon { color: var(--text-subtle); }
+
+    /* ── PRICING ── */
+    .pricing-section { padding: 9rem 6rem; max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
+    .pricing-left h2 { font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.04; }
+    .pricing-left p { font-size: 1.0625rem; color: var(--text-muted); line-height: 1.7; margin-top: 1.125rem; max-width: 38ch; }
+    .pricing-left-note { margin-top: 2.25rem; font-size: .9375rem; color: var(--text-muted); }
+    .pricing-left-note a { color: var(--accent); font-weight: 600; transition: color 160ms var(--ease); }
+    .pricing-left-note a:hover { color: var(--accent-hover); }
+    .pricing-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; box-shadow: 0 32px 80px oklch(26% .10 262 / .16), 0 8px 20px oklch(0% 0 0 / .07); }
+    .pricing-card-header { background: var(--primary); padding: 2.5rem 2.5rem 2.25rem; position: relative; overflow: hidden; }
+    .pricing-card-header::before { content: ''; position: absolute; top: -50%; right: -25%; width: 70%; height: 200%; background: radial-gradient(ellipse, oklch(40% .14 260 / .45) 0%, transparent 60%); pointer-events: none; }
+    .pricing-header-logo { height: 32px; margin-bottom: 1.75rem; display: block; position: relative; z-index: 1; }
+    .pricing-amount { display: flex; align-items: baseline; gap: .3rem; margin-bottom: .375rem; position: relative; z-index: 1; }
+    .pricing-number { font-size: 4.25rem; font-weight: 900; letter-spacing: -.065em; color: oklch(97% .01 240); }
+    .pricing-unit { font-size: 1.0625rem; font-weight: 600; color: oklch(97% .01 240); position: relative; z-index: 1; }
+    .pricing-sub { font-size: .8125rem; color: oklch(60% .05 255); position: relative; z-index: 1; }
+    .pricing-body { padding: 2rem 2.25rem; display: flex; flex-direction: column; gap: 1.75rem; }
+    .pricing-features-list { list-style: none; display: flex; flex-direction: column; }
+    .pricing-features-list li {
+      font-size: .9375rem; color: var(--text); padding: .5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-features-list li:last-child { border-bottom: none; }
+    .pricing-addons { background: var(--bg); border-radius: var(--r); padding: 1rem 1.125rem; }
+    .pricing-addons p { font-size: .875rem; color: var(--text-muted); line-height: 1.55; }
+    .pricing-addons strong { color: var(--text); font-weight: 600; }
+    .pricing-cta-btn {
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9375rem; font-weight: 700; color: oklch(99% .01 240);
+      background: var(--accent); padding: .9375rem; border-radius: var(--r);
+      transition: background 160ms var(--ease), transform 160ms var(--ease);
+    }
+    .pricing-cta-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .pricing-footnote { font-size: .8125rem; color: var(--text-subtle); text-align: center; }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--primary); padding: 9rem 6rem; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 18% 60%, oklch(40% .16 260 / .55) 0%, transparent 52%); }
+    .cta-inner { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 6rem; align-items: center; position: relative; z-index: 1; }
+    .cta-heading { font-size: clamp(2.75rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -.055em; line-height: 1.02; color: oklch(97% .01 240); }
+    .cta-body { font-size: 1.0625rem; color: oklch(56% .06 255); margin-top: 1.125rem; line-height: 1.7; max-width: 42ch; }
+    .btn-cta-inv {
+      display: inline-flex; align-items: center;
+      font-size: .9375rem; font-weight: 800; color: var(--primary);
+      background: oklch(97% .01 240); padding: 1rem 2.125rem; border-radius: 9999px;
+      white-space: nowrap; box-shadow: 0 2px 16px oklch(0% 0 0/.18);
+      transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+    }
+    .btn-cta-inv:hover { transform: translateY(-2px); box-shadow: 0 10px 28px oklch(0% 0 0/.26); }
+
+    /* ── CONTACT ── */
+    .contact-section { padding: 9rem 6rem; max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
+    .contact-info h2 { font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.04; }
+    .contact-info p { font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin-top: 1rem; max-width: 38ch; }
+    .contact-meta { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-meta-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-subtle); display: block; margin-bottom: .2rem; }
+    .contact-meta-value { font-size: .9375rem; color: var(--text-muted); display: block; }
+    .contact-form { display: flex; flex-direction: column; gap: .875rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .form-group { display: flex; flex-direction: column; gap: .375rem; }
+    .form-label { font-size: .8125rem; font-weight: 600; color: var(--text); }
+    .form-input, .form-textarea {
+      font-family: inherit; font-size: .9375rem; color: var(--text);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-sm); padding: .6875rem .875rem; outline: none; width: 100%;
+      transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease);
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px oklch(58% .22 260/.12); }
+    .form-textarea { resize: vertical; min-height: 110px; line-height: 1.55; }
+    .form-submit {
+      font-family: inherit; font-size: .9375rem; font-weight: 700; color: oklch(99% .01 240);
+      background: var(--accent); border: none; padding: .9375rem 2rem;
+      border-radius: 9999px; cursor: pointer; align-self: flex-start;
+      transition: background 160ms var(--ease), transform 160ms var(--ease);
+    }
+    .form-submit:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .brreg-wrapper { position: relative; }
+    .brreg-dropdown {
+      position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 50;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-sm); box-shadow: var(--shadow-lg);
+      overflow: hidden; display: none;
+    }
+    .brreg-dropdown.open { display: block; }
+    .brreg-item {
+      padding: .625rem .875rem; cursor: pointer;
+      transition: background 120ms var(--ease);
+      display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+    }
+    .brreg-item:hover, .brreg-item.focused { background: var(--accent-light); }
+    .brreg-item-name { font-size: .9rem; font-weight: 600; color: var(--text); }
+    .brreg-item-org { font-size: .75rem; color: var(--text-subtle); flex-shrink: 0; }
+    .brreg-no-result { padding: .625rem .875rem; font-size: .875rem; color: var(--text-muted); }
+
+    .form-success {
+      display: none; padding: 1rem 1.125rem;
+      background: var(--accent-light); border: 1px solid oklch(80% .09 260);
+      border-radius: var(--r-sm); font-size: .9375rem; color: oklch(28% .1 258); font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    /* FAQ */
+    .faq-section { padding: 6rem; background: var(--surface); border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 720px; margin: 0 auto; }
+    .faq-heading { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: -.05em; margin-bottom: .75rem; }
+    .faq-sub { font-size: .9375rem; color: var(--text-muted); margin-bottom: 3rem; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q {
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 0; gap: 1rem; color: var(--text);
+    }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q::after { content: '+'; font-size: 1.375rem; font-weight: 400; color: var(--accent); flex-shrink: 0; transition: transform 200ms var(--ease); }
+    details[open] .faq-q::after { transform: rotate(45deg); }
+    .faq-a { font-size: .9375rem; color: var(--text-muted); line-height: 1.75; padding-bottom: 1.25rem; }
+
+    .footer-outer { border-top: 1px solid var(--border); }
+    footer {
+      padding: 2.5rem 6rem; max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .footer-logo img { height: 20px; filter: brightness(0); opacity: .5; }
+    .footer-links { display: flex; gap: 1.75rem; }
+    .footer-links a { font-size: .875rem; color: var(--text-subtle); transition: color 160ms var(--ease); }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: .8125rem; color: var(--text-subtle); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); filter: blur(3px); transition: opacity 750ms var(--ease), transform 750ms var(--ease), filter 600ms var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; filter: blur(0); }
+    .d1 { transition-delay: 80ms; }
+    .d2 { transition-delay: 160ms; }
+    .d3 { transition-delay: 240ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { transition-duration: 0.01ms !important; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .steps-section, .features-section, .pricing-section, .contact-section, footer { padding-left: 3rem; padding-right: 3rem; }
+      .cta-section, .integration-inner { padding-left: 3rem; padding-right: 3rem; }
+      .hero { padding-left: 3rem; padding-right: 3rem; gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      /* Nav */
+      .nav-links { display: none; }
+      .nav-login { display: none; }
+      .nav { gap: 1rem; padding: .625rem .75rem .625rem 1.25rem; }
+
+      /* Hero */
+      .hero { padding: 6.5rem 1.25rem 3rem; grid-template-columns: 1fr; min-height: unset; gap: 3rem; }
+      .hero-content { align-items: flex-start; text-align: left; }
+      .hero-body { max-width: unset; font-size: 1rem; }
+      .hero-heading { font-size: clamp(2.25rem, 9vw, 3.25rem); }
+      .hero-visual-inner { position: static; }
+      .notif-card { min-width: 220px; right: -.75rem; bottom: 1.5rem; }
+      .doc-nav-btn { width: 2rem; height: 2rem; font-size: .75rem; }
+      #docPrev { left: -.75rem; }
+      #docNext { right: -.75rem; }
+
+      /* Sections */
+      .steps-section { padding: 4.5rem 1.25rem; }
+      .features-section { padding: 4rem 1.25rem 5rem; }
+      .integration-inner { padding: 3.5rem 1.25rem; flex-direction: column; align-items: flex-start; gap: 2rem; }
+      .pricing-section { padding: 4.5rem 1.25rem; }
+      .contact-section { padding: 4.5rem 1.25rem; }
+      .cta-section { padding: 5rem 1.25rem; }
+
+      /* Steps */
+      .steps-intro { margin-bottom: 3rem; }
+      .steps-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .step:hover { transform: none; box-shadow: none; }
+
+      /* Features */
+      .features-header { margin-bottom: 3rem; }
+      .features-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .features-gallery { order: -1; }
+
+      /* Integration */
+      .integration-cards { min-width: unset; width: 100%; }
+
+      /* Pricing */
+      .pricing-section { grid-template-columns: 1fr; gap: 3rem; }
+
+      /* Contact */
+      .contact-section { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      /* CTA */
+      .cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cta-heading { font-size: clamp(2rem, 8vw, 3rem); }
+
+      /* Footer */
+      .faq-section { padding: 4rem 1.25rem; }
+      footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 2rem 1.25rem; }
+      .footer-links { flex-wrap: wrap; gap: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <nav class="nav" id="mainNav">
+      <a href="#" class="nav-logo"><img src="logo.png" alt="Rapportly"></a>
+      <div class="nav-links">
+        <a href="#hvordan">Slik fungerer det</a>
+        <a href="#priser">Priser</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <a href="https://app.rapportly.no" class="nav-login">Logg inn</a>
+      <a href="#kontakt" class="nav-cta">Book gratis demo</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-wrap">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-fade"></div>
+    <div class="hero">
+      <div class="hero-content">
+        <h1 class="hero-heading reveal">
+          Rapporter på<br><em>autopilot.</em>
+        </h1>
+        <p class="hero-body reveal d1">
+          Slutt å bruke tid på rapportbygging. Rapportly henter ferske tall og genererer rapporten selv, helt automatisk — med ditt byrås logo og design.
+        </p>
+        <div class="hero-actions reveal d1">
+          <a href="#kontakt" class="btn-primary">Book gratis demo</a>
+          <a href="#priser" class="btn-ghost">Se priser &rarr;</a>
+        </div>
+        <p class="hero-integrations reveal d2">&#10003; PowerOffice Go-integrasjon &nbsp;·&nbsp; Flere integrasjoner kommer</p>
+      </div>
+      <div class="hero-visual reveal d2">
+        <div class="hero-visual-inner">
+        <div class="doc-showcase">
+          <div class="doc-glow"></div>
+          <div class="doc-frame">
+            <img id="docSlide" class="doc-slide-img" src="rapport demo bilder/Forside.png" alt="Rapportly rapport demo" fetchpriority="high">
+          </div>
+          <button class="doc-nav-btn" id="docPrev" aria-label="Forrige side">&#8592;</button>
+          <button class="doc-nav-btn" id="docNext" aria-label="Neste side">&#8594;</button>
+          <div class="notif-card">
+            <div class="notif-meta">
+              <div class="notif-title">Nordvik Regnskap</div>
+              <div class="notif-sub">April 2026 &nbsp;·&nbsp; Klar til godkjenning</div>
+            </div>
+            <div class="notif-approve">
+              Godkjenn og send til kunde
+              <span class="notif-approve-arrow">→</span>
+            </div>
+          </div>
+        </div>
+        <div class="doc-counter-row">
+          <span class="doc-counter" id="docCounter">01 / 12</span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="steps-section" id="hvordan">
+    <div class="steps-intro reveal">
+      <h2>Sett opp én gang.<br>Kjører automatisk.</h2>
+      <p>Tre steg fra regnskapssystemet til ferdig rapport hos kunden. Etter oppsett trenger du bare å godkjenne.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Legg til kundene dine</div>
+        <p class="step-body">Søk opp kundene dine med organisasjonsnummer. De hentes direkte fra Brønnøysundregisteret — ingen manuell registrering.</p>
+      </div>
+      <div class="step reveal d1">
+        <div class="step-num">02</div>
+        <div class="step-title">Koble til regnskapssystemet</div>
+        <p class="step-body">Knytt kundene til regnskapssystemet ditt. Rapportly henter ferske regnskapstall direkte derfra: ingen manuell eksport, ingen kopiering.</p>
+      </div>
+      <div class="step reveal d2">
+        <div class="step-num">03</div>
+        <div class="step-title">Automatiser og send</div>
+        <p class="step-body">Aktiver automatisk rapportgenerering per klient, eller start enkeltvis. Du varsles når rapporten er klar; godkjenn og lever med ett klikk.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURES -->
+  <section class="features-section" id="funksjoner">
+    <div class="features-header reveal">
+      <h2>Din profil.<br>Gjennom hele rapporten.</h2>
+      <p>Forside, farger og rapportmal settes opp etter byråets identitet. Vi leverer et designforslag; du godkjenner.</p>
+    </div>
+    <div class="features-grid">
+      <div class="features-gallery reveal d1">
+        <div class="features-gallery-glow"></div>
+        <div class="gallery-frame">
+          <img id="galleryImg" class="gallery-img" src="akerberg-kvartalsrapport.jpg" alt="Åkerberg Regnskapsbyrå — Kvartalsrapport" loading="lazy">
+        </div>
+        <div class="gallery-footer">
+          <span class="gallery-label" id="galleryLabel">Åkerberg · Kvartalsrapport</span>
+          <div class="gallery-controls">
+            <button class="gallery-arrow" id="galleryPrev" aria-label="Forrige">&#8592;</button>
+            <div class="gallery-dots">
+              <button class="gallery-dot active" data-index="0" aria-label="Rapport 1"></button>
+              <button class="gallery-dot" data-index="1" aria-label="Rapport 2"></button>
+              <button class="gallery-dot" data-index="2" aria-label="Rapport 3"></button>
+            </div>
+            <button class="gallery-arrow" id="galleryNext" aria-label="Neste">&#8594;</button>
+          </div>
+        </div>
+      </div>
+      <div class="features-body">
+        <p class="features-lead reveal d1">Rapportens oppsett og profil tilpasses ditt selskap. Vi leverer et konkret designforslag og tar oss av konfigurasjonen.</p>
+        <div class="features-detail-list">
+          <div class="features-detail reveal d1">
+            <div class="features-detail-title">Forside og byråets profil</div>
+            <p>Byråets logo, farger og kontaktinformasjon på forsiden. Rapporten åpnes som en leveranse fra byrået, ikke fra et verktøy.</p>
+          </div>
+          <div class="features-detail reveal d2">
+            <div class="features-detail-title">Rapportmal og oppsett</div>
+            <p>Sideoppsett, typografi og struktur settes opp etter byråets standarder. Ikke en generisk mal, men et oppsett som passer porteføljen.</p>
+          </div>
+          <div class="features-detail reveal d3">
+            <div class="features-detail-title">Vi leverer designforslaget</div>
+            <p>Du sender oss byråets profil; vi konfigurerer og sender deg et utkast til godkjenning. Ingen selvbetjening, ingen malvalg.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATION -->
+  <div class="integration-section">
+    <div class="integration-inner">
+      <div class="integration-left reveal">
+        <h2>Kobler seg til regnskapssystemet ditt</h2>
+        <p>Rapportly henter tall direkte fra regnskapssystemet ditt — ingen manuell eksport, ingen kopiering.</p>
+      </div>
+      <div class="integration-cards reveal d1">
+        <div class="int-card int-card--active">
+          <div class="int-card-logo int-logo-po">PO</div>
+          <div>
+            <span class="int-card-name">PowerOffice Go</span>
+            <span class="int-card-status int-status-live">● Tilgjengelig nå</span>
+          </div>
+        </div>
+        <div class="int-card int-card--coming">
+          <div class="int-card-logo int-logo-tx">TX</div>
+          <div>
+            <span class="int-card-name">Tripletex</span>
+            <span class="int-card-status int-status-soon">Kommer 2026</span>
+          </div>
+        </div>
+        <div class="int-card int-card--coming">
+          <div class="int-card-logo int-logo-fk">FK</div>
+          <div>
+            <span class="int-card-name">Fiken</span>
+            <span class="int-card-status int-status-soon">Kommer 2026</span>
+          </div>
+        </div>
+        <div class="int-card int-card--coming">
+          <div class="int-card-logo int-logo-24">24</div>
+          <div>
+            <span class="int-card-name">24SevenOffice</span>
+            <span class="int-card-status int-status-soon">Kommer 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="priser">
+    <div class="pricing-left reveal">
+      <h2>Enkel,<br>forutsigbar<br>prising</h2>
+      <p>Ingen oppstartskostnad. Ingen bindingstid. Du betaler per regnskapsfører i byrået.</p>
+      <p class="pricing-left-note">Stort byrå? <a href="#kontakt">Ta kontakt for enterprise-pris.</a></p>
+    </div>
+    <div class="reveal d1">
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <img src="logo.png" alt="Rapportly" class="pricing-header-logo">
+          <div class="pricing-amount">
+            <span class="pricing-number">999</span>
+            <span class="pricing-unit">kr / bruker / mnd</span>
+          </div>
+        </div>
+        <div class="pricing-body">
+          <ul class="pricing-features-list">
+            <li>Opptil 50 klienter per bruker</li>
+            <li>Månedlig, kvartal, tertial, år og egendefinert</li>
+            <li>Byråtilpasset design, forside og oppsett</li>
+            <li>Automatisk generering og levering</li>
+            <li>PowerOffice Go-integrasjon</li>
+          </ul>
+
+          <a href="#kontakt" class="pricing-cta-btn">Bli kunde</a>
+          <p class="pricing-footnote">Ingen kortbinding. Avslutt når som helst.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="faq-inner">
+      <h2 class="faq-heading reveal">Ofte stilte spørsmål</h2>
+      <p class="faq-sub reveal">Alt du lurer på før du starter.</p>
+      <details class="faq-item reveal">
+        <summary class="faq-q">Hva er Rapportly?</summary>
+        <p class="faq-a">Rapportly er et rapportverktøy for regnskapsbyråer som automatisk henter tall fra ditt regnskapssystem og genererer profesjonelle klientrapporter med byråets logo og design — uten manuelt arbeid.</p>
+      </details>
+      <details class="faq-item reveal d1">
+        <summary class="faq-q">Hvilke regnskapssystemer støtter Rapportly?</summary>
+        <p class="faq-a">Rapportly støtter PowerOffice Go i dag. Tripletex, Fiken og 24SevenOffice kommer i løpet av 2026.</p>
+      </details>
+      <details class="faq-item reveal d2">
+        <summary class="faq-q">Hva koster Rapportly?</summary>
+        <p class="faq-a">Rapportly koster 999 kr per bruker per måned. Prisen inkluderer opptil 50 klienter per bruker. Ingen oppstartskostnad og ingen bindingstid.</p>
+      </details>
+      <details class="faq-item reveal d3">
+        <summary class="faq-q">Hvor lang tid tar det å komme i gang?</summary>
+        <p class="faq-a">Vi sender invitasjonslenke til deg og kommer med forslag på rapportoppsett. Du er oppe og går innen kort tid etter du har godkjent forslag.</p>
+      </details>
+      <details class="faq-item reveal d1">
+        <summary class="faq-q">Kan vi tilpasse logo og design på rapportene?</summary>
+        <p class="faq-a">Ja. Rapportly bruker byråets logo, farger og oppsett. Rapportene ser ut som om dere har laget dem selv.</p>
+      </details>
+      <details class="faq-item reveal d2">
+        <summary class="faq-q">Trenger kundene våre å gjøre noe selv?</summary>
+        <p class="faq-a">Nei. Rapportene genereres og leveres automatisk. Kundene mottar ferdige rapporter uten at de trenger å logge inn eller gjøre noe.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="reveal">
+        <h2 class="cta-heading">Slutt å bygge<br>rapporter manuelt.</h2>
+        <p class="cta-body">Vi setter opp Rapportly med ditt byrådesign og kobler til PowerOffice Go. Hele flyten demonstrert på 30 minutter.</p>
+      </div>
+      <a href="#kontakt" class="btn-cta-inv reveal d1">Book gratis demo</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="kontakt">
+    <div class="contact-info reveal">
+      <h2>Ta<br>kontakt</h2>
+      <p>Fyll ut skjemaet, så tar vi kontakt og setter opp Rapportly tilpasset ditt byrå.</p>
+      <div class="contact-meta">
+        <div>
+          <span class="contact-meta-label">E-post</span>
+          <span class="contact-meta-value">tor.andre.larsen@larsendigitalsolutions.no</span>
+        </div>
+        <div>
+          <span class="contact-meta-label">Svarstid</span>
+          <span class="contact-meta-value">Vi svarer innen én arbeidsdag</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal d1">
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="navn">Navn</label>
+            <input class="form-input" type="text" id="navn" name="navn" placeholder="Ola Nordmann" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="byraa">Byrånavn</label>
+            <div class="brreg-wrapper">
+              <input class="form-input" type="text" id="byraa" name="byraa" placeholder="Ditt byrå AS" required autocomplete="off">
+              <div class="brreg-dropdown" id="brregDropdown"></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="epost">E-post</label>
+            <input class="form-input" type="email" id="epost" name="epost" placeholder="ola@byraaet.no" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="telefon">Telefon</label>
+            <input class="form-input" type="tel" id="telefon" name="telefon" placeholder="+47 900 00 000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="melding">Melding (valgfritt)</label>
+          <textarea class="form-textarea" id="melding" name="melding" placeholder="Fortell gjerne om byrået og hvor mange klienter dere har..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send henvendelse</button>
+        <div class="form-success" id="formSuccess">Takk! Vi tar kontakt innen én arbeidsdag.</div>
+      </form>
+    </div>
+  </section>
+
+  <div class="footer-outer">
+    <footer>
+      <a href="/" class="footer-logo"><img src="logo.png" alt="Rapportly"></a>
+      <div class="footer-links">
+        <a href="#hvordan">Slik fungerer det</a>
+        <a href="#priser">Priser</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="personvern.html">Personvernerklæring</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 Rapportly</span>
+    </footer>
+  </div>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Page slideshow
+    (() => {
+      const img       = document.getElementById('docSlide');
+      const counterEl = document.getElementById('docCounter');
+      const pages     = [
+        'rapport demo bilder/Forside.png',
+        'rapport demo bilder/Side 1.png',
+        'rapport demo bilder/Side 2.png',
+        'rapport demo bilder/Side 3.png',
+        'rapport demo bilder/Side 4.png',
+        'rapport demo bilder/Side 5.png',
+        'rapport demo bilder/Side 7.png',
+        'rapport demo bilder/Side 8.png',
+        'rapport demo bilder/Side 11.png'
+      ];
+      const total     = pages.length;
+      let current     = 0, busy = false, timer;
+
+      function setCounter(n) {
+        if (counterEl) counterEl.textContent = `${String(n+1).padStart(2,'0')} / ${total}`;
+      }
+
+      function goTo(n) {
+        if (busy) return;
+        const next = (n + total) % total;
+        if (next === current) return;
+        busy = true;
+        img.classList.add('fading');
+        setTimeout(() => {
+          current = next;
+          img.src = pages[current];
+          setCounter(current);
+          img.classList.remove('fading');
+          setTimeout(() => { busy = false; }, 80);
+        }, 560);
+      }
+
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 3200);
+      }
+
+      // Preload next pages
+      pages.slice(1, 4).forEach(src => { const i = new Image(); i.src = src; });
+
+      document.getElementById('docPrev')?.addEventListener('click', () => { clearInterval(timer); goTo(current - 1); });
+      document.getElementById('docNext')?.addEventListener('click', () => { clearInterval(timer); goTo(current + 1); });
+
+      startTimer();
+    })();
+
+    // Features gallery
+    (() => {
+      const img     = document.getElementById('galleryImg');
+      const dots    = document.querySelectorAll('.gallery-dot');
+      const label   = document.getElementById('galleryLabel');
+      const images  = ['akerberg-kvartalsrapport.jpg', 'haugen-manedsrapport.jpg', 'nordly-arsrapport.jpg'];
+      const labels  = ['Åkerberg · Kvartalsrapport', 'Haugen · Månedlig rapport', 'Nordly · Årsrapport'];
+      let current = 0, timer;
+
+      // Preload
+      images.slice(1).forEach(src => { const i = new Image(); i.src = src; });
+
+      function goTo(n) {
+        const next = (n + images.length) % images.length;
+        if (next === current) return;
+        img.classList.add('fading');
+        dots[current].classList.remove('active');
+        if (label) label.style.opacity = '0';
+        setTimeout(() => {
+          current = next;
+          img.src = images[current];
+          img.alt = labels[current];
+          img.classList.remove('fading');
+          dots[current].classList.add('active');
+          if (label) { label.textContent = labels[current]; label.style.opacity = '1'; }
+        }, 380);
+      }
+      function startTimer() { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 4000); }
+
+      dots.forEach(dot => dot.addEventListener('click', () => { clearInterval(timer); goTo(+dot.dataset.index); }));
+      document.getElementById('galleryPrev')?.addEventListener('click', () => { clearInterval(timer); goTo(current - 1); });
+      document.getElementById('galleryNext')?.addEventListener('click', () => { clearInterval(timer); goTo(current + 1); });
+
+      startTimer();
+    })();
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    setTimeout(() => {
+      document.querySelectorAll('.hero-wrap .reveal').forEach(el => el.classList.add('visible'));
+    }, 60);
+
+    // Brreg autocomplete for Byrånavn
+    (() => {
+      const input    = document.getElementById('byraa');
+      const dropdown = document.getElementById('brregDropdown');
+      let debounce, focused = -1;
+
+      function close() { dropdown.classList.remove('open'); dropdown.innerHTML = ''; focused = -1; }
+
+      function esc(str) {
+        const d = document.createElement('div');
+        d.textContent = String(str ?? '');
+        return d.innerHTML;
+      }
+
+      function render(enheter) {
+        if (!enheter.length) {
+          dropdown.innerHTML = '<div class="brreg-no-result">Ingen treff</div>';
+        } else {
+          dropdown.innerHTML = enheter.map((e, i) =>
+            `<div class="brreg-item" data-name="${esc(e.navn)}" data-i="${i}">
+              <span class="brreg-item-name">${esc(e.navn)}</span>
+              <span class="brreg-item-org">Org.nr ${esc(e.organisasjonsnummer)}</span>
+            </div>`
+          ).join('');
+          dropdown.querySelectorAll('.brreg-item').forEach(el => {
+            el.addEventListener('mousedown', ev => {
+              ev.preventDefault();
+              input.value = el.dataset.name;
+              close();
+            });
+          });
+        }
+        dropdown.classList.add('open');
+        focused = -1;
+      }
+
+      input.addEventListener('input', () => {
+        clearTimeout(debounce);
+        const q = input.value.trim();
+        if (q.length < 2) { close(); return; }
+        debounce = setTimeout(async () => {
+          try {
+            const res  = await fetch(`https://data.brreg.no/enhetsregisteret/api/enheter?navn=${encodeURIComponent(q)}&size=6`);
+            const data = await res.json();
+            render(data._embedded?.enheter ?? []);
+          } catch { close(); }
+        }, 280);
+      });
+
+      input.addEventListener('keydown', e => {
+        const items = dropdown.querySelectorAll('.brreg-item');
+        if (!items.length) return;
+        if (e.key === 'ArrowDown') { e.preventDefault(); focused = Math.min(focused + 1, items.length - 1); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); focused = Math.max(focused - 1, 0); }
+        else if (e.key === 'Enter' && focused >= 0) { e.preventDefault(); input.value = items[focused].dataset.name; close(); return; }
+        else if (e.key === 'Escape') { close(); return; }
+        items.forEach((el, i) => el.classList.toggle('focused', i === focused));
+        if (focused >= 0) items[focused].scrollIntoView({ block: 'nearest' });
+      });
+
+      document.addEventListener('click', e => { if (!e.target.closest('.brreg-wrapper')) close(); });
+    })();
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sender...';
+      try {
+        const res = await fetch('https://formspree.io/f/mqejlvvz', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.querySelectorAll('input,textarea,button').forEach(el => el.disabled = true);
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send henvendelse';
+          alert('Noe gikk galt. Prøv igjen eller send e-post direkte til post@rapportly.no');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Send henvendelse';
+        alert('Noe gikk galt. Prøv igjen eller send e-post direkte til post@rapportly.no');
+      }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Side ikke funnet — Rapportly</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Figtree', system-ui, sans-serif;
+      background: oklch(97.5% 0.005 230);
+      color: oklch(16% 0.008 240);
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 2rem; text-align: center; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .logo { margin-bottom: 3rem; }
+    .logo img { height: 28px; opacity: .7; filter: brightness(0); }
+    .code {
+      font-size: clamp(5rem, 15vw, 9rem); font-weight: 900;
+      letter-spacing: -.065em; line-height: 1;
+      color: oklch(90% 0.01 240);
+    }
+    h1 {
+      font-size: clamp(1.25rem, 3vw, 1.75rem); font-weight: 800;
+      letter-spacing: -.035em; margin-top: 1rem;
+    }
+    p {
+      margin-top: .75rem; font-size: .9375rem;
+      color: oklch(50% 0.012 240); max-width: 32ch;
+    }
+    .btn {
+      display: inline-block; margin-top: 2.5rem;
+      background: oklch(26% 0.10 262); color: oklch(97% .01 240);
+      font-size: .9375rem; font-weight: 700; padding: .875rem 2rem;
+      border-radius: 9999px; transition: background 160ms;
+    }
+    .btn:hover { background: oklch(32% 0.10 262); }
+  </style>
+</head>
+<body>
+  <div class="logo"><a href="index.html"><img src="logo.png" alt="Rapportly"></a></div>
+  <div class="code">404</div>
+  <h1>Siden finnes ikke</h1>
+  <p>Lenken kan være feil eller siden er fjernet.</p>
+  <a href="index.html" class="btn">Tilbake til forsiden</a>
+</body>
+</html>

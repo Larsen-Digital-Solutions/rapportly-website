@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personvernerklæring — Rapportly</title>
+  <meta name="description" content="Personvernerklæring for rapportly.no — hvordan vi behandler personopplysninger innsendt via kontaktskjemaet.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:           oklch(97.5% 0.005 230);
+      --surface:      oklch(99.5% 0.003 230);
+      --text:         oklch(16%   0.008 240);
+      --text-muted:   oklch(50%   0.012 240);
+      --text-subtle:  oklch(68%   0.008 240);
+      --border:       oklch(87%   0.008 240);
+      --primary:      oklch(26%   0.10  262);
+      --accent:       oklch(58%   0.22  260);
+      --r: 12px;
+      --ease: cubic-bezier(0.16,1,0.3,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Figtree', system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav-wrap {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center;
+      padding: 1.25rem 1.5rem; pointer-events: none;
+    }
+    .nav {
+      display: flex; align-items: center; gap: 2.5rem;
+      background: oklch(20% 0.08 258 / 0.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid oklch(35% 0.08 258); border-radius: 9999px;
+      padding: .75rem 1rem .75rem 1.5rem;
+      box-shadow: 0 4px 24px oklch(0% 0 0/.20); pointer-events: all;
+    }
+    .nav-logo img { height: 26px; display: block; }
+    .nav-links { display: flex; align-items: center; gap: .125rem; }
+    .nav-links a {
+      font-size: .875rem; font-weight: 500; color: oklch(72% 0.04 240);
+      padding: .375rem .75rem; border-radius: 9999px;
+      transition: color 160ms var(--ease), background 160ms var(--ease);
+    }
+    .nav-links a:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
+    .nav-cta {
+      font-size: .875rem; font-weight: 700; color: oklch(16% 0.08 258);
+      background: oklch(97% 0.01 240); padding: .5625rem 1.375rem; border-radius: 9999px;
+      transition: background 160ms var(--ease);
+    }
+    .nav-cta:hover { background: oklch(90% 0.03 262); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 10rem 6rem 5rem;
+      max-width: 860px; margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-subtle); margin-bottom: 1.25rem; display: block;
+    }
+    .page-header h1 {
+      font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 900;
+      letter-spacing: -.05em; line-height: 1.06;
+    }
+    .page-header-meta {
+      margin-top: 1.25rem; font-size: .875rem; color: var(--text-subtle);
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 860px; margin: 0 auto;
+      padding: 4rem 6rem 8rem;
+    }
+    .section { margin-bottom: 3.5rem; }
+    .section:last-child { margin-bottom: 0; }
+    .section h2 {
+      font-size: 1.125rem; font-weight: 800; letter-spacing: -.025em;
+      margin-bottom: 1rem; color: var(--text);
+    }
+    .section p {
+      font-size: .9375rem; color: var(--text-muted); line-height: 1.75;
+      margin-bottom: .875rem;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul {
+      list-style: none; display: flex; flex-direction: column; gap: .5rem;
+      margin-top: .5rem;
+    }
+    .section ul li {
+      font-size: .9375rem; color: var(--text-muted); line-height: 1.7;
+      padding-left: 1.25rem; position: relative;
+    }
+    .section ul li::before {
+      content: '—'; position: absolute; left: 0;
+      color: var(--border); font-weight: 700;
+    }
+    .section a { color: var(--accent); font-weight: 600; }
+    .section a:hover { text-decoration: underline; }
+    .divider { height: 1px; background: var(--border); margin: 3.5rem 0; }
+
+    .info-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem 1.75rem;
+      margin-top: 1rem;
+    }
+    .info-box p { margin-bottom: 0; }
+    .info-row { display: flex; flex-direction: column; gap: .5rem; }
+    .info-item { display: flex; gap: 1rem; font-size: .9375rem; }
+    .info-label { font-weight: 700; color: var(--text); min-width: 9rem; flex-shrink: 0; }
+    .info-value { color: var(--text-muted); }
+
+    /* FOOTER */
+    .footer-outer { border-top: 1px solid var(--border); }
+    footer {
+      padding: 2.5rem 6rem; max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .footer-logo img { height: 20px; filter: brightness(0); opacity: .5; }
+    .footer-links { display: flex; gap: 1.75rem; }
+    .footer-links a { font-size: .875rem; color: var(--text-subtle); transition: color 160ms var(--ease); }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: .8125rem; color: var(--text-subtle); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header { padding: 8rem 1.5rem 3.5rem; }
+      .content { padding: 3rem 1.5rem 5rem; }
+      footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 2rem 1.5rem; }
+      .info-item { flex-direction: column; gap: .2rem; }
+      .info-label { min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo"><img src="logo.png" alt="Rapportly"></a>
+      <div class="nav-links">
+        <a href="index.html#hvordan">Slik fungerer det</a>
+        <a href="index.html#priser">Priser</a>
+        <a href="index.html#kontakt">Kontakt</a>
+      </div>
+      <a href="index.html#kontakt" class="nav-cta">Bli kunde</a>
+    </nav>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <span class="page-header-label">Juridisk</span>
+    <h1>Personvernerklæring</h1>
+    <p class="page-header-meta">Sist oppdatert: 23. mai 2026</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div class="section">
+      <h2>1. Innledning</h2>
+      <p>
+        Denne personvernerklæringen beskriver hvordan Larsen Digital Solutions («vi», «oss») behandler personopplysninger i forbindelse med besøk på rapportly.no og bruk av kontaktskjemaet på nettsiden.
+      </p>
+      <p>
+        Vi behandler personopplysninger i samsvar med EUs personvernforordning (GDPR) og personopplysningsloven av 15. juni 2018.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>2. Behandlingsansvarlig</h2>
+      <p>Ansvarlig for behandlingen av personopplysninger på denne nettsiden er:</p>
+      <div class="info-box">
+        <div class="info-row">
+          <div class="info-item">
+            <span class="info-label">Virksomhet</span>
+            <span class="info-value">Larsen Digital Solutions</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">E-post</span>
+            <span class="info-value">post@rapportly.no</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Nettside</span>
+            <span class="info-value">rapportly.no</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>3. Hvilke personopplysninger vi samler inn</h2>
+      <p>
+        Vi samler kun inn personopplysninger som du aktivt oppgir ved å fylle ut kontaktskjemaet på nettsiden. Dette inkluderer:
+      </p>
+      <ul>
+        <li>Navn</li>
+        <li>E-postadresse</li>
+        <li>Telefonnummer (valgfritt)</li>
+        <li>Byrånavn</li>
+        <li>Melding du sender oss (valgfritt)</li>
+      </ul>
+      <p style="margin-top: 1rem;">
+        Vi samler ikke inn opplysninger automatisk utover det som er nødvendig for at nettsiden skal fungere (f.eks. tekniske loggdata via hosting-leverandøren).
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>4. Formål og rettslig grunnlag</h2>
+      <p>
+        Personopplysningene brukes utelukkende for å besvare din henvendelse og følge opp eventuelle spørsmål om Rapportly.
+      </p>
+      <p>
+        Det rettslige grunnlaget for behandlingen er GDPR artikkel 6 nr. 1 bokstav b (nødvendig for å oppfylle en avtale eller gjennomføre tiltak på den registrertes anmodning) og artikkel 6 nr. 1 bokstav f (berettiget interesse i å besvare henvendelser fra potensielle kunder).
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>5. Oppbevaringstid</h2>
+      <p>
+        Vi oppbevarer personopplysningene så lenge det er nødvendig for å besvare henvendelsen og en rimelig periode etterpå, normalt ikke lenger enn 12 måneder. Dersom det inngås en kundekontrakt, vil opplysningene oppbevares i henhold til de til enhver tid gjeldende regnskaps- og bokføringskrav.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>6. Deling av opplysninger</h2>
+      <p>
+        Vi deler ikke dine personopplysninger med tredjeparter for markedsføringsformål. Opplysningene kan deles med tekniske underleverandører (f.eks. hosting- og e-posttjenester) i den grad det er nødvendig for å levere tjenesten. Disse behandler data på vegne av oss og er bundet av databehandleravtaler.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>7. Informasjonskapsler (cookies)</h2>
+      <p>
+        Rapportly.no bruker ingen sporings- eller markedsføringskapsler. Eventuelle informasjonskapsler som settes er teknisk nødvendige for at nettsiden skal fungere korrekt.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>8. Dine rettigheter</h2>
+      <p>Du har følgende rettigheter etter GDPR:</p>
+      <ul>
+        <li><strong style="color: var(--text); font-weight: 700;">Innsyn</strong> — du kan be om innsyn i hvilke opplysninger vi har registrert om deg</li>
+        <li><strong style="color: var(--text); font-weight: 700;">Retting</strong> — du kan kreve retting av uriktige opplysninger</li>
+        <li><strong style="color: var(--text); font-weight: 700;">Sletting</strong> — du kan be oss slette opplysningene dine</li>
+        <li><strong style="color: var(--text); font-weight: 700;">Begrensning</strong> — du kan be oss begrense behandlingen i visse tilfeller</li>
+        <li><strong style="color: var(--text); font-weight: 700;">Innsigelse</strong> — du kan protestere mot behandling basert på berettiget interesse</li>
+      </ul>
+      <p style="margin-top: 1rem;">
+        For å benytte deg av rettighetene dine, ta kontakt på <a href="mailto:post@rapportly.no">post@rapportly.no</a>. Vi svarer innen 30 dager.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>9. Klagerett</h2>
+      <p>
+        Dersom du mener vi behandler dine personopplysninger i strid med personvernregelverket, har du rett til å klage til Datatilsynet.
+      </p>
+      <div class="info-box">
+        <div class="info-row">
+          <div class="info-item">
+            <span class="info-label">Datatilsynet</span>
+            <span class="info-value"><a href="https://www.datatilsynet.no" target="_blank" rel="noopener">datatilsynet.no</a></span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Telefon</span>
+            <span class="info-value">22 39 69 00</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">E-post</span>
+            <span class="info-value">postkasse@datatilsynet.no</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>10. Endringer</h2>
+      <p>
+        Vi kan oppdatere denne erklæringen ved behov. Gjeldende versjon er alltid tilgjengelig på <a href="/personvern">rapportly.no/personvern</a>. Dato for siste oppdatering fremgår øverst på siden.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-outer">
+    <footer>
+      <a href="index.html" class="footer-logo"><img src="logo.png" alt="Rapportly"></a>
+      <div class="footer-links">
+        <a href="index.html#hvordan">Slik fungerer det</a>
+        <a href="index.html#priser">Priser</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a href="personvern.html">Personvernerklæring</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 Rapportly</span>
+    </footer>
+  </div>
+
+</body>
+</html>
