@@ -1,414 +1,517 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="nb">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Databehandleravtale – Rapportly</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Databehandleravtale — Rapportly</title>
+  <meta name="description" content="Databehandleravtale for Rapportly — regulerer behandlingen av personopplysninger i henhold til GDPR artikkel 28.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg:           oklch(97.5% 0.005 230);
+      --surface:      oklch(99.5% 0.003 230);
+      --text:         oklch(16%   0.008 240);
+      --text-muted:   oklch(50%   0.012 240);
+      --text-subtle:  oklch(68%   0.008 240);
+      --border:       oklch(87%   0.008 240);
+      --primary:      oklch(26%   0.10  262);
+      --accent:       oklch(58%   0.22  260);
+      --r: 12px;
+      --ease: cubic-bezier(0.16,1,0.3,1);
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-      color: #1a1a1a;
-      background: #f9f9f7;
-      padding: 2rem 1rem;
+      font-family: 'Figtree', system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav-wrap {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center;
+      padding: 1.25rem 1.5rem; pointer-events: none;
+    }
+    .nav {
+      display: flex; align-items: center; gap: 2.5rem;
+      background: oklch(20% 0.08 258 / 0.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid oklch(35% 0.08 258); border-radius: 9999px;
+      padding: .75rem 1rem .75rem 1.5rem;
+      box-shadow: 0 4px 24px oklch(0% 0 0/.20); pointer-events: all;
+    }
+    .nav-logo img { height: 26px; display: block; }
+    .nav-links { display: flex; align-items: center; gap: .125rem; }
+    .nav-links a {
+      font-size: .875rem; font-weight: 500; color: oklch(72% 0.04 240);
+      padding: .375rem .75rem; border-radius: 9999px;
+      transition: color 160ms var(--ease), background 160ms var(--ease);
+    }
+    .nav-links a:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
+    .nav-cta {
+      font-size: .875rem; font-weight: 700; color: oklch(16% 0.08 258);
+      background: oklch(97% 0.01 240); padding: .5625rem 1.375rem; border-radius: 9999px;
+      transition: background 160ms var(--ease);
+    }
+    .nav-cta:hover { background: oklch(90% 0.03 262); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 10rem 6rem 5rem;
+      max-width: 860px; margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-subtle); margin-bottom: 1.25rem; display: block;
+    }
+    .page-header h1 {
+      font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 900;
+      letter-spacing: -.05em; line-height: 1.06;
+    }
+    .page-header-meta {
+      margin-top: 1.25rem; font-size: .875rem; color: var(--text-subtle);
     }
 
-    .page {
-      max-width: 780px;
-      margin: 0 auto;
-      background: #ffffff;
-      border: 1px solid #e5e5e0;
-      border-radius: 8px;
-      padding: 3rem 3.5rem;
+    /* INTRO BOX */
+    .intro-box {
+      background: var(--primary); color: oklch(97% 0.01 240);
+      border-radius: 14px; padding: 1.25rem 1.75rem; margin: 2rem 0 0;
+      font-size: .9375rem; line-height: 1.65;
     }
 
-    header {
-      border-bottom: 2px solid #1a1a1a;
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
+    /* CONTENT */
+    .content {
+      max-width: 860px; margin: 0 auto;
+      padding: 4rem 6rem 8rem;
     }
-
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #1a1a1a;
-      margin-bottom: 0.5rem;
+    .section { margin-bottom: 3.5rem; }
+    .section:last-child { margin-bottom: 0; }
+    .section h2 {
+      font-size: 1.125rem; font-weight: 800; letter-spacing: -.025em;
+      margin-bottom: 1rem; color: var(--text);
+      display: flex; align-items: center; gap: .625rem;
     }
-
-    h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.3;
-      color: #1a1a1a;
+    .section h2 .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 1.625rem; height: 1.625rem; border-radius: 6px;
+      background: var(--primary); color: #fff;
+      font-size: .7rem; font-weight: 800; letter-spacing: 0; flex-shrink: 0;
     }
-
-    .meta {
-      margin-top: 0.75rem;
-      font-size: 0.875rem;
-      color: #666;
+    .section p {
+      font-size: .9375rem; color: var(--text-muted); line-height: 1.75;
+      margin-bottom: .875rem;
     }
-
-    .intro {
-      background: #f4f4f0;
-      border-left: 3px solid #1a1a1a;
-      padding: 1rem 1.25rem;
-      border-radius: 0 4px 4px 0;
-      margin-bottom: 2.5rem;
-      font-size: 0.9375rem;
+    .section p:last-child { margin-bottom: 0; }
+    .section ul {
+      list-style: none; display: flex; flex-direction: column; gap: .5rem;
+      margin-top: .5rem; margin-bottom: .875rem;
     }
-
-    h2 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-top: 2.25rem;
-      margin-bottom: 0.6rem;
-      color: #1a1a1a;
+    .section ul li {
+      font-size: .9375rem; color: var(--text-muted); line-height: 1.7;
+      padding-left: 1.25rem; position: relative;
     }
-
-    h2 .num {
-      display: inline-block;
-      background: #1a1a1a;
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.15em 0.5em;
-      border-radius: 3px;
-      margin-right: 0.5em;
-      vertical-align: middle;
-      letter-spacing: 0;
+    .section ul li::before {
+      content: '—'; position: absolute; left: 0;
+      color: var(--border); font-weight: 700;
     }
+    .section a { color: var(--accent); font-weight: 600; }
+    .section a:hover { text-decoration: underline; }
+    .divider { height: 1px; background: var(--border); margin: 3.5rem 0; }
 
-    p { margin-bottom: 0.75rem; }
-
-    ul {
-      margin: 0.5rem 0 0.75rem 0;
-      padding-left: 1.4rem;
+    /* TABLE */
+    .section table {
+      width: 100%; border-collapse: collapse;
+      margin-top: 1rem; font-size: .9rem;
     }
-
-    li { margin-bottom: 0.3rem; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: 0.9rem;
+    .section table th {
+      text-align: left; padding: .625rem 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      font-weight: 700; color: var(--text); font-size: .875rem;
     }
-
-    th {
-      background: #f4f4f0;
-      text-align: left;
-      padding: 0.6rem 0.75rem;
-      font-weight: 600;
-      border: 1px solid #ddd;
+    .section table td {
+      padding: .625rem 1rem; border: 1px solid var(--border);
+      color: var(--text-muted); vertical-align: top;
     }
+    .section table tr:nth-child(even) td { background: var(--surface); }
 
-    td {
-      padding: 0.55rem 0.75rem;
-      border: 1px solid #ddd;
-      vertical-align: top;
+    /* HIGHLIGHT BOX */
+    .highlight-box {
+      background: oklch(96% 0.03 262); border: 1px solid oklch(82% 0.06 262);
+      border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1rem;
     }
-
-    tr:nth-child(even) td { background: #fafaf8; }
-
-    .highlight {
-      background: #fffbea;
-      border: 1px solid #f0d060;
-      border-radius: 5px;
-      padding: 0.75rem 1rem;
-      margin: 0.75rem 0;
-      font-size: 0.9375rem;
+    .highlight-box p {
+      color: oklch(32% 0.10 262); font-size: .9rem; margin-bottom: 0;
     }
+    .highlight-box p + p { margin-top: .75rem; }
 
+    /* INFO BOX */
+    .info-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem 1.75rem; margin-top: 1rem;
+    }
+    .info-row { display: flex; flex-direction: column; gap: .5rem; }
+    .info-item { display: flex; gap: 1rem; font-size: .9375rem; }
+    .info-label { font-weight: 700; color: var(--text); min-width: 9rem; flex-shrink: 0; }
+    .info-value { color: var(--text-muted); }
+
+    /* FOOTER */
+    .footer-outer { border-top: 1px solid var(--border); }
     footer {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #e5e5e0;
-      font-size: 0.8125rem;
-      color: #888;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      padding: 2.5rem 6rem 2rem; max-width: 1280px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .footer-top {
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      padding-top: 1.25rem; border-top: 1px solid var(--border);
+    }
+    .footer-logo img { height: 20px; filter: brightness(0); opacity: .5; }
+    .footer-nav { display: flex; gap: 1.75rem; }
+    .footer-nav a { font-size: .875rem; color: var(--text-subtle); transition: color 160ms var(--ease); }
+    .footer-nav a:hover { color: var(--text-muted); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: .8rem; color: var(--text-subtle); transition: color 160ms var(--ease); }
+    .footer-legal a:hover { color: var(--text-muted); }
+    .footer-legal a.active { color: var(--accent); font-weight: 600; }
+    .footer-copy { font-size: .8rem; color: var(--text-subtle); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header { padding: 8rem 1.5rem 3.5rem; }
+      .content { padding: 3rem 1.5rem 5rem; }
+      footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 2rem 1.5rem; }
+      .info-item { flex-direction: column; gap: .2rem; }
+      .info-label { min-width: unset; }
+      .section table { font-size: .8rem; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
 
-    <header>
-      <div class="logo">Rapportly</div>
-      <h1>Databehandleravtale</h1>
-      <p class="meta">Versjon 1.0 &nbsp;·&nbsp; Gjeldende fra 1. juni 2026 &nbsp;·&nbsp; Hjemmel: GDPR artikkel 28</p>
-    </header>
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo"><img src="logo.png" alt="Rapportly"></a>
+      <div class="nav-links">
+        <a href="index.html#hvordan">Slik fungerer det</a>
+        <a href="index.html#priser">Priser</a>
+        <a href="index.html#kontakt">Kontakt</a>
+      </div>
+      <a href="index.html#kontakt" class="nav-cta">Bli kunde</a>
+    </nav>
+  </div>
 
-    <div class="intro">
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <span class="page-header-label">Juridisk</span>
+    <h1>Databehandleravtale</h1>
+    <p class="page-header-meta">Versjon 1.0 &nbsp;·&nbsp; Gjeldende fra 1. juni 2026 &nbsp;·&nbsp; Hjemmel: GDPR artikkel 28</p>
+    <div class="intro-box">
       Ved å opprette konto i Rapportly inngår du — på vegne av virksomheten du representerer — denne databehandleravtalen med Larsen Digital Solutions. Avtalen er juridisk bindende og trer i kraft ved registrering.
     </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
 
     <!-- 1 -->
-    <h2><span class="num">1</span>Parter og roller</h2>
-    <p>
-      <strong>Behandlingsansvarlig</strong> er regnskapsbyrået som oppretter og bruker konto i Rapportly
-      (heretter «Byrået»).
-    </p>
-    <p>
-      <strong>Databehandler</strong> er Larsen Digital Solutions v/Tor Andre Larsen, organisert i Norge,
-      som driver tjenesten Rapportly (rapportly.no). Kontakt: <a href="mailto:post@rapportly.no">post@rapportly.no</a>.
-    </p>
-    <p>
-      Databehandleren handler utelukkende på instruks fra den behandlingsansvarlige, med mindre lovpålagte
-      forpliktelser krever noe annet.
-    </p>
+    <div class="section">
+      <h2><span class="num">1</span>Parter og roller</h2>
+      <p>
+        <strong>Behandlingsansvarlig</strong> er regnskapsbyrået som oppretter og bruker konto i Rapportly (heretter «Byrået»).
+      </p>
+      <p>
+        <strong>Databehandler</strong> er Larsen Digital Solutions v/Tor Andre Larsen, org.nr. 937&nbsp;271&nbsp;751, Norge. Tjenesten drives under domenet rapportly.no. Kontakt: <a href="mailto:post@rapportly.no">post@rapportly.no</a>.
+      </p>
+      <p>
+        Databehandleren handler utelukkende på instruks fra den behandlingsansvarlige, med mindre lovpålagte forpliktelser krever noe annet.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 2 -->
-    <h2><span class="num">2</span>Formål og behandlingens omfang</h2>
-    <p>Databehandleren behandler personopplysninger utelukkende for å levere tjenestene i Rapportly, heretter:</p>
-    <ul>
-      <li>Hente og vise regnskapsdata (resultatregnskap, balanse, kundefordringer, leverandørgjeld, MVA) read-only fra Byråets regnskapssystem (PowerOffice Go / Tripletex)</li>
-      <li>Lagre og presentere rapporter som genereres på grunnlag av disse dataene</li>
-      <li>Sende rapporter per e-post til Byråets klienter</li>
-      <li>Autentisere og administrere brukertilgang for Byråets ansatte</li>
-    </ul>
-    <p>Kategorier av registrerte: Byråets klienter (foretak og kontaktpersoner).</p>
-    <p>Kategorier av personopplysninger: Navn, e-postadresse, og finansielle data tilknyttet de registrerte.</p>
-    <p>Det behandles ikke særlige kategorier av personopplysninger (jf. GDPR art. 9).</p>
+    <div class="section">
+      <h2><span class="num">2</span>Formål og behandlingens omfang</h2>
+      <p>Databehandleren behandler personopplysninger utelukkende for å levere tjenestene i Rapportly:</p>
+      <ul>
+        <li>Hente og vise regnskapsdata (resultatregnskap, balanse, kundefordringer, leverandørgjeld, MVA) read-only fra Byråets regnskapssystem (PowerOffice Go / Tripletex)</li>
+        <li>Lagre og presentere rapporter som genereres på grunnlag av disse dataene</li>
+        <li>Sende rapporter per e-post til Byråets klienter</li>
+        <li>Autentisere og administrere brukertilgang for Byråets ansatte</li>
+      </ul>
+      <p>Kategorier av registrerte: Byråets klienter (foretak og kontaktpersoner).</p>
+      <p>Kategorier av personopplysninger: Navn, e-postadresse, samt finansielle data (regnskapstall, saldoer, transaksjonsdata) tilknyttet de registrerte.</p>
+      <p>Det behandles ikke særlige kategorier av personopplysninger (jf. GDPR art. 9).</p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 3 -->
-    <h2><span class="num">3</span>Instruksjonsplikt</h2>
-    <p>
-      Databehandleren behandler personopplysninger kun i samsvar med dokumenterte instrukser fra Byrået,
-      med mindre annet følger av lov. Denne avtalen, sammen med tjenestens funksjonalitet og
-      Byråets konfigurasjoner, utgjør slike instrukser.
-    </p>
-    <p>
-      Dersom Databehandleren vurderer at en instruks er i strid med GDPR eller annet relevant regelverk,
-      skal dette varsles uten ugrunnet opphold.
-    </p>
+    <div class="section">
+      <h2><span class="num">3</span>Instruksjonsplikt</h2>
+      <p>
+        Databehandleren behandler personopplysninger kun i samsvar med dokumenterte instrukser fra Byrået, med mindre annet følger av lov. Denne avtalen, sammen med tjenestens funksjonalitet og Byråets konfigurasjoner, utgjør slike instrukser.
+      </p>
+      <p>
+        Dersom Databehandleren vurderer at en instruks er i strid med GDPR eller annet relevant regelverk, skal dette varsles uten ugrunnet opphold.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 4 -->
-    <h2><span class="num">4</span>Konfidensialitet</h2>
-    <p>
-      Databehandleren sikrer at alle ansatte og andre som behandler personopplysninger på vegne av
-      Databehandleren, er underlagt taushetsplikt. Plikten gjelder også etter avtalens opphør.
-    </p>
-    <p>
-      Personopplysninger deles ikke med tredjeparter utover det som følger av punkt 6
-      (underdatabehandlere) eller ved lovpålegg.
-    </p>
+    <div class="section">
+      <h2><span class="num">4</span>Konfidensialitet</h2>
+      <p>
+        Databehandleren sikrer at alle som behandler personopplysninger på vegne av Databehandleren er underlagt taushetsplikt. Plikten gjelder også etter avtalens opphør.
+      </p>
+      <p>
+        Personopplysninger deles ikke med tredjeparter utover det som følger av punkt 6 (underdatabehandlere) eller ved lovpålegg.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 5 -->
-    <h2><span class="num">5</span>Sikkerhet</h2>
-    <p>
-      Databehandleren gjennomfører og opprettholder tekniske og organisatoriske tiltak som sikrer
-      et sikkerhetsnivå som er egnet i lys av risikoen, jf. GDPR art. 32. Dette inkluderer blant annet:
-    </p>
-    <ul>
-      <li>Kryptering av data i transit (TLS) og i hvile</li>
-      <li>Tilgangskontroll med minste privilegium-prinsippet</li>
-      <li>Autentisering og sikker håndtering av API-tilganger</li>
-      <li>Løpende vurdering og forbedring av sikkerhetstiltak</li>
-    </ul>
-    <p>
-      Detaljert sikkerhetsdokumentasjon er tilgjengelig på forespørsel.
-    </p>
-    <p>
-      Databehandleren bistår Byrået med å gjennomføre personvernkonsekvensvurderinger (DPIA) etter GDPR art. 35 og forhåndskonsultasjon etter art. 36, i den utstrekning det er mulig og påkrevd av behandlingens art og risiko.
-    </p>
+    <div class="section">
+      <h2><span class="num">5</span>Sikkerhet og DPIA</h2>
+      <p>
+        Databehandleren gjennomfører og opprettholder tekniske og organisatoriske tiltak som sikrer et sikkerhetsnivå egnet i lys av risikoen, jf. GDPR art. 32. Dette inkluderer:
+      </p>
+      <ul>
+        <li>Kryptering av data i transit (TLS) og i hvile</li>
+        <li>Tilgangskontroll med minste privilegium-prinsippet</li>
+        <li>Autentisering og sikker håndtering av API-tilganger</li>
+        <li>Løpende vurdering og forbedring av sikkerhetstiltak</li>
+      </ul>
+      <p>
+        Detaljert sikkerhetsdokumentasjon er tilgjengelig på forespørsel.
+      </p>
+      <p>
+        Databehandleren bistår Byrået med å gjennomføre personvernkonsekvensvurderinger (DPIA) etter GDPR art. 35 og forhåndskonsultasjon etter art. 36, i den utstrekning det er mulig og påkrevd av behandlingens art og risiko.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 6 -->
-    <h2><span class="num">6</span>Underdatabehandlere</h2>
-    <p>
-      Byrået gir ved inngåelse av denne avtalen generell forhåndsgodkjenning til bruk av
-      underdatabehandlerne listet nedenfor. Databehandleren pålegger disse de samme forpliktelsene
-      som fremgår av denne avtalen.
-    </p>
+    <div class="section">
+      <h2><span class="num">6</span>Underdatabehandlere</h2>
+      <p>
+        Byrået gir ved inngåelse av denne avtalen generell forhåndsgodkjenning til bruk av underdatabehandlerne listet nedenfor. Databehandleren pålegger disse de samme forpliktelsene som fremgår av denne avtalen.
+      </p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Leverandør</th>
-          <th>Funksjon</th>
-          <th>Lokasjon</th>
-          <th>Overføringsgrunnlag</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Supabase</td>
-          <td>Database og autentisering</td>
-          <td>EU (Frankfurt)</td>
-          <td>Innenfor EU/EØS</td>
-        </tr>
-        <tr>
-          <td>Vercel</td>
-          <td>Hosting og leveranse</td>
-          <td>EU (Frankfurt)</td>
-          <td>Innenfor EU/EØS</td>
-        </tr>
-        <tr>
-          <td>Resend</td>
-          <td>E-postutsendelse</td>
-          <td>EU</td>
-          <td>Innenfor EU/EØS</td>
-        </tr>
-        <tr>
-          <td>Anthropic</td>
-          <td>AI-genererte kommentarer (Claude API)</td>
-          <td>USA</td>
-          <td>Standard kontraktsbestemmelser (SCCs)</td>
-        </tr>
-      </tbody>
-    </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Leverandør</th>
+            <th>Funksjon</th>
+            <th>Lokasjon</th>
+            <th>Overføringsgrunnlag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Supabase</td>
+            <td>Database og autentisering</td>
+            <td>EU (Frankfurt)</td>
+            <td>Innenfor EU/EØS</td>
+          </tr>
+          <tr>
+            <td>Vercel</td>
+            <td>Hosting og leveranse</td>
+            <td>EU (Frankfurt)</td>
+            <td>Innenfor EU/EØS</td>
+          </tr>
+          <tr>
+            <td>Resend</td>
+            <td>E-postutsendelse</td>
+            <td>EU</td>
+            <td>Innenfor EU/EØS</td>
+          </tr>
+          <tr>
+            <td>Anthropic</td>
+            <td>AI-genererte kommentarer (Claude API)</td>
+            <td>USA</td>
+            <td>Standard kontraktsbestemmelser (SCCs)</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <div class="highlight">
-      <strong>Om overføring til USA (Anthropic):</strong> Rapportly benytter Anthropic sin Claude API for å generere
-      automatiske kommentarer til regnskapsrapporter. Data som sendes til Anthropic, er begrenset til
-      aggregerte finansielle nøkkeltall og er ikke direkte personidentifiserende. Overføringen er
-      sikret gjennom EUs standard kontraktsbestemmelser (SCCs) i samsvar med GDPR art. 46 (2) c.
-      Databehandleren har gjennomført en overføringsrisikovurdering (Transfer Impact Assessment) for
-      denne overføringen i henhold til EDPB-retningslinjene. Vurderingen er tilgjengelig for Byrået
-      på forespørsel.
+      <div class="highlight-box">
+        <p>
+          <strong>Om overføring til USA (Anthropic):</strong> Rapportly benytter Anthropic sin Claude API for å generere automatiske kommentarer til regnskapsrapporter. Data som sendes til Anthropic er begrenset til aggregerte finansielle nøkkeltall og er ikke direkte personidentifiserende. Overføringen er sikret gjennom EUs standard kontraktsbestemmelser (SCCs) i samsvar med GDPR art. 46 nr. 2 c.
+        </p>
+        <p>
+          Databehandleren har gjennomført en overføringsrisikovurdering (Transfer Impact Assessment) for denne overføringen i henhold til EDPB-retningslinjene. Vurderingen er tilgjengelig for Byrået på forespørsel.
+        </p>
+      </div>
+
+      <p style="margin-top: 1rem;">
+        Databehandleren varsler Byrået om planlagte endringer i underdatabehandlere med minst <strong>30 dagers varsel</strong>. Byrået kan i den perioden fremme innsigelser. Dersom Byrået ikke aksepterer endringen, kan Byrået si opp avtalen innen varselsperioden.
+      </p>
     </div>
 
-    <p>
-      Databehandleren varsler Byrået om planlagte endringer i underdatabehandlere med minst
-      <strong>30 dagers varsel</strong>. Byrået kan i den perioden fremme innsigelser.
-      Dersom Byrået ikke aksepterer endringen, kan Byrået si opp avtalen innen varselsperioden.
-    </p>
+    <div class="divider"></div>
 
     <!-- 7 -->
-    <h2><span class="num">7</span>De registrertes rettigheter</h2>
-    <p>
-      Databehandleren bistår Byrået, i den utstrekning det er mulig, med å oppfylle de registrertes
-      rettigheter etter GDPR kapitlene III og VIII, herunder:
-    </p>
-    <ul>
-      <li>Rett til innsyn (art. 15)</li>
-      <li>Rett til retting (art. 16)</li>
-      <li>Rett til sletting (art. 17)</li>
-      <li>Rett til dataportabilitet (art. 20)</li>
-      <li>Rett til å protestere (art. 21)</li>
-    </ul>
-    <p>
-      Henvendelser fra registrerte videresendes uten ugrunnet opphold til Byrået, som er ansvarlig
-      for å besvare disse. Databehandleren besvarer ikke slike henvendelser direkte med mindre
-      Byrået har instruert om det.
-    </p>
+    <div class="section">
+      <h2><span class="num">7</span>De registrertes rettigheter</h2>
+      <p>
+        Databehandleren bistår Byrået, i den utstrekning det er mulig, med å oppfylle de registrertes rettigheter etter GDPR kapitlene III og VIII, herunder:
+      </p>
+      <ul>
+        <li>Rett til innsyn (art. 15)</li>
+        <li>Rett til retting (art. 16)</li>
+        <li>Rett til sletting (art. 17)</li>
+        <li>Rett til dataportabilitet (art. 20)</li>
+        <li>Rett til å protestere (art. 21)</li>
+      </ul>
+      <p>
+        Henvendelser fra registrerte videresendes uten ugrunnet opphold til Byrået, som er ansvarlig for å besvare disse. Databehandleren besvarer ikke slike henvendelser direkte med mindre Byrået har instruert om det.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 8 -->
-    <h2><span class="num">8</span>Sletting og retur av data</h2>
-    <p>
-      Ved opphør av kundeforholdet sletter Databehandleren alle personopplysninger behandlet
-      på vegne av Byrået innen <strong>90 dager</strong>, med mindre lengre oppbevaringstid
-      kreves av lov.
-    </p>
-    <p>
-      Byrået kan inntil 90 dager etter opphør be om eksport av egne data. Etter denne perioden
-      kan data ikke garanteres gjennopprettet. Sletting bekreftes skriftlig på forespørsel.
-    </p>
-    <p>
-      Data som er blitt delt med underdatabehandlere, slettes i tråd med Databehandlerens
-      instrukser til disse, i henhold til deres respektive vilkår og slettepolicyer.
-    </p>
+    <div class="section">
+      <h2><span class="num">8</span>Sletting og retur av data</h2>
+      <p>
+        Ved opphør av kundeforholdet sletter Databehandleren alle personopplysninger behandlet på vegne av Byrået innen <strong>90 dager</strong>, med mindre lengre oppbevaringstid kreves av lov.
+      </p>
+      <p>
+        Byrået kan inntil 90 dager etter opphør be om eksport av egne data i maskinlesbart format. Etter denne perioden kan data ikke garanteres gjennopprettet. Sletting bekreftes skriftlig på forespørsel.
+      </p>
+      <p>
+        Data som er delt med underdatabehandlere, slettes i tråd med Databehandlerens instrukser til disse, i henhold til deres respektive vilkår og slettepolicyer.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 9 -->
-    <h2><span class="num">9</span>Revisjonsrett</h2>
-    <p>
-      Byrået har rett til å gjennomføre revisjoner av Databehandlerens etterlevelse av denne
-      avtalen, enten direkte eller gjennom en uavhengig tredjepart. Byrået varsler
-      Databehandleren med minst <strong>14 dagers skriftlig varsel</strong>.
-    </p>
-    <p>
-      Databehandleren bidrar etter rimelig evne til slike revisjoner, herunder ved å fremlegge
-      relevant dokumentasjon. Byrået bærer egne kostnader knyttet til revisjonen. Eventuelle
-      kostnader som påføres Databehandleren utover rimelig bistand, avklares på forhånd.
-    </p>
-    <p>
-      Som alternativ til revisjon kan Databehandleren fremlegge gyldige tredjepartsrevisjoner
-      eller sertifiseringer som dokumenterer etterlevelse.
-    </p>
+    <div class="section">
+      <h2><span class="num">9</span>Revisjonsrett</h2>
+      <p>
+        Byrået har rett til å gjennomføre revisjoner av Databehandlerens etterlevelse av denne avtalen, enten direkte eller gjennom en uavhengig tredjepart. Byrået varsler Databehandleren med minst <strong>14 dagers skriftlig varsel</strong>.
+      </p>
+      <p>
+        Databehandleren bidrar etter rimelig evne til slike revisjoner, herunder ved å fremlegge relevant dokumentasjon. Byrået bærer egne kostnader. Eventuelle kostnader som påføres Databehandleren utover rimelig bistand, avklares på forhånd.
+      </p>
+      <p>
+        Som alternativ til revisjon kan Databehandleren fremlegge gyldige tredjepartsrevisjoner eller sertifiseringer som dokumenterer etterlevelse.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 10 -->
-    <h2><span class="num">10</span>Varsling ved personvernbrudd</h2>
-    <p>
-      Databehandleren varsler Byrået uten ugrunnet opphold — og senest innen
-      <strong>48 timer</strong> — etter å ha blitt kjent med et personvernbrudd som påvirker
-      personopplysninger behandlet på Byråets vegne.
-    </p>
-    <p>Varselet skal som minimum inneholde:</p>
-    <ul>
-      <li>Beskrivelse av bruddet (type, omfang, kategorier og antall registrerte)</li>
-      <li>Navn og kontaktinformasjon til ansvarlig hos Databehandleren</li>
-      <li>Sannsynlige konsekvenser av bruddet</li>
-      <li>Tiltak som er eller vil bli iverksatt</li>
-    </ul>
-    <p>
-      Byrået er selv ansvarlig for eventuell melding til Datatilsynet og for å vurdere om
-      de registrerte skal varsles, jf. GDPR art. 33–34.
-    </p>
-    <p>Varsler sendes til den e-postadressen Byrået har registrert i Rapportly.</p>
+    <div class="section">
+      <h2><span class="num">10</span>Varsling ved personvernbrudd</h2>
+      <p>
+        Databehandleren varsler Byrået uten ugrunnet opphold — og senest innen <strong>48 timer</strong> — etter å ha blitt kjent med et personvernbrudd som påvirker personopplysninger behandlet på Byråets vegne.
+      </p>
+      <p>Varselet skal som minimum inneholde:</p>
+      <ul>
+        <li>Beskrivelse av bruddet (type, omfang, kategorier og antall registrerte)</li>
+        <li>Navn og kontaktinformasjon til ansvarlig hos Databehandleren</li>
+        <li>Sannsynlige konsekvenser av bruddet</li>
+        <li>Tiltak som er eller vil bli iverksatt</li>
+      </ul>
+      <p>
+        Byrået er selv ansvarlig for eventuell melding til Datatilsynet og for å vurdere om de registrerte skal varsles, jf. GDPR art. 33–34. Varsler sendes til den e-postadressen Byrået har registrert i Rapportly — Byrået er ansvarlig for å holde denne oppdatert.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 11 -->
-    <h2><span class="num">11</span>Ansvar og erstatning</h2>
-    <p>
-      Partenes ansvar reguleres av gjeldende personvernlovgivning og alminnelig norsk kontraktsrett.
-      Databehandleren er ansvarlig for direkte tap som følge av brudd på denne avtalen.
-    </p>
-    <p>
-      Databehandlerens samlede erstatningsansvar overfor Byrået for ett kalenderår er begrenset
-      til et beløp tilsvarende det Byrået har betalt for tjenesten i de siste 12 måneder.
-      Begrensningen gjelder ikke ved grov uaktsomhet eller forsett.
-    </p>
-    <p>
-      Ansvarsbegrensningen gjelder kun mellom partene og berører ikke registrertes rettigheter
-      etter GDPR art. 82.
-    </p>
+    <div class="section">
+      <h2><span class="num">11</span>Ansvar og erstatning</h2>
+      <p>
+        Partenes ansvar reguleres av gjeldende personvernlovgivning og alminnelig norsk kontraktsrett. Databehandleren er ansvarlig for direkte tap som følge av brudd på denne avtalen.
+      </p>
+      <p>
+        Databehandlerens samlede erstatningsansvar overfor Byrået for ett kalenderår er begrenset til et beløp tilsvarende det Byrået har betalt for tjenesten i de siste 12 måneder. Begrensningen gjelder ikke ved grov uaktsomhet eller forsett.
+      </p>
+      <p>
+        Ansvarsbegrensningen gjelder kun mellom partene og berører ikke registrertes rettigheter etter GDPR art. 82.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 12 -->
-    <h2><span class="num">12</span>Varighet og opphør</h2>
-    <p>
-      Avtalen gjelder så lenge Byrået har et aktivt kundeforhold i Rapportly. Avtalen opphører
-      automatisk ved avslutning av abonnementet, med de forpliktelsene som gjelder ved opphør
-      beskrevet i punkt 8.
-    </p>
-    <p>
-      Databehandleren kan endre denne avtalen med <strong>30 dagers varsel</strong>. Endringer
-      varsles per e-post og gjøres tilgjengelig på rapportly.no. Vesentlige endringer —
-      herunder endringer i underdatabehandlere, overføringsgrunnlag eller omfanget av behandlingen
-      — krever aktiv ny-aksept fra Byrået. Dersom Byrået ikke aksepterer endringene, kan Byrået
-      si opp avtalen i varslingsperioden uten ekstra kostnad.
-    </p>
+    <div class="section">
+      <h2><span class="num">12</span>Varighet og opphør</h2>
+      <p>
+        Avtalen gjelder så lenge Byrået har et aktivt kundeforhold i Rapportly. Avtalen opphører automatisk ved avslutning av abonnementet, med de forpliktelsene som gjelder ved opphør beskrevet i punkt 8.
+      </p>
+      <p>
+        Databehandleren kan endre denne avtalen med <strong>30 dagers varsel</strong>. Endringer varsles per e-post og gjøres tilgjengelig på rapportly.no. Vesentlige endringer — herunder endringer i underdatabehandlere, overføringsgrunnlag eller omfanget av behandlingen — krever aktiv ny-aksept fra Byrået. Dersom Byrået ikke aksepterer endringene, kan Byrået si opp avtalen i varslingsperioden uten ekstra kostnad.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 13 -->
-    <h2><span class="num">13</span>Lovvalg og verneting</h2>
-    <p>
-      Avtalen er underlagt norsk rett. Tvister søkes løst i minnelighet. Dersom dette ikke
-      fører frem, er Oslo tingrett verneting, med mindre annet følger av ufravikelig lovgivning.
-    </p>
+    <div class="section">
+      <h2><span class="num">13</span>Lovvalg og verneting</h2>
+      <p>
+        Avtalen er underlagt norsk rett. Tvister søkes løst i minnelighet. Dersom dette ikke fører frem, er Oslo tingrett verneting, med mindre annet følger av ufravikelig lovgivning.
+      </p>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- 14 -->
-    <h2><span class="num">14</span>Aksept</h2>
-    <div class="highlight">
-      Ved å opprette konto i Rapportly bekrefter du at du har lest, forstått og aksepterer denne
-      databehandleravtalen på vegne av den virksomheten du representerer. Aksepten registreres
-      elektronisk med tidsstempel ved registrering.
+    <div class="section">
+      <h2><span class="num">14</span>Aksept</h2>
+      <div class="highlight-box">
+        <p>
+          Ved å opprette konto i Rapportly bekrefter du at du har lest, forstått og aksepterer denne databehandleravtalen på vegne av den virksomheten du representerer. Aksepten registreres elektronisk med tidsstempel ved registrering.
+        </p>
+        <p>
+          Denne avtalen er inngått digitalt og er juridisk bindende i henhold til norsk avtalerett.
+        </p>
+      </div>
     </div>
-    <p>
-      Denne avtalen er inngått digitalt og er juridisk bindende i henhold til norsk avtaleret,
-      jf. avtaleloven § 1.
-    </p>
-
-    <footer>
-      <span>Rapportly &nbsp;·&nbsp; Larsen Digital Solutions &nbsp;·&nbsp; <a href="mailto:post@rapportly.no">post@rapportly.no</a></span>
-      <span>Versjon 1.0 &nbsp;·&nbsp; Juni 2026</span>
-    </footer>
 
   </div>
+
+  <!-- FOOTER -->
+  <div class="footer-outer">
+    <footer>
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo"><img src="logo.png" alt="Rapportly"></a>
+        <nav class="footer-nav">
+          <a href="index.html#hvordan">Slik fungerer det</a>
+          <a href="index.html#priser">Priser</a>
+          <a href="index.html#kontakt">Kontakt</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Rapportly · Larsen Digital Solutions</span>
+        <div class="footer-legal">
+          <a href="personvern.html">Personvernerklæring</a>
+          <a href="databehandleravtale.html" class="active">Databehandleravtale</a>
+          <a href="tjenestevilkar.html">Tjenestevilkår</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
 </body>
 </html>
