@@ -514,12 +514,17 @@
     .btn-cta-inv:hover { transform: translateY(-2px); box-shadow: 0 10px 28px oklch(0% 0 0/.26); }
 
     /* ── CONTACT ── */
-    .contact-section { padding: 9rem 6rem; max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
-    .contact-info h2 { font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.04; }
-    .contact-info p { font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin-top: 1rem; max-width: 38ch; }
+    .contact-bg { background: var(--primary); position: relative; overflow: hidden; }
+    .contact-bg::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 80% 40%, oklch(40% .16 260 / .55) 0%, transparent 52%); }
+    .contact-section { padding: 9rem 6rem; max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; position: relative; z-index: 1; }
+    .contact-info h2 { font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.04; color: oklch(97% .01 240); }
+    .contact-info p { font-size: 1rem; color: oklch(64% .05 255); line-height: 1.65; margin-top: 1rem; max-width: 38ch; }
     .contact-meta { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
-    .contact-meta-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-subtle); display: block; margin-bottom: .2rem; }
-    .contact-meta-value { font-size: .9375rem; color: var(--text-muted); display: block; }
+    .contact-meta-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: oklch(50% .04 255); display: block; margin-bottom: .2rem; }
+    .contact-meta-value { font-size: .9375rem; color: oklch(64% .05 255); display: block; }
+    .contact-bg .form-label { color: oklch(75% .04 255); }
+    .contact-bg .form-input, .contact-bg .form-textarea { background: oklch(97% .01 240); border-color: oklch(82% .04 260); color: oklch(20% .04 262); }
+    .contact-bg .form-input::placeholder, .contact-bg .form-textarea::placeholder { color: oklch(60% .03 255); }
     .contact-form { display: flex; flex-direction: column; gap: .875rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
     .form-group { display: flex; flex-direction: column; gap: .375rem; }
@@ -984,6 +989,7 @@
   </section>
 
   <!-- CONTACT -->
+  <div class="contact-bg">
   <section class="contact-section" id="kontakt">
     <div class="contact-info reveal">
       <h2>Vi setter opp<br>byrået ditt<br>denne uken.</h2>
@@ -1033,6 +1039,7 @@
       </form>
     </div>
   </section>
+  </div>
 
   <div class="footer-outer">
     <footer>
