@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rapportly — Automatiske klientrapporter for regnskapsbyråer</title>
-  <meta name="description" content="Rapportverktøy for regnskapsbyråer. Kobler seg til PowerOffice Go og genererer klientrapporter automatisk — med byråets logo og design. 999 kr per bruker.">
+  <title>Rapportly — Spar timer. Lever rapporter klientene faktisk forstår.</title>
+  <meta name="description" content="Regnskapsbyråer bruker timer hver måned på rapporter klientene knapt åpner. Rapportly gjør det automatisk — og lager rapporter klientene faktisk forstår. 999 kr per bruker.">
   <link rel="canonical" href="https://rapportly.no/">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="preload" as="image" href="rapport demo bilder/Forside.png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Rapportly — Automatiske klientrapporter for regnskapsbyråer">
-  <meta property="og:description" content="Rapportverktøy for regnskapsbyråer. Kobler seg til PowerOffice Go og genererer klientrapporter automatisk — med byråets logo og design.">
+  <meta property="og:title" content="Rapportly — Spar timer. Lever rapporter klientene faktisk forstår.">
+  <meta property="og:description" content="Regnskapsbyråer bruker timer hver måned på rapporter klientene knapt åpner. Rapportly gjør det automatisk — og lager rapporter klientene faktisk forstår.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rapportly.no/">
   <meta property="og:image" content="https://rapportly.no/og-image.png">
@@ -21,8 +21,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rapportly — Automatiske klientrapporter for regnskapsbyråer">
-  <meta name="twitter:description" content="Rapportverktøy for regnskapsbyråer. Kobler seg til PowerOffice Go og genererer klientrapporter automatisk.">
+  <meta name="twitter:title" content="Rapportly — Spar timer. Lever rapporter klientene faktisk forstår.">
+  <meta name="twitter:description" content="Regnskapsbyråer bruker timer på rapporter klientene knapt åpner. Rapportly gjør det automatisk — og lager rapporter klientene faktisk forstår.">
   <meta name="twitter:image" content="https://rapportly.no/og-image.png">
 
   <!-- JSON-LD: Organization -->
@@ -83,6 +83,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Rapportly er et rapportverktøy for regnskapsbyråer som automatisk henter tall fra ditt regnskapssystem og genererer profesjonelle klientrapporter med byråets logo og design — uten manuelt arbeid."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan vi velge rapportformat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja — Rapportly har to formater. Standard rapport gir full regnskapsdetalj for klienter som vil ha alle tallene. Forenklet rapport bruker enkle forklaringer uten regnskapsjargong — tilpasset klienter uten regnskapsbakgrunn. Du velger format når du genererer rapporten, og begge bruker byråets design gjennomgående."
         }
       },
       {
@@ -350,6 +358,7 @@
     .features-section { padding: 6rem 6rem 9rem; max-width: 1360px; margin: 0 auto; }
     .features-header { margin-bottom: 5rem; }
     .features-header h2 { font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.04; max-width: 20ch; }
+    .features-header h2 em { font-style: normal; color: var(--accent); }
     .features-header p { font-size: 1.0625rem; color: var(--text-muted); line-height: 1.7; max-width: 50ch; margin-top: 1.125rem; }
     .features-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem; align-items: start; }
 
@@ -398,12 +407,23 @@
 
     /* Features body */
     .features-body { display: flex; flex-direction: column; padding-top: .5rem; }
-    .features-lead { font-size: 1.1875rem; font-weight: 500; color: var(--text); line-height: 1.72; max-width: 44ch; margin-bottom: 3.5rem; }
-    .features-detail-list { display: flex; flex-direction: column; }
-    .features-detail { padding: 2.125rem 0; border-top: 1px solid var(--border); }
-    .features-detail:last-child { padding-bottom: 0; }
-    .features-detail-title { font-size: 1.125rem; font-weight: 700; letter-spacing: -.025em; margin-bottom: .625rem; }
-    .features-detail p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 44ch; }
+    .features-lead { font-size: 1.125rem; font-weight: 500; color: var(--text-muted); line-height: 1.72; max-width: 44ch; margin-bottom: 2.75rem; }
+    .features-detail-list { display: flex; flex-direction: column; gap: .75rem; }
+    .features-detail {
+      display: grid; grid-template-columns: 2.75rem 1fr; gap: 0 1.25rem;
+      align-items: start; padding: 2.125rem 1.875rem; border-radius: var(--r-lg);
+      border: 1px solid var(--border); background: var(--surface);
+      transition: box-shadow 200ms var(--ease), border-color 200ms var(--ease);
+    }
+    .features-detail:hover { box-shadow: var(--shadow); border-color: oklch(80% .06 262); }
+    .features-detail-num {
+      width: 2.75rem; height: 2.75rem; background: var(--primary); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8125rem; font-weight: 900; letter-spacing: -.01em;
+      color: oklch(72% .10 262); flex-shrink: 0; margin-top: .15rem;
+    }
+    .features-detail-title { font-size: 1.0625rem; font-weight: 700; letter-spacing: -.025em; margin-bottom: .5rem; }
+    .features-detail p { font-size: .9375rem; color: var(--text-muted); line-height: 1.72; max-width: 40ch; }
 
 
     /* ── INTEGRATION ── */
@@ -480,6 +500,7 @@
     .cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 18% 60%, oklch(40% .16 260 / .55) 0%, transparent 52%); }
     .cta-inner { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 6rem; align-items: center; position: relative; z-index: 1; }
     .cta-heading { font-size: clamp(2.75rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -.055em; line-height: 1.02; color: oklch(97% .01 240); }
+    .cta-heading em { font-style: normal; color: var(--accent); }
     .cta-body { font-size: 1.0625rem; color: oklch(56% .06 255); margin-top: 1.125rem; line-height: 1.7; max-width: 42ch; }
     .btn-cta-inv {
       display: inline-flex; align-items: center;
@@ -569,6 +590,26 @@
     .footer-links a:hover { color: var(--text-muted); }
     .footer-copy { font-size: .8125rem; color: var(--text-subtle); }
 
+    /* ── PROOF STRIP ── */
+    .proof-strip { background: var(--surface); border-bottom: 1px solid var(--border); }
+    .proof-inner {
+      max-width: 1360px; margin: 0 auto; padding: 3.5rem 6rem;
+      display: flex; align-items: center; justify-content: center; gap: 6rem; flex-wrap: wrap;
+    }
+    .proof-stat { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .375rem; }
+    .proof-number {
+      font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 900; letter-spacing: -.06em; line-height: 1;
+      color: var(--primary);
+    }
+    .proof-number--accent { color: var(--accent); }
+    .proof-label { font-size: .875rem; font-weight: 500; color: var(--text-muted); max-width: 18ch; line-height: 1.45; text-align: center; }
+    .proof-divider { width: 1px; height: 4rem; background: var(--border); flex-shrink: 0; }
+
+    /* ── PRICING ROI ── */
+    .pricing-roi { margin-top: 2rem; padding: 1.5rem 1.75rem; background: var(--accent-light); border-radius: var(--r); border: 1px solid oklch(80% .09 262); }
+    .pricing-roi p { font-size: 1.0625rem; color: var(--text); line-height: 1.75; }
+    .pricing-roi strong { color: var(--accent); font-weight: 800; font-size: 1.125rem; }
+
     /* ── SCROLL REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); filter: blur(3px); transition: opacity 750ms var(--ease), transform 750ms var(--ease), filter 600ms var(--ease); }
     .reveal.visible { opacity: 1; transform: none; filter: blur(0); }
@@ -584,6 +625,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .steps-section, .features-section, .pricing-section, .contact-section, footer { padding-left: 3rem; padding-right: 3rem; }
+      .proof-inner { padding-left: 3rem; padding-right: 3rem; }
       .cta-section, .integration-inner { padding-left: 3rem; padding-right: 3rem; }
       .hero { padding-left: 3rem; padding-right: 3rem; gap: 3rem; }
     }
@@ -611,6 +653,10 @@
       .pricing-section { padding: 4.5rem 1.25rem; }
       .contact-section { padding: 4.5rem 1.25rem; }
       .cta-section { padding: 5rem 1.25rem; }
+
+      /* Proof strip */
+      .proof-inner { padding: 2.5rem 1.25rem; gap: 2rem; flex-direction: column; }
+      .proof-divider { width: 4rem; height: 1px; }
 
       /* Steps */
       .steps-intro { margin-bottom: 3rem; }
@@ -666,10 +712,10 @@
     <div class="hero">
       <div class="hero-content">
         <h1 class="hero-heading reveal">
-          Rapporter på<br><em>autopilot.</em>
+          Rapporter klientene<br>faktisk <em>forstår.</em>
         </h1>
         <p class="hero-body reveal d1">
-          Slutt å bruke tid på rapportbygging. Rapportly henter ferske tall og genererer rapporten selv, helt automatisk — med ditt byrås logo og design.
+          Du bruker 2–3 timer per rapport — pluss 1 time på oppfølging fra klienter som ikke forstår tallene. Rapportly fikser begge deler.
         </p>
         <div class="hero-actions reveal d1">
           <a href="#kontakt" class="btn-primary">Book gratis demo</a>
@@ -705,11 +751,31 @@
     </div>
   </section>
 
+  <!-- PROOF STRIP -->
+  <div class="proof-strip">
+    <div class="proof-inner">
+      <div class="proof-stat reveal">
+        <span class="proof-number proof-number--accent">2–4 timer</span>
+        <span class="proof-label">spart per klientrapport</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat reveal d1">
+        <span class="proof-number proof-number--accent">1 klikk</span>
+        <span class="proof-label">fra tall til ferdig rapport</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat reveal d2">
+        <span class="proof-number proof-number--accent">0</span>
+        <span class="proof-label">manuelle eksporter eller kopiering</span>
+      </div>
+    </div>
+  </div>
+
   <!-- STEPS -->
   <section class="steps-section" id="hvordan">
     <div class="steps-intro reveal">
-      <h2>Sett opp én gang.<br>Kjører automatisk.</h2>
-      <p>Tre steg fra regnskapssystemet til ferdig rapport hos kunden. Etter oppsett trenger du bare å godkjenne.</p>
+      <h2>Sett opp én gang.<br>Lever automatisk.</h2>
+      <p>Fra regnskapssystemet til klientens innboks — automatisk og uten manuelt arbeid. Med rapporter klientene faktisk forstår.</p>
     </div>
     <div class="steps-grid">
       <div class="step reveal">
@@ -724,8 +790,8 @@
       </div>
       <div class="step reveal d2">
         <div class="step-num">03</div>
-        <div class="step-title">Automatiser og send</div>
-        <p class="step-body">Aktiver automatisk rapportgenerering per klient, eller start enkeltvis. Du varsles når rapporten er klar; godkjenn og lever med ett klikk.</p>
+        <div class="step-title">Godkjenn og lever</div>
+        <p class="step-body">Du varsles når rapporten er klar. Godkjenn og lever med ett klikk — en profesjonell rapport med enkle forklaringer klientene faktisk forstår.</p>
       </div>
     </div>
   </section>
@@ -735,8 +801,8 @@
   <!-- FEATURES -->
   <section class="features-section" id="funksjoner">
     <div class="features-header reveal">
-      <h2>Din profil.<br>Gjennom hele rapporten.</h2>
-      <p>Forside, farger og rapportmal settes opp etter byråets identitet. Vi leverer et designforslag; du godkjenner.</p>
+      <h2>Klientene spør ikke lenger<br><em>hva tallene betyr.</em></h2>
+      <p>Rapporten svarer på det de alltid lurer på: "Går det bra med bedriften min?" — uten at du trenger å forklare det.</p>
     </div>
     <div class="features-grid">
       <div class="features-gallery reveal d1">
@@ -758,19 +824,27 @@
         </div>
       </div>
       <div class="features-body">
-        <p class="features-lead reveal d1">Rapportens oppsett og profil tilpasses ditt selskap. Vi leverer et konkret designforslag og tar oss av konfigurasjonen.</p>
         <div class="features-detail-list">
           <div class="features-detail reveal d1">
-            <div class="features-detail-title">Forside og byråets profil</div>
-            <p>Byråets logo, farger og kontaktinformasjon på forsiden. Rapporten åpnes som en leveranse fra byrået, ikke fra et verktøy.</p>
+            <div class="features-detail-num">01</div>
+            <div>
+              <div class="features-detail-title">Forside og byråets profil</div>
+              <p>Byråets logo, farger og kontaktinformasjon på forsiden. Rapporten åpnes som en leveranse fra byrået — ikke fra et verktøy.</p>
+            </div>
           </div>
           <div class="features-detail reveal d2">
-            <div class="features-detail-title">Rapportmal og oppsett</div>
-            <p>Sideoppsett, typografi og struktur settes opp etter byråets standarder. Ikke en generisk mal, men et oppsett som passer porteføljen.</p>
+            <div class="features-detail-num">02</div>
+            <div>
+              <div class="features-detail-title">Velg mellom standard og forenklet rapport</div>
+              <p>Velg mellom standard rapport med full detalj, eller forenklet rapport uten regnskapsjargong. AI-generert kommentar gir kontekst slik at klienten faktisk skjønner hva som skjer i virksomheten.</p>
+            </div>
           </div>
           <div class="features-detail reveal d3">
-            <div class="features-detail-title">Vi leverer designforslaget</div>
-            <p>Du sender oss byråets profil; vi konfigurerer og sender deg et utkast til godkjenning. Ingen selvbetjening, ingen malvalg.</p>
+            <div class="features-detail-num">03</div>
+            <div>
+              <div class="features-detail-title">Klar til å sende — med ditt logo og dine farger</div>
+              <p>Du sender oss byråets profil; vi konfigurerer og sender deg et utkast til godkjenning. Ingen selvbetjening, ingen malvalg.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -823,6 +897,9 @@
       <h2>Enkel,<br>forutsigbar<br>prising</h2>
       <p>Ingen oppstartskostnad. Ingen bindingstid. Du betaler per regnskapsfører i byrået.</p>
       <p class="pricing-left-note">Stort byrå? <a href="#kontakt">Ta kontakt for enterprise-pris.</a></p>
+      <div class="pricing-roi">
+        <p>3 timer × 10 klienter × 700 kr/time = <strong>21 000 kr</strong> per måned.<br>Rapportly koster 999 kr.</p>
+      </div>
     </div>
     <div class="reveal d1">
       <div class="pricing-card">
@@ -853,30 +930,34 @@
   <section class="faq-section" id="faq">
     <div class="faq-inner">
       <h2 class="faq-heading reveal">Ofte stilte spørsmål</h2>
-      <p class="faq-sub reveal">Alt du lurer på før du starter.</p>
+      <p class="faq-sub reveal">Svarene på det du lurer på.</p>
       <details class="faq-item reveal">
         <summary class="faq-q">Hva er Rapportly?</summary>
-        <p class="faq-a">Rapportly er et rapportverktøy for regnskapsbyråer som automatisk henter tall fra ditt regnskapssystem og genererer profesjonelle klientrapporter med byråets logo og design — uten manuelt arbeid.</p>
+        <p class="faq-a">Rapportly er et rapportverktøy for regnskapsbyråer som henter tall direkte fra regnskapssystemet og genererer ferdige klientrapporter automatisk — med byråets logo og design, og forklaringer klientene faktisk forstår. Du slipper manuelt arbeid, og klientene får rapporter de kan bruke til noe.</p>
       </details>
       <details class="faq-item reveal d1">
+        <summary class="faq-q">Kan vi velge rapportformat?</summary>
+        <p class="faq-a">Ja — Rapportly har to formater. Standard rapport gir full regnskapsdetalj for klienter som vil ha alle tallene. Forenklet rapport bruker enkle forklaringer uten regnskapsjargong — tilpasset klienter uten regnskapsbakgrunn. Du velger format når du genererer rapporten, og begge bruker byråets design gjennomgående.</p>
+      </details>
+      <details class="faq-item reveal d2">
         <summary class="faq-q">Hvilke regnskapssystemer støtter Rapportly?</summary>
-        <p class="faq-a">Rapportly støtter PowerOffice Go i dag. Tripletex, Fiken og 24SevenOffice kommer i løpet av 2026.</p>
+        <p class="faq-a">PowerOffice Go er tilgjengelig nå. Tripletex, Fiken og 24SevenOffice kommer i løpet av 2026.</p>
       </details>
       <details class="faq-item reveal d2">
         <summary class="faq-q">Hva koster Rapportly?</summary>
-        <p class="faq-a">Rapportly koster 999 kr per bruker per måned. Prisen inkluderer opptil 50 klienter per bruker. Ingen oppstartskostnad og ingen bindingstid.</p>
+        <p class="faq-a">999 kr per bruker per måned — opptil 50 klienter inkludert. Ingen oppstartskostnad, ingen bindingstid. Avslutt når som helst.</p>
       </details>
       <details class="faq-item reveal d3">
         <summary class="faq-q">Hvor lang tid tar det å komme i gang?</summary>
-        <p class="faq-a">Vi sender invitasjonslenke til deg og kommer med forslag på rapportoppsett. Du er oppe og går innen kort tid etter du har godkjent forslag.</p>
+        <p class="faq-a">Vi sender deg invitasjon og leverer et ferdig designforslag basert på byråets profil. De fleste er oppe og går innen 48 timer etter første kontakt.</p>
       </details>
       <details class="faq-item reveal d1">
         <summary class="faq-q">Kan vi tilpasse logo og design på rapportene?</summary>
-        <p class="faq-a">Ja. Rapportly bruker byråets logo, farger og oppsett. Rapportene ser ut som om dere har laget dem selv.</p>
+        <p class="faq-a">Ja — byråets logo, farger og oppsett brukes gjennomgående. Rapportene ser ut som dere har laget dem selv, ikke som om de kom fra et generisk verktøy.</p>
       </details>
       <details class="faq-item reveal d2">
         <summary class="faq-q">Trenger kundene våre å gjøre noe selv?</summary>
-        <p class="faq-a">Nei. Rapportene genereres og leveres automatisk. Kundene mottar ferdige rapporter uten at de trenger å logge inn eller gjøre noe.</p>
+        <p class="faq-a">Nei. Klientene mottar rapporten ferdig — de trenger ikke logge inn, installere noe eller gjøre noe som helst.</p>
       </details>
     </div>
   </section>
@@ -885,8 +966,8 @@
   <div class="cta-section">
     <div class="cta-inner">
       <div class="reveal">
-        <h2 class="cta-heading">Slutt å bygge<br>rapporter manuelt.</h2>
-        <p class="cta-body">Vi setter opp Rapportly med ditt byrådesign og kobler til PowerOffice Go. Hele flyten demonstrert på 30 minutter.</p>
+        <h2 class="cta-heading">Spar timer.<br>Lever rapporter klientene<br>faktisk <em>leser.</em></h2>
+        <p class="cta-body">På 30 minutter ser du din første rapport — med ditt logo, dine farger, koblet til regnskapssystemet ditt.</p>
       </div>
       <a href="#kontakt" class="btn-cta-inv reveal d1">Book gratis demo</a>
     </div>
@@ -895,8 +976,8 @@
   <!-- CONTACT -->
   <section class="contact-section" id="kontakt">
     <div class="contact-info reveal">
-      <h2>Ta<br>kontakt</h2>
-      <p>Fyll ut skjemaet, så tar vi kontakt og setter opp Rapportly tilpasset ditt byrå.</p>
+      <h2>Vi setter opp<br>byrået ditt<br>denne uken.</h2>
+      <p>Fyll ut skjemaet. Vi ringer innen én arbeidsdag og viser deg flyten live — ferdig konfigurert med ditt logo og dine farger.</p>
       <div class="contact-meta">
         <div>
           <span class="contact-meta-label">E-post</span>
