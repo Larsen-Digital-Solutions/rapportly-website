@@ -427,14 +427,16 @@
 
 
     /* ── INTEGRATION ── */
-    .integration-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .integration-section { background: var(--primary); position: relative; overflow: hidden; }
+    .integration-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 18% 60%, oklch(40% .16 260 / .55) 0%, transparent 52%); }
     .integration-inner {
       max-width: 1360px; margin: 0 auto; padding: 6rem 6rem;
       display: flex; align-items: center; justify-content: space-between; gap: 6rem; flex-wrap: wrap;
+      position: relative; z-index: 1;
     }
     .integration-left { max-width: 44ch; }
-    .integration-left h2 { font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 900; letter-spacing: -.045em; line-height: 1.1; }
-    .integration-left p { font-size: 1rem; color: var(--text-muted); margin-top: .875rem; line-height: 1.65; }
+    .integration-left h2 { font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 900; letter-spacing: -.045em; line-height: 1.1; color: oklch(97% .01 240); }
+    .integration-left p { font-size: 1rem; color: oklch(64% .05 255); margin-top: .875rem; line-height: 1.65; }
     .integration-cards { display: flex; flex-direction: column; gap: .75rem; flex-shrink: 0; min-width: 320px; }
     .int-card {
       display: flex; align-items: center; gap: 1rem;
@@ -980,17 +982,6 @@
       </details>
     </div>
   </section>
-
-  <!-- CTA -->
-  <div class="cta-section">
-    <div class="cta-inner">
-      <div class="reveal">
-        <h2 class="cta-heading">Spar timer.<br>Lever rapporter klientene<br>faktisk <em>leser.</em></h2>
-        <p class="cta-body">På 30 minutter ser du din første rapport — med ditt logo, dine farger, koblet til regnskapssystemet ditt.</p>
-      </div>
-      <a href="#kontakt" class="btn-cta-inv reveal d1">Book gratis demo</a>
-    </div>
-  </div>
 
   <!-- CONTACT -->
   <section class="contact-section" id="kontakt">
