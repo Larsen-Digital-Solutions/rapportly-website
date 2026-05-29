@@ -246,6 +246,14 @@
     .btn-ghost { font-size: .9375rem; font-weight: 600; color: oklch(62% .05 250); transition: color 160ms var(--ease); }
     .btn-ghost:hover { color: oklch(88% .02 240); }
     .hero-integrations { font-size: .8125rem; font-weight: 500; color: oklch(46% .05 250); letter-spacing: .01em; }
+    .hero-sys-strip { display: flex; align-items: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .hero-sys-item { display: flex; flex-direction: column; gap: .45rem; }
+    .hero-sys-item img { height: 28px; display: block; opacity: .9; }
+    .hero-sys-status { font-size: .8125rem; font-weight: 600; letter-spacing: .03em; }
+    .hero-sys-status.live { color: var(--accent); }
+    .hero-sys-status.soon { color: oklch(50% .05 250); }
+    .hero-sys-divider { width: 1px; height: 40px; background: oklch(46% .05 250 / .3); }
+    .hero-sys-more { font-size: .875rem; color: oklch(46% .05 250); font-style: italic; }
 
     /* ── DOCUMENT MOCKUP ── */
     .hero-visual {
@@ -437,31 +445,72 @@
     .integration-left { max-width: 44ch; }
     .integration-left h2 { font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 900; letter-spacing: -.045em; line-height: 1.1; color: oklch(97% .01 240); }
     .integration-left p { font-size: 1rem; color: oklch(64% .05 255); margin-top: .875rem; line-height: 1.65; }
-    .integration-cards { display: flex; flex-direction: column; gap: .75rem; flex-shrink: 0; min-width: 320px; }
+    .integration-cards { display: flex; flex-direction: column; gap: .5rem; flex-shrink: 0; width: 340px; }
     .int-card {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1.125rem 1.375rem;
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.25rem;
+      background: oklch(100% 0 0 / .07);
+      border: 1px solid oklch(100% 0 0 / .11);
+      border-radius: 14px;
+      transition: background 180ms ease;
     }
     .int-card--active {
-      background: oklch(97.5% .03 262); border-color: oklch(82% .09 262);
-      box-shadow: 0 2px 16px oklch(58% .22 260 / .10);
+      background: oklch(100% 0 0 / .13);
+      border-color: oklch(100% 0 0 / .22);
+      box-shadow: 0 1px 0 oklch(100% 0 0 / .07) inset;
     }
-    .int-card--coming { opacity: .55; }
-    .int-card-logo {
-      width: 2.875rem; height: 2.875rem; border-radius: 11px;
+    .int-card--coming { opacity: .45; }
+    .int-card-identity { display: flex; align-items: center; gap: .875rem; }
+    /* Logo images — sit directly on the dark bg */
+    .int-logo-po img { height: 24px; display: block; filter: brightness(1.15) saturate(1.1); }
+    .int-logo-tx img { height: 20px; display: block; filter: brightness(0) invert(1); opacity: .82; }
+    /* Text badges for systems without logos */
+    .int-badge {
+      width: 2.25rem; height: 2.25rem; border-radius: 9px;
       display: flex; align-items: center; justify-content: center;
-      font-size: .875rem; font-weight: 900; flex-shrink: 0; letter-spacing: -.02em;
+      font-size: .75rem; font-weight: 800; letter-spacing: -.01em; flex-shrink: 0;
     }
-    .int-logo-po { background: #E8F4FD; color: #1B6CA8; }
-    .int-logo-tx { background: oklch(93% .01 240); color: oklch(40% .01 240); }
-    .int-logo-fk { background: oklch(93% .03 150); color: oklch(38% .12 150); }
-    .int-logo-24 { background: oklch(92% .04 25); color: oklch(40% .14 25); }
-    .int-card-name { font-size: 1rem; font-weight: 700; display: block; letter-spacing: -.02em; }
-    .int-card-status { font-size: .6875rem; font-weight: 600; display: block; margin-top: .2rem; }
-    .int-status-live { color: var(--accent); }
-    .int-status-soon { color: var(--text-subtle); }
+    .int-badge-fk { background: oklch(90% .06 150 / .9); color: oklch(35% .14 150); }
+    .int-badge-24 { background: oklch(90% .07 25 / .9); color: oklch(38% .16 25); }
+    .int-card-name { font-size: .9375rem; font-weight: 600; color: oklch(90% .02 240); letter-spacing: -.015em; }
+    .int-card-status { font-size: .6875rem; font-weight: 600; letter-spacing: .03em; white-space: nowrap; }
+    .int-status-live { color: oklch(72% .19 158); }
+    .int-status-live::before { content: '● '; }
+    .int-status-soon { color: oklch(60% .04 255); }
+
+    /* ── PARTNER BADGE ── */
+    .partner-strip {
+      margin-top: 2.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid oklch(97% .01 240 / .12);
+      display: flex; align-items: center; gap: .875rem;
+    }
+    .partner-strip-label {
+      font-size: .6875rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: oklch(55% .05 255);
+      white-space: nowrap;
+    }
+    .partner-logo-pill {
+      display: flex; align-items: center; gap: .625rem;
+    }
+    .partner-logo-pill img { height: 24px; display: block; filter: brightness(1.6); }
+    .partner-badge-text {
+      font-size: .75rem; font-weight: 600;
+      color: oklch(78% .04 255); letter-spacing: .01em; white-space: nowrap;
+    }
+    /* Hero variant — light background */
+    .hero-partner {
+      display: flex; align-items: center; gap: .625rem;
+      margin-top: .875rem;
+    }
+    .hero-partner-label {
+      font-size: .6875rem; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: oklch(46% .05 250);
+    }
+    .hero-partner-logo {
+      display: flex; align-items: center;
+    }
+    .hero-partner-logo img { height: 18px; display: block; opacity: .9; }
 
     /* ── PRICING ── */
     .pricing-section { padding: 9rem 6rem; max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
@@ -744,7 +793,19 @@
           <a href="#kontakt" class="btn-primary">Book gratis demo</a>
           <a href="#priser" class="btn-ghost">Se priser &rarr;</a>
         </div>
-        <p class="hero-integrations reveal d2">&#10003; PowerOffice Go-integrasjon &nbsp;·&nbsp; Flere integrasjoner kommer</p>
+        <div class="hero-sys-strip reveal d2">
+          <div class="hero-sys-item">
+            <img src="pogo-logo.png" alt="PowerOffice Go" />
+            <span class="hero-sys-status live">● Tilgjengelig nå</span>
+          </div>
+          <div class="hero-sys-divider"></div>
+          <div class="hero-sys-item">
+            <img src="tripletex-logo.png" alt="Tripletex" />
+            <span class="hero-sys-status soon">Kommer</span>
+          </div>
+          <div class="hero-sys-divider"></div>
+          <span class="hero-sys-more">+ Flere integrasjoner kommer</span>
+        </div>
       </div>
       <div class="hero-visual reveal d2">
         <div class="hero-visual-inner">
@@ -883,32 +944,30 @@
       </div>
       <div class="integration-cards reveal d1">
         <div class="int-card int-card--active">
-          <div class="int-card-logo int-logo-po">PO</div>
-          <div>
-            <span class="int-card-name">PowerOffice Go</span>
-            <span class="int-card-status int-status-live">● Tilgjengelig nå</span>
+          <div class="int-card-identity int-logo-po">
+            <img src="pogo-logo.png" alt="PowerOffice Go" />
           </div>
+          <span class="int-card-status int-status-live">Tilgjengelig nå</span>
         </div>
         <div class="int-card int-card--coming">
-          <div class="int-card-logo int-logo-tx">TX</div>
-          <div>
-            <span class="int-card-name">Tripletex</span>
-            <span class="int-card-status int-status-soon">Kommer 2026</span>
+          <div class="int-card-identity int-logo-tx">
+            <img src="tripletex-logo.png" alt="Tripletex" />
           </div>
+          <span class="int-card-status int-status-soon">Kommer 2026</span>
         </div>
         <div class="int-card int-card--coming">
-          <div class="int-card-logo int-logo-fk">FK</div>
-          <div>
+          <div class="int-card-identity">
+            <div class="int-badge int-badge-fk">FK</div>
             <span class="int-card-name">Fiken</span>
-            <span class="int-card-status int-status-soon">Kommer 2026</span>
           </div>
+          <span class="int-card-status int-status-soon">Kommer 2026</span>
         </div>
         <div class="int-card int-card--coming">
-          <div class="int-card-logo int-logo-24">24</div>
-          <div>
+          <div class="int-card-identity">
+            <div class="int-badge int-badge-24">24</div>
             <span class="int-card-name">24SevenOffice</span>
-            <span class="int-card-status int-status-soon">Kommer 2026</span>
           </div>
+          <span class="int-card-status int-status-soon">Kommer 2026</span>
         </div>
       </div>
     </div>
