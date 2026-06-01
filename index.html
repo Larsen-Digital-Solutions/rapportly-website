@@ -405,6 +405,38 @@
     .gallery-dot.active { background: var(--primary); transform: scale(1.3); }
     .gallery-dot:hover:not(.active) { background: var(--text-subtle); }
 
+    /* ── DUAL REPORT GALLERY (to formater side om side) ── */
+    .reports-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .report-col { display: flex; flex-direction: column; }
+    .report-badge {
+      display: inline-flex; align-items: center; gap: .5rem; align-self: flex-start;
+      font-size: .6875rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+      padding: .35rem .8rem; border-radius: 9999px; margin-bottom: 1rem;
+    }
+    .report-badge.std { background: var(--primary); color: oklch(97% .01 240); }
+    .report-badge.kv  { background: oklch(94% .055 152); color: oklch(36% .12 152); }
+    .report-badge .dot-ind { width: .45rem; height: .45rem; border-radius: 50%; background: currentColor; opacity: .85; }
+    .report-frame {
+      border-radius: 12px; overflow: hidden; aspect-ratio: 210 / 297;
+      box-shadow: 0 16px 48px oklch(0% 0 0/.16), 0 0 0 1px oklch(55% .10 262/.18);
+      background: oklch(99% .003 230);
+    }
+    .report-frame img { display: block; width: 100%; height: 100%; object-fit: cover; transition: opacity 400ms var(--ease); will-change: opacity; }
+    .report-frame img.fading { opacity: 0; }
+    .report-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; padding: 0 .15rem; }
+    .report-pagelabel { font-size: .625rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--text-subtle); }
+    .report-ctrls { display: flex; align-items: center; gap: .6rem; }
+    .report-counter { font-size: .625rem; font-weight: 700; letter-spacing: .12em; color: var(--text-subtle); font-variant-numeric: tabular-nums; }
+    .report-arrow {
+      width: 1.75rem; height: 1.75rem; border-radius: 50%; background: var(--surface);
+      border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; font-size: .6875rem;
+      display: flex; align-items: center; justify-content: center; padding: 0;
+      transition: background 160ms var(--ease), box-shadow 160ms var(--ease);
+    }
+    .report-arrow:hover { background: var(--surface-2); box-shadow: var(--shadow-sm); }
+    .report-caption { font-size: .9375rem; color: var(--text-muted); line-height: 1.6; margin-top: 1rem; }
+    @media (max-width: 860px) { .reports-duo { grid-template-columns: 1fr; gap: 3.5rem; } }
+
     /* Features body */
     .features-body { display: flex; flex-direction: column; padding-top: .5rem; }
     .features-lead { font-size: 1.125rem; font-weight: 500; color: var(--text-muted); line-height: 1.72; max-width: 44ch; margin-bottom: 2.75rem; }
@@ -825,51 +857,41 @@
   <section class="features-section" id="funksjoner">
     <div class="features-header reveal">
       <h2>Klientene spør ikke lenger<br><em>hva tallene betyr.</em></h2>
-      <p>Rapporten svarer på det de alltid lurer på: "Går det bra med bedriften min?" — uten at du trenger å forklare det.</p>
+      <p>Velg formatet som passer mottakeren: full regnskapsdetalj til de som vil ha alle tallene, eller en klientvennlig versjon i klartekst — begge i byråets eget design.</p>
     </div>
-    <div class="features-grid">
-      <div class="features-gallery reveal d1">
-        <div class="features-gallery-glow"></div>
-        <div class="gallery-frame">
-          <img id="galleryImg" class="gallery-img" src="akerberg-kvartalsrapport.jpg" alt="Åkerberg Regnskapsbyrå — Kvartalsrapport" loading="lazy">
+    <div class="reports-duo">
+      <!-- STANDARD -->
+      <div class="report-col reveal d1" id="reportStandard">
+        <span class="report-badge std"><span class="dot-ind"></span>Standard rapport</span>
+        <div class="report-frame">
+          <img class="report-page" src="rapport-sider/standard-01.jpg" alt="Standard rapport" loading="lazy">
         </div>
-        <div class="gallery-footer">
-          <span class="gallery-label" id="galleryLabel">Åkerberg · Kvartalsrapport</span>
-          <div class="gallery-controls">
-            <button class="gallery-arrow" id="galleryPrev" aria-label="Forrige">&#8592;</button>
-            <div class="gallery-dots">
-              <button class="gallery-dot active" data-index="0" aria-label="Rapport 1"></button>
-              <button class="gallery-dot" data-index="1" aria-label="Rapport 2"></button>
-              <button class="gallery-dot" data-index="2" aria-label="Rapport 3"></button>
-            </div>
-            <button class="gallery-arrow" id="galleryNext" aria-label="Neste">&#8594;</button>
+        <div class="report-foot">
+          <span class="report-pagelabel">Full regnskapsdetalj</span>
+          <div class="report-ctrls">
+            <button class="report-arrow" data-dir="-1" aria-label="Forrige side">&#8592;</button>
+            <span class="report-counter">01 / 10</span>
+            <button class="report-arrow" data-dir="1" aria-label="Neste side">&#8594;</button>
           </div>
         </div>
+        <p class="report-caption">Resultat, balanse, kontantstrøm og nøkkeltall — alt regnskapsføreren trenger, i byråets eget design.</p>
       </div>
-      <div class="features-body">
-        <div class="features-detail-list">
-          <div class="features-detail reveal d1">
-            <div class="features-detail-num">01</div>
-            <div>
-              <div class="features-detail-title">Forside og byråets profil</div>
-              <p>Byråets logo, farger og kontaktinformasjon på forsiden. Rapporten åpnes som en leveranse fra byrået — ikke fra et verktøy.</p>
-            </div>
-          </div>
-          <div class="features-detail reveal d2">
-            <div class="features-detail-num">02</div>
-            <div>
-              <div class="features-detail-title">Velg mellom standard og forenklet rapport</div>
-              <p>Velg mellom standard rapport med full detalj, eller forenklet rapport uten regnskapsjargong. AI-generert kommentar gir kontekst slik at klienten faktisk skjønner hva som skjer i virksomheten.</p>
-            </div>
-          </div>
-          <div class="features-detail reveal d3">
-            <div class="features-detail-num">03</div>
-            <div>
-              <div class="features-detail-title">Klar til å sende — med ditt logo og dine farger</div>
-              <p>Du sender oss byråets profil; vi konfigurerer og sender deg et utkast til godkjenning. Ingen selvbetjening, ingen malvalg.</p>
-            </div>
+
+      <!-- KLIENTVENNLIG -->
+      <div class="report-col reveal d2" id="reportKv">
+        <span class="report-badge kv"><span class="dot-ind"></span>Klientvennlig rapport</span>
+        <div class="report-frame">
+          <img class="report-page" src="rapport-sider/klientvennlig-01.jpg" alt="Klientvennlig rapport" loading="lazy">
+        </div>
+        <div class="report-foot">
+          <span class="report-pagelabel">Tall klienten forstår</span>
+          <div class="report-ctrls">
+            <button class="report-arrow" data-dir="-1" aria-label="Forrige side">&#8592;</button>
+            <span class="report-counter">01 / 10</span>
+            <button class="report-arrow" data-dir="1" aria-label="Neste side">&#8594;</button>
           </div>
         </div>
+        <p class="report-caption">Samme regnskap, forklart i klartekst med enkle nøkkeltall — tilpasset kunder uten regnskapsbakgrunn.</p>
       </div>
     </div>
   </section>
@@ -1119,41 +1141,42 @@
       startTimer();
     })();
 
-    // Features gallery
-    (() => {
-      const img     = document.getElementById('galleryImg');
-      const dots    = document.querySelectorAll('.gallery-dot');
-      const label   = document.getElementById('galleryLabel');
-      const images  = ['akerberg-kvartalsrapport.jpg', 'haugen-manedsrapport.jpg', 'nordly-arsrapport.jpg'];
-      const labels  = ['Åkerberg · Kvartalsrapport', 'Haugen · Månedlig rapport', 'Nordly · Årsrapport'];
-      let current = 0, timer;
-
-      // Preload
-      images.slice(1).forEach(src => { const i = new Image(); i.src = src; });
-
+    // Dual report galleries — bla gjennom alle sider i hver rapport
+    function initReportGallery(rootId, prefix, total) {
+      const root = document.getElementById(rootId);
+      if (!root) return;
+      const img = root.querySelector('.report-page');
+      const counter = root.querySelector('.report-counter');
+      let current = 0, busy = false, timer;
+      const src = (n) => `rapport-sider/${prefix}-${String(n + 1).padStart(2, '0')}.jpg`;
+      // Preload de neste par sidene
+      [1, 2].forEach(n => { if (n < total) { const i = new Image(); i.src = src(n); } });
+      function setCounter() { if (counter) counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`; }
       function goTo(n) {
-        const next = (n + images.length) % images.length;
+        if (busy) return;
+        const next = (n + total) % total;
         if (next === current) return;
+        busy = true;
         img.classList.add('fading');
-        dots[current].classList.remove('active');
-        if (label) label.style.opacity = '0';
         setTimeout(() => {
           current = next;
-          img.src = images[current];
-          img.alt = labels[current];
+          img.src = src(current);
+          setCounter();
+          // Forhåndslast neste
+          const nx = (current + 1) % total; const pi = new Image(); pi.src = src(nx);
           img.classList.remove('fading');
-          dots[current].classList.add('active');
-          if (label) { label.textContent = labels[current]; label.style.opacity = '1'; }
-        }, 380);
+          setTimeout(() => { busy = false; }, 60);
+        }, 400);
       }
-      function startTimer() { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 4000); }
-
-      dots.forEach(dot => dot.addEventListener('click', () => { clearInterval(timer); goTo(+dot.dataset.index); }));
-      document.getElementById('galleryPrev')?.addEventListener('click', () => { clearInterval(timer); goTo(current - 1); });
-      document.getElementById('galleryNext')?.addEventListener('click', () => { clearInterval(timer); goTo(current + 1); });
-
+      function startTimer() { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 5000); }
+      root.querySelectorAll('.report-arrow').forEach(btn =>
+        btn.addEventListener('click', () => { clearInterval(timer); goTo(current + Number(btn.dataset.dir)); startTimer(); })
+      );
+      setCounter();
       startTimer();
-    })();
+    }
+    initReportGallery('reportStandard', 'standard', 10);
+    initReportGallery('reportKv', 'klientvennlig', 10);
 
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
