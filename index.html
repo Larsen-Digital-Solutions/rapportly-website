@@ -98,7 +98,7 @@
         "name": "Hvilke regnskapssystemer støtter Rapportly?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Rapportly støtter PowerOffice Go i dag. Tripletex, Fiken og 24SevenOffice kommer i løpet av 2026."
+          "text": "Rapportly støtter PowerOffice Go og Tripletex i dag. Fiken og 24SevenOffice kommer i løpet av 2026."
         }
       },
       {
@@ -246,13 +246,13 @@
     .btn-ghost { font-size: .9375rem; font-weight: 600; color: oklch(62% .05 250); transition: color 160ms var(--ease); }
     .btn-ghost:hover { color: oklch(88% .02 240); }
     .hero-integrations { font-size: .8125rem; font-weight: 500; color: oklch(46% .05 250); letter-spacing: .01em; }
-    .hero-sys-strip { display: flex; align-items: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
-    .hero-sys-item { display: flex; flex-direction: column; gap: .45rem; }
-    .hero-sys-item img { height: 28px; display: block; opacity: .9; }
-    .hero-sys-status { font-size: .8125rem; font-weight: 600; letter-spacing: .03em; }
+    .hero-sys-strip { display: flex; align-items: center; gap: 2.25rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .hero-sys-item { display: flex; flex-direction: column; gap: .55rem; }
+    .hero-sys-item img { height: 38px; display: block; opacity: .92; }
+    .hero-sys-status { font-size: .875rem; font-weight: 600; letter-spacing: .03em; }
     .hero-sys-status.live { color: var(--accent); }
     .hero-sys-status.soon { color: oklch(50% .05 250); }
-    .hero-sys-divider { width: 1px; height: 40px; background: oklch(46% .05 250 / .3); }
+    .hero-sys-divider { width: 1px; height: 52px; background: oklch(46% .05 250 / .3); }
     .hero-sys-more { font-size: .875rem; color: oklch(46% .05 250); font-style: italic; }
 
     /* ── DOCUMENT MOCKUP ── */
@@ -480,7 +480,7 @@
     .integration-cards { display: flex; flex-direction: column; gap: .5rem; flex-shrink: 0; width: 340px; }
     .int-card {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 1.25rem;
+      padding: 1.25rem 1.5rem;
       background: oklch(100% 0 0 / .07);
       border: 1px solid oklch(100% 0 0 / .11);
       border-radius: 14px;
@@ -494,8 +494,8 @@
     .int-card--coming { opacity: .45; }
     .int-card-identity { display: flex; align-items: center; gap: .875rem; }
     /* Logo images — sit directly on the dark bg */
-    .int-logo-po img { height: 24px; display: block; filter: brightness(1.15) saturate(1.1); }
-    .int-logo-tx img { height: 20px; display: block; filter: brightness(0) invert(1); opacity: .82; }
+    .int-logo-po img { height: 30px; display: block; filter: brightness(1.15) saturate(1.1); }
+    .int-logo-tx img { height: 25px; display: block; filter: brightness(0) invert(1); opacity: .82; }
     /* Text badges for systems without logos */
     .int-badge {
       width: 2.25rem; height: 2.25rem; border-radius: 9px;
@@ -833,7 +833,7 @@
           <div class="hero-sys-divider"></div>
           <div class="hero-sys-item">
             <img src="tripletex-logo.png" alt="Tripletex" />
-            <span class="hero-sys-status soon">Kommer</span>
+            <span class="hero-sys-status live">● Tilgjengelig nå</span>
           </div>
           <div class="hero-sys-divider"></div>
           <span class="hero-sys-more">+ Flere integrasjoner kommer</span>
@@ -971,11 +971,11 @@
           </div>
           <span class="int-card-status int-status-live">Tilgjengelig nå</span>
         </div>
-        <div class="int-card int-card--coming">
+        <div class="int-card int-card--active">
           <div class="int-card-identity int-logo-tx">
             <img src="tripletex-logo.png" alt="Tripletex" />
           </div>
-          <span class="int-card-status int-status-soon">Kommer 2026</span>
+          <span class="int-card-status int-status-live">Tilgjengelig nå</span>
         </div>
         <div class="int-card int-card--coming">
           <div class="int-card-identity">
@@ -1048,7 +1048,7 @@
       </details>
       <details class="faq-item reveal d2">
         <summary class="faq-q">Hvilke regnskapssystemer støtter Rapportly?</summary>
-        <p class="faq-a">PowerOffice Go er tilgjengelig nå. Tripletex, Fiken og 24SevenOffice kommer i løpet av 2026.</p>
+        <p class="faq-a">PowerOffice Go og Tripletex er tilgjengelige nå. Fiken og 24SevenOffice kommer i løpet av 2026.</p>
       </details>
       <details class="faq-item reveal d2">
         <summary class="faq-q">Hva koster Rapportly?</summary>
