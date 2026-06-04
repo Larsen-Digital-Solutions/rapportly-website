@@ -708,6 +708,39 @@
     .pricing-roi p { font-size: 1.0625rem; color: var(--text); line-height: 1.75; }
     .pricing-roi strong { color: var(--accent); font-weight: 800; font-size: 1.125rem; }
 
+    /* ── Pris-trinn (tier-kort) ── */
+    .pt-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; box-shadow: 0 32px 80px oklch(26% .10 262/.16), 0 8px 20px oklch(0% 0 0/.07); }
+    .pt-head { background: var(--primary); padding: 2.3rem 2.4rem 2rem; position: relative; overflow: hidden; }
+    .pt-head::before { content: ''; position: absolute; top: -50%; right: -25%; width: 70%; height: 200%; background: radial-gradient(ellipse, oklch(40% .14 260/.45) 0%, transparent 60%); pointer-events: none; }
+    .pt-eyebrow { position: relative; z-index: 1; font-size: .72rem; font-weight: 700; letter-spacing: .18em; color: oklch(70% .08 258); text-transform: uppercase; }
+    .pt-from { position: relative; z-index: 1; display: flex; align-items: baseline; gap: .45rem; margin-top: .7rem; }
+    .pt-from-num { font-size: 3.5rem; font-weight: 900; letter-spacing: -.05em; color: oklch(97% .01 240); line-height: 1; }
+    .pt-from-unit { font-size: 1rem; font-weight: 600; color: oklch(72% .05 255); }
+    .pt-from-sub { position: relative; z-index: 1; margin-top: .65rem; font-size: .86rem; color: oklch(66% .05 255); }
+    .pt-body { padding: 1.4rem 1.6rem 1.8rem; }
+    .pt-tiers { list-style: none; }
+    .pt-tier { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 1rem; padding: .95rem 1rem; border-radius: var(--r); position: relative; transition: background 160ms var(--ease); }
+    .pt-tier:hover { background: oklch(96% .006 240); }
+    .pt-tier + .pt-tier { margin-top: .15rem; }
+    .pt-name { font-weight: 700; font-size: 1.02rem; }
+    .pt-meta { display: block; font-size: .84rem; color: var(--text-subtle); margin-top: .12rem; }
+    .pt-price { font-weight: 800; font-size: 1.28rem; letter-spacing: -.02em; white-space: nowrap; }
+    .pt-price small { font-weight: 600; font-size: .8rem; color: var(--text-muted); margin-left: .18rem; }
+    .pt-contact { font-weight: 700; font-size: .95rem; color: var(--accent); text-decoration: none; }
+    .pt-contact:hover { color: var(--accent-hover); }
+    .pt-tier--hot { background: var(--accent-light); border: 1px solid oklch(84% .07 262); }
+    .pt-tier--hot:hover { background: var(--accent-light); }
+    .pt-badge { position: absolute; top: -.62rem; right: 1rem; background: var(--accent); color: #fff; font-size: .64rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .2rem .55rem; border-radius: 9999px; }
+    .pt-incl { margin: 1.5rem .4rem 0; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .pt-incl-title { font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); }
+    .pt-incl-list { list-style: none; margin-top: .9rem; display: grid; grid-template-columns: 1fr 1fr; gap: .55rem 1rem; }
+    .pt-incl-list li { display: flex; align-items: flex-start; gap: .5rem; font-size: .9rem; color: var(--text); line-height: 1.35; }
+    .pt-incl-list li::before { content: ''; flex: 0 0 16px; height: 16px; margin-top: .12rem; border-radius: 50%; background: var(--accent-light) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b5bdb' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/10px no-repeat; }
+    .pt-cta { display: block; text-align: center; margin: 1.6rem .4rem 0; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: .95rem; border-radius: 9999px; text-decoration: none; transition: background 160ms var(--ease), transform 160ms var(--ease); }
+    .pt-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .pt-foot { text-align: center; margin: .95rem .4rem 0; font-size: .82rem; color: var(--text-subtle); }
+    @media (max-width: 560px) { .pt-incl-list { grid-template-columns: 1fr; } }
+
     /* ── SCROLL REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); filter: blur(3px); transition: opacity 750ms var(--ease), transform 750ms var(--ease), filter 600ms var(--ease); }
     .reveal.visible { opacity: 1; transform: none; filter: blur(0); }
@@ -999,35 +1032,56 @@
   <section class="pricing-section" id="priser">
     <div class="pricing-left reveal">
       <h2>Enkel,<br>forutsigbar<br>prising</h2>
-      <p>Ingen oppstartskostnad. Ingen bindingstid. Du betaler per regnskapsfører i byrået.</p>
-      <p class="pricing-left-note">Stort byrå? <a href="#kontakt">Ta kontakt for enterprise-pris.</a></p>
+      <p>Du betaler for <strong>klientene du rapporterer på</strong> — ikke per bruker. Ubegrenset brukere i alle pakker, så hele byrået kan logge inn uten å koste mer.</p>
       <div class="pricing-roi">
-        <p>3 timer × 10 klienter × 700 kr/time = <strong>21 000 kr</strong> per måned.<br>Rapportly koster 999 kr.</p>
+        <p>3 timer × 50 klienter × 700 kr/time = <strong>105 000 kr</strong> spart hver måned.<br>Rapportly Vekst koster <strong>2 490 kr</strong>.</p>
       </div>
+      <p class="pricing-left-note">Stort byrå med 100+ klienter? <a href="#kontakt">Ta kontakt for Stor-pris.</a></p>
     </div>
     <div class="reveal d1">
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <img src="logo.png" alt="Rapportly" class="pricing-header-logo">
-          <div class="pricing-amount">
-            <span class="pricing-number">999</span>
-            <span class="pricing-unit">kr / bruker / mnd</span>
-          </div>
-          <p class="pricing-sub">Inntil 50 klienter per bruker</p>
+      <div class="pt-card">
+        <div class="pt-head">
+          <span class="pt-eyebrow">Priser</span>
+          <div class="pt-from"><span class="pt-from-num">Fra 1 490</span><span class="pt-from-unit">kr / mnd</span></div>
+          <p class="pt-from-sub">Ubegrenset brukere · du betaler per klient, ikke per innlogging</p>
         </div>
-        <div class="pricing-body">
-          <ul class="pricing-features-list">
-            <li>Spar 2–4 timer per klientrapport</li>
-            <li>Rapport klar på 30 minutter — første dag</li>
-            <li>Lager rapporter som klientene forstår</li>
-            <li>Automatisk generering og levering til klient</li>
-            <li>Ditt byrås logo, farger og design</li>
-            <li>PowerOffice Go-integrasjon</li>
-            <li>Tripletex-integrasjon</li>
+        <div class="pt-body">
+          <ul class="pt-tiers">
+            <li class="pt-tier">
+              <div><span class="pt-name">Start</span><span class="pt-meta">Inntil 25 klienter</span></div>
+              <span class="pt-price">1 490<small>kr</small></span>
+            </li>
+            <li class="pt-tier pt-tier--hot">
+              <span class="pt-badge">Mest populær</span>
+              <div><span class="pt-name">Vekst</span><span class="pt-meta">Inntil 50 klienter</span></div>
+              <span class="pt-price">2 490<small>kr</small></span>
+            </li>
+            <li class="pt-tier">
+              <div><span class="pt-name">Pluss</span><span class="pt-meta">Inntil 75 klienter</span></div>
+              <span class="pt-price">3 290<small>kr</small></span>
+            </li>
+            <li class="pt-tier">
+              <div><span class="pt-name">Byrå</span><span class="pt-meta">Inntil 100 klienter</span></div>
+              <span class="pt-price">3 990<small>kr</small></span>
+            </li>
+            <li class="pt-tier">
+              <div><span class="pt-name">Stor</span><span class="pt-meta">100+ klienter</span></div>
+              <a href="#kontakt" class="pt-contact">Ta kontakt</a>
+            </li>
           </ul>
-
-          <a href="#kontakt" class="pricing-cta-btn">Bli kunde</a>
-          <p class="pricing-footnote">Ingen kortbinding. Avslutt når som helst.</p>
+          <div class="pt-incl">
+            <p class="pt-incl-title">Alt inkludert i alle pakker</p>
+            <ul class="pt-incl-list">
+              <li>White-label: byråets logo &amp; farger</li>
+              <li>Ubegrenset brukere</li>
+              <li>Automatisk generering &amp; levering</li>
+              <li>Alle maler &amp; forsider</li>
+              <li>PowerOffice Go-integrasjon</li>
+              <li>Tripletex-integrasjon</li>
+            </ul>
+          </div>
+          <a href="#kontakt" class="pt-cta">Prøv gratis i 14 dager</a>
+          <p class="pt-foot">Ingen oppstartskostnad · ingen bindingstid · avslutt når som helst</p>
         </div>
       </div>
     </div>
