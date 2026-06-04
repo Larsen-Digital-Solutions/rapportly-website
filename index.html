@@ -204,6 +204,24 @@
       transition: background 160ms var(--ease), transform 160ms var(--ease);
     }
     .nav-cta:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .5rem; width: 2.4rem; height: 2.4rem; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+    .nav-toggle span { display: block; width: 20px; height: 2px; background: oklch(85% .03 255); border-radius: 2px; transition: transform 220ms var(--ease), opacity 160ms; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; position: absolute; top: calc(100% + .6rem); left: 0; right: 0;
+      flex-direction: column; gap: .12rem; padding: .55rem;
+      background: oklch(20% 0.08 258 / 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid oklch(35% 0.08 258); border-radius: 18px; box-shadow: 0 14px 44px oklch(0% 0 0/.4);
+      opacity: 0; visibility: hidden; transform: translateY(-8px);
+      transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 200ms;
+    }
+    .nav-mobile.open { opacity: 1; visibility: visible; transform: none; }
+    .nav-mobile a { color: oklch(82% .03 255); font-size: .95rem; font-weight: 500; padding: .72rem .85rem; border-radius: 10px; transition: background 140ms var(--ease), color 140ms var(--ease); }
+    .nav-mobile a:hover, .nav-mobile a:active { background: oklch(35% .07 258); color: oklch(98% .01 240); }
+    .nav-mobile-cta { margin-top: .4rem; background: oklch(97% .01 240); color: oklch(16% .08 258) !important; font-weight: 700 !important; text-align: center; }
+    .nav-mobile-cta:hover, .nav-mobile-cta:active { background: var(--accent-light) !important; }
 
     /* ── HERO ── */
     .hero-wrap {
@@ -765,7 +783,10 @@
       /* Nav */
       .nav-links { display: none; }
       .nav-login { display: none; }
-      .nav { gap: 1rem; padding: .625rem .75rem .625rem 1.25rem; }
+      .nav-cta { display: none; }
+      .nav { position: relative; width: 100%; justify-content: space-between; gap: 1rem; padding: .55rem .65rem .55rem 1.25rem; }
+      .nav-toggle { display: flex; }
+      .nav-mobile { display: flex; }
 
       /* Hero */
       .hero { padding: 6.5rem 1.25rem 3rem; grid-template-columns: 1fr; min-height: unset; gap: 3rem; }
@@ -805,6 +826,11 @@
 
       /* Pricing */
       .pricing-section { grid-template-columns: 1fr; gap: 3rem; }
+      .pt-head { padding: 1.9rem 1.6rem 1.6rem; }
+      .pt-from-num { font-size: 2.9rem; }
+      .pt-body { padding: 1.2rem 1.1rem 1.5rem; }
+      .pt-tier { padding: .85rem .7rem; }
+      .pt-incl, .pt-cta, .pt-foot { margin-left: .15rem; margin-right: .15rem; }
 
       /* Contact */
       .contact-section { grid-template-columns: 1fr; gap: 3rem; }
@@ -840,6 +866,16 @@
       </div>
       <a href="https://app.rapportly.no" class="nav-login">Logg inn</a>
       <a href="#kontakt" class="nav-cta">Book gratis demo</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-mobile" id="navMobile">
+        <a href="#hvordan">Slik fungerer det</a>
+        <a href="#priser">Priser</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="https://app.rapportly.no">Logg inn</a>
+        <a href="#kontakt" class="nav-mobile-cta">Book gratis demo</a>
+      </div>
     </nav>
   </div>
 
@@ -1204,6 +1240,25 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
+
+    // Mobil-meny (hamburger)
+    (() => {
+      const toggle = document.getElementById('navToggle');
+      const menu = document.getElementById('navMobile');
+      if (!toggle || !menu) return;
+      const setOpen = (open) => {
+        menu.classList.toggle('open', open);
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Lukk meny' : 'Åpne meny');
+      };
+      toggle.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('click', (e) => {
+        if (menu.classList.contains('open') && !e.target.closest('#navMobile') && !e.target.closest('#navToggle')) setOpen(false);
+      });
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    })();
 
     // Page slideshow
     (() => {
