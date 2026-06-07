@@ -8,10 +8,8 @@
   <meta name="robots" content="noindex">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.bunny.net/css?family=figtree:400,500,600,700,800,900&display=swap');
     :root {
       --bg:           oklch(97.5% 0.005 230);
       --surface:      oklch(99.5% 0.003 230);
@@ -206,7 +204,7 @@
   <div class="page-header">
     <span class="page-header-label">Juridisk</span>
     <h1>Personvernerklæring</h1>
-    <p class="page-header-meta">Sist oppdatert: 26. mai 2026 &nbsp;·&nbsp; Versjon 2.0</p>
+    <p class="page-header-meta">Sist oppdatert: 7. juni 2026 &nbsp;·&nbsp; Versjon 3.0</p>
   </div>
 
   <!-- CONTENT -->
@@ -214,9 +212,9 @@
 
     <!-- 1 -->
     <div class="section">
-      <h2>1. Hvem vi er</h2>
+      <h2>1. Hvem vi er og våre roller</h2>
       <p>
-        Rapportly er en B2B SaaS-tjeneste for regnskapsbyråer, drevet av <strong>Larsen Digital Solutions</strong> ved Tor Andre Larsen (enkeltpersonforetak).
+        Rapportly er en B2B SaaS-tjeneste for norske regnskapsbyråer, drevet av <strong>Larsen Digital Solutions</strong> ved Tor Andre Larsen (enkeltpersonforetak).
       </p>
       <div class="info-box">
         <div class="info-row">
@@ -230,7 +228,7 @@
           </div>
           <div class="info-item">
             <span class="info-label">E-post</span>
-            <span class="info-value"><a href="mailto:post@rapportly.no">post@rapportly.no</a></span>
+            <span class="info-value"><a href="mailto:tor.andre.larsen@larsendigitalsolutions.no">tor.andre.larsen@larsendigitalsolutions.no</a></span>
           </div>
           <div class="info-item">
             <span class="info-label">Nettside</span>
@@ -239,7 +237,10 @@
         </div>
       </div>
       <p style="margin-top: 1rem;">
-        Rapportly opptrer som <strong>databehandler</strong> på vegne av regnskapsbyråer som bruker tjenesten. Regnskapsbyrået er <strong>behandlingsansvarlig</strong> for sine klienters personopplysninger. Byråets klienter (de registrerte) har sine rettigheter overfor det respektive regnskapsbyrået, som igjen kan henvende seg til oss.
+        <strong>Rollefordeling etter GDPR:</strong> Rapportly (Larsen Digital Solutions) opptrer som <strong>databehandler</strong> på vegne av regnskapsbyrået, som er <strong>behandlingsansvarlig</strong> for sine klienters personopplysninger. Forholdet mellom partene reguleres av en egen databehandleravtale. De registrertes rettigheter (byråets klienter og ansatte) ivaretas primært av det respektive regnskapsbyrået, som igjen kan henvende seg til oss.
+      </p>
+      <p>
+        Larsen Digital Solutions er selv behandlingsansvarlig for opplysninger om byråets kontaktpersoner og fakturering (se punkt 3).
       </p>
     </div>
 
@@ -247,25 +248,33 @@
 
     <!-- 2 -->
     <div class="section">
-      <h2>2. Hva vi behandler</h2>
+      <h2>2. Hvilke opplysninger vi behandler</h2>
       <p>Vi behandler to kategorier opplysninger:</p>
 
-      <p><strong>Brukerkontoer — regnskapsførere</strong></p>
+      <p><strong>A. Brukerkontoer — ansatte i regnskapsbyrået</strong></p>
       <ul>
-        <li>Navn, e-postadresse og byrånavn</li>
-        <li>Krypterte tilgangsnøkler til regnskapssystemer (PowerOffice Go, Tripletex)</li>
-        <li>Tekniske logg- og sesjonsdata</li>
+        <li>Navn, e-postadresse og byrånavn (brukt til autentisering og kontoidentifikasjon)</li>
+        <li>Krypterte tilgangsnøkler til regnskapssystemer (f.eks. Tripletex, PowerOffice Go)</li>
+        <li>Tekniske logg- og sesjonsdata (innloggingstidspunkter, IP-adresse, nettlesertype)</li>
+        <li>Fakturerings- og kontraktsinformasjon</li>
       </ul>
 
-      <p style="margin-top: 1rem;"><strong>Klientdata — regnskapsbyråenes klienter</strong></p>
+      <p style="margin-top: 1rem;"><strong>B. Klientdata — byråets klienter</strong></p>
       <ul>
+        <li>Klientbedriftens navn og e-postadresse (for levering av rapport)</li>
         <li>Finansdata hentet read-only fra regnskapssystemet: resultatregnskap, balanse, kundefordringer, leverandørgjeld og MVA-data</li>
-        <li>Klientens navn og e-postadresse (for levering av rapport)</li>
+        <li>Genererte PDF-rapporter</li>
       </ul>
 
       <p style="margin-top: 1rem;">
-        Vi henter ikke mer data enn det som er nødvendig for å generere rapporten. De hentede finansdataene lagres som et øyeblikksbilde som ligger til grunn for den genererte rapporten, og oppbevares i tråd med fristene i punkt 6 (genererte rapporter i inntil 12 måneder).
+        Vi henter ikke mer data enn det som er nødvendig for å generere rapporten (dataminimeringsprinsippet, GDPR art. 5(1)(c)).
       </p>
+
+      <div class="highlight-box" style="margin-top: 1rem;">
+        <p>
+          <strong>Om AI-genererte kommentarer:</strong> For å lage en kort oppsummerende tekst i rapporten overføres et begrenset sett aggregerte regnskapstall til vår AI-leverandør. Det overføres <em>ikke</em> firmanavn, org.nr., kontaktpersoner eller navngitte kunder/leverandører — disse anonymiseres eksplisitt i koden før overføring. Kun anonymiserte nøkkeltall (omsetning, driftsresultat, årsresultat o.l.) oversendes. Se punkt 5 om tredjelandsoverføring og databehandleravtalen for full liste over underdatabehandlere.
+        </p>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -277,29 +286,29 @@
         <thead>
           <tr>
             <th>Formål</th>
-            <th>Rettslig grunnlag</th>
+            <th>Rettslig grunnlag (GDPR)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Opprette og administrere brukerkonto for regnskapsførere</td>
-            <td>Avtale (GDPR art. 6 nr. 1 b)</td>
+            <td>Opprette og administrere brukerkonto for regnskapsbyråets ansatte</td>
+            <td>Avtale — art. 6(1)(b)</td>
           </tr>
           <tr>
             <td>Koble til regnskapssystemer og hente finansdata</td>
-            <td>Avtale / berettiget interesse (art. 6 nr. 1 b og f)</td>
+            <td>Avtale / berettiget interesse — art. 6(1)(b) og (f)</td>
           </tr>
           <tr>
             <td>Generere og sende finansrapporter til klienter</td>
-            <td>Avtale med regnskapsbyrået (art. 6 nr. 1 b)</td>
+            <td>Avtale med regnskapsbyrået — art. 6(1)(b)</td>
           </tr>
           <tr>
             <td>Oppbevare fakturerings- og transaksjonsdata</td>
-            <td>Rettslig forpliktelse — bokføringsloven (art. 6 nr. 1 c)</td>
+            <td>Rettslig forpliktelse — bokføringsloven — art. 6(1)(c)</td>
           </tr>
           <tr>
             <td>Teknisk drift, sikkerhet og feilsøking</td>
-            <td>Berettiget interesse (art. 6 nr. 1 f)</td>
+            <td>Berettiget interesse — art. 6(1)(f)</td>
           </tr>
         </tbody>
       </table>
@@ -309,38 +318,37 @@
 
     <!-- 4 -->
     <div class="section">
-      <h2>4. Underleverandører</h2>
+      <h2>4. Oppbevaringstid</h2>
       <p>
-        Vi benytter følgende underleverandører for å levere tjenesten. Alle er bundet av databehandleravtaler i tråd med GDPR.
+        Vi lagrer personopplysninger kun så lenge det er nødvendig for formålet de ble innsamlet for.
       </p>
       <table>
         <thead>
           <tr>
-            <th>Leverandør</th>
-            <th>Funksjon</th>
-            <th>Region</th>
+            <th>Datakategori</th>
+            <th>Lagringstid</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Supabase</td>
-            <td>Database og autentisering</td>
-            <td>EU (Frankfurt)</td>
+            <td>Brukerkontodata (navn, e-post, sesjonsdata)</td>
+            <td>Så lenge kontoen er aktiv. Slettes innen 90 dager etter bekreftet avslutning av avtaleforholdet.</td>
           </tr>
           <tr>
-            <td>Vercel</td>
-            <td>Frontend-hosting</td>
-            <td>EU (Frankfurt)</td>
+            <td>Finansdata-snapshot (innhentet fra regnskapssystem under rapportgenerering)</td>
+            <td>Mellomlagres under rapportgenereringen. Dataene slettes fra arbeidsminnet etter at rapporten er generert; de inngår deretter kun som grunnlag for den lagrede rapporten.</td>
           </tr>
           <tr>
-            <td>Resend</td>
-            <td>E-postutsendelse av rapporter</td>
-            <td>EU</td>
+            <td>Genererte PDF-rapporter</td>
+            <td>Lagres i inntil 12 måneder for historikk og gjenbruk, med mindre kortere frist avtales i databehandleravtalen.</td>
           </tr>
           <tr>
-            <td>Anthropic</td>
-            <td>AI-generering av rapportkommentarer</td>
-            <td>USA (se seksjon 5)</td>
+            <td>Fakturerings- og transaksjonsdata</td>
+            <td>5 år i henhold til bokføringsloven § 13.</td>
+          </tr>
+          <tr>
+            <td>Tekniske logger (feillogg)</td>
+            <td>Inntil 90 dager, deretter automatisk sletting.</td>
           </tr>
         </tbody>
       </table>
@@ -351,38 +359,53 @@
     <!-- 5 -->
     <div class="section">
       <h2>5. Overføring til tredjeland</h2>
+      <p>
+        Vår primære datalagring skjer innenfor EØS. For generering av AI-kommentarer overføres anonymiserte aggregerte regnskapstall til en leverandør i USA:
+      </p>
       <div class="highlight-box">
         <p>
-          For å generere en kort, oppsummerende tekst i rapporten overføres utvalgte finansielle nøkkeltall — sammen med klientforetakets navn — til <strong>Anthropic, Inc. (USA)</strong>. Navn på klientens kunder og leverandører anonymiseres og overføres ikke. Overføringen er avgrenset til det som er nødvendig for å produsere oppsummeringen, dataene lagres ikke av Anthropic etter at svaret er returnert, og de brukes ikke til trening av modeller. Overføringen skjer på grunnlag av EUs standardavtalevilkår (SCCs) i henhold til GDPR art. 46 nr. 2 c, som sikrer tilstrekkelige garantier for vern av personopplysningene.
+          For å generere en kort oppsummerende tekst i rapporten oversendes et begrenset sett anonymiserte finansielle nøkkeltall til en underdatabehandler (AI-leverandør) lokalisert i USA. Det overføres <em>ikke</em> firmanavn, org.nr., kontaktpersoner eller navngitte kunder/leverandører. Dataene lagres ikke av leverandøren etter at svaret er returnert, og brukes ikke til modelltrening. Overføringen skjer på grunnlag av EUs standardavtalevilkår (SCCs, Module 3 — processor-to-processor) i henhold til GDPR art. 46(2)(c), og leverandøren har gjennomført en Transfer Impact Assessment (TIA). Se Databehandleravtalen for leverandørens fulle navn og kontaktinformasjon.
         </p>
       </div>
+      <p style="margin-top: 1rem;">
+        En fullstendig liste over alle underdatabehandlere, inkludert region og overføringsgrunnlag, finnes i <a href="databehandleravtale.html">Databehandleravtalen</a>.
+      </p>
     </div>
 
     <div class="divider"></div>
 
     <!-- 6 -->
     <div class="section">
-      <h2>6. Oppbevaringstid</h2>
+      <h2>6. Dine rettigheter</h2>
+      <p>
+        Som registrert har du etter GDPR følgende rettigheter:
+      </p>
       <ul>
-        <li><strong style="color: var(--text);">Brukerkontodata</strong> — oppbevares så lenge kontoen er aktiv, og slettes innen 90 dager etter at kontrakten er avsluttet og sletting er bekreftet.</li>
-        <li><strong style="color: var(--text);">Finansdata (klientdata)</strong> — mellomlagres kun under rapportgenereringen og slettes umiddelbart etter at rapporten er sendt. Genererte PDF-rapporter lagres i inntil 12 måneder for historikk og gjenbruk, med mindre kortere frist avtales.</li>
-        <li><strong style="color: var(--text);">Fakturerings- og transaksjonsdata</strong> — oppbevares i 5 år i henhold til bokføringsloven § 13.</li>
+        <li><strong style="color: var(--text);">Innsyn (art. 15)</strong> — du kan be om kopi av opplysninger vi har om deg</li>
+        <li><strong style="color: var(--text);">Retting (art. 16)</strong> — du kan kreve at uriktige opplysninger korrigeres</li>
+        <li><strong style="color: var(--text);">Sletting (art. 17)</strong> — «retten til å bli glemt», der vilkårene er oppfylt</li>
+        <li><strong style="color: var(--text);">Begrensning (art. 18)</strong> — du kan kreve at behandlingen begrenses i visse tilfeller</li>
+        <li><strong style="color: var(--text);">Dataportabilitet (art. 20)</strong> — du kan motta egne data i et maskinlesbart format</li>
+        <li><strong style="color: var(--text);">Innsigelse (art. 21)</strong> — du kan protestere mot behandling basert på berettiget interesse</li>
       </ul>
+      <p style="margin-top: 1rem;">
+        Brukerkontoen din — inkludert tilhørende data — kan eksporteres eller slettes på forespørsel. Send e-post til <a href="mailto:tor.andre.larsen@larsendigitalsolutions.no">tor.andre.larsen@larsendigitalsolutions.no</a>, så behandler vi henvendelsen innen 30 dager.
+      </p>
+      <p>
+        Merk: Dersom du er klient hos et regnskapsbyrå som bruker Rapportly, er byrået behandlingsansvarlig for dine opplysninger, og du bør primært henvende deg til dem.
+      </p>
+      <p>
+        <strong>Automatisert beslutningstaking:</strong> Rapportly benytter ikke automatisert beslutningstaking eller profilering som har rettslig virkning eller på tilsvarende måte i betydelig grad påvirker deg, jf. GDPR art. 22.
+      </p>
     </div>
 
     <div class="divider"></div>
 
     <!-- 7 -->
     <div class="section">
-      <h2>7. Dine rettigheter</h2>
+      <h2>7. Sikkerhetsbrudd</h2>
       <p>
-        Som registrert har du etter GDPR rett til innsyn i egne opplysninger, retting av uriktige opplysninger, sletting («retten til å bli glemt»), begrensning av behandling, dataportabilitet og innsigelse mot behandling basert på berettiget interesse.
-      </p>
-      <p>
-        Kontoen din — inkludert tilhørende data — kan eksporteres eller slettes på forespørsel. Send en e-post til <a href="mailto:post@rapportly.no">post@rapportly.no</a>, så behandler vi henvendelsen innen 30 dager.
-      </p>
-      <p>
-        Dersom du mener vi behandler personopplysninger i strid med GDPR, kan du klage til <a href="https://www.datatilsynet.no" target="_blank" rel="noopener">Datatilsynet</a>.
+        Ved et sikkerhetsbrudd som kan innebære risiko for de registrerte, vil Larsen Digital Solutions varsle berørte regnskapsbyråer (behandlingsansvarlige) uten ugrunnet opphold, og senest innen 48 timer etter at vi er blitt kjent med bruddet, jf. GDPR art. 33–34 og Databehandleravtalen pkt. 8. Byråene er selv ansvarlige for videre varsling til Datatilsynet innen 72 timer (art. 33) og til sine klienter der det er nødvendig (art. 34).
       </p>
     </div>
 
@@ -390,15 +413,29 @@
 
     <!-- 8 -->
     <div class="section">
-      <h2>8. Kontakt</h2>
+      <h2>8. Klagerett</h2>
       <p>
-        Spørsmål om personvern rettes til:
+        Dersom du mener vi behandler personopplysninger i strid med GDPR, kan du klage til <a href="https://www.datatilsynet.no" target="_blank" rel="noopener">Datatilsynet</a> (datatilsynet.no). Vi oppfordrer deg likevel til å ta kontakt med oss først, slik at vi kan løse eventuelle misforståelser direkte.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 9 -->
+    <div class="section">
+      <h2>9. Kontakt</h2>
+      <p>
+        Spørsmål om personvern og utøvelse av rettigheter rettes til:
       </p>
       <div class="info-box">
         <div class="info-row">
           <div class="info-item">
+            <span class="info-label">Ansvarlig</span>
+            <span class="info-value">Tor Andre Larsen, Larsen Digital Solutions</span>
+          </div>
+          <div class="info-item">
             <span class="info-label">E-post</span>
-            <span class="info-value"><a href="mailto:post@rapportly.no">post@rapportly.no</a></span>
+            <span class="info-value"><a href="mailto:tor.andre.larsen@larsendigitalsolutions.no">tor.andre.larsen@larsendigitalsolutions.no</a></span>
           </div>
         </div>
       </div>
@@ -419,11 +456,11 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <span class="footer-copy">&copy; 2026 Rapportly · Larsen Digital Solutions</span>
+        <span class="footer-copy">&copy; 2026 Rapportly &middot; Larsen Digital Solutions</span>
         <div class="footer-legal">
-          <a href="/personvern">Personvernerklæring</a>
-          <a href="/databehandleravtale">Databehandleravtale</a>
-          <a href="/tjenestevilkar">Tjenestevilkår</a>
+          <a href="personvern.html">Personvernerklæring</a>
+          <a href="databehandleravtale.html">Databehandleravtale</a>
+          <a href="tjenestevilkar.html">Tjenestevilkår</a>
         </div>
       </div>
     </footer>
