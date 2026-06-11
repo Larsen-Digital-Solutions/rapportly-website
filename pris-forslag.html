@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapportly — prising (forslag)</title>
+<style>@font-face{font-family:'Figtree';src:url('/fonts/figtree.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}</style>
+<style>
+  :root{
+    --bg:oklch(97.5% 0.005 230); --surface:oklch(99.5% 0.003 230);
+    --text:oklch(16% 0.008 240); --text-muted:oklch(50% 0.012 240); --text-subtle:oklch(68% 0.008 240);
+    --border:oklch(87% 0.008 240); --primary:oklch(26% 0.10 262);
+    --accent:oklch(58% 0.22 260); --accent-hover:oklch(52% 0.22 260); --accent-light:oklch(94% 0.05 262);
+    --r:12px; --r-lg:18px;
+    --ease:cubic-bezier(0.16,1,0.3,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Figtree',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+  /* ── top band + nav (kontekst) ── */
+  .band{background:linear-gradient(180deg,oklch(22% .09 262),oklch(26% .10 262));padding:1.5rem 0 5rem}
+  .nav{max-width:1180px;margin:0 auto;background:linear-gradient(180deg,oklch(30% .08 260),oklch(26% .09 262));
+       border:1px solid oklch(40% .08 258);border-radius:9999px;display:flex;align-items:center;gap:1.5rem;
+       padding:.55rem .65rem .55rem 1.6rem;box-shadow:0 18px 40px oklch(20% .1 262/.4)}
+  .brand{font-weight:800;font-size:1.18rem;letter-spacing:-.03em;color:#fff;margin-right:auto}
+  .brand b{color:var(--accent)}
+  .nav a{color:oklch(82% .03 255);font-size:.92rem;font-weight:500;text-decoration:none}
+  .nav a:hover{color:#fff}
+  .nav .login{color:oklch(82% .03 255)}
+  .nav .demo{background:#fff;color:var(--primary);font-weight:700;padding:.62rem 1.3rem;border-radius:9999px}
+
+  /* ── pricing section ── */
+  .pricing{max-width:1300px;margin:-3.5rem auto 0;padding:0 6rem 8rem;display:grid;grid-template-columns:.92fr 1.08fr;gap:6rem;align-items:start}
+
+  .p-left{padding-top:5rem}
+  .p-left h2{font-size:clamp(2.4rem,3.6vw,3.6rem);font-weight:900;letter-spacing:-.05em;line-height:1.04}
+  .p-left p{font-size:1.0625rem;color:var(--text-muted);line-height:1.7;margin-top:1.15rem;max-width:40ch}
+  .p-note{margin-top:2rem;font-size:.94rem;color:var(--text-muted)}
+  .p-note a{color:var(--accent);font-weight:600;text-decoration:none}
+  .p-note a:hover{color:var(--accent-hover)}
+  .p-roi{margin-top:2rem;padding:1.5rem 1.75rem;background:var(--accent-light);border-radius:var(--r);border:1px solid oklch(80% .09 262)}
+  .p-roi p{font-size:1.0625rem;color:var(--text);line-height:1.75;margin:0;max-width:none}
+  .p-roi strong{color:var(--accent);font-weight:800}
+
+  /* ── tier card ── */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:24px;overflow:hidden;
+        box-shadow:0 32px 80px oklch(26% .10 262/.16),0 8px 20px oklch(0% 0 0/.07)}
+  .card-head{background:var(--primary);padding:2.3rem 2.4rem 2rem;position:relative;overflow:hidden}
+  .card-head::before{content:'';position:absolute;top:-50%;right:-25%;width:70%;height:200%;
+        background:radial-gradient(ellipse,oklch(40% .14 260/.45) 0%,transparent 60%);pointer-events:none}
+  .eyebrow{position:relative;z-index:1;font-size:.72rem;font-weight:700;letter-spacing:.18em;color:oklch(70% .08 258);text-transform:uppercase}
+  .from{position:relative;z-index:1;display:flex;align-items:baseline;gap:.45rem;margin-top:.7rem}
+  .from-num{font-size:3.5rem;font-weight:900;letter-spacing:-.05em;color:oklch(97% .01 240);line-height:1}
+  .from-unit{font-size:1rem;font-weight:600;color:oklch(72% .05 255)}
+  .from-sub{position:relative;z-index:1;margin-top:.65rem;font-size:.86rem;color:oklch(66% .05 255)}
+
+  .card-body{padding:1.4rem 1.6rem 1.8rem}
+  .tiers{list-style:none}
+  .tier{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;padding:.95rem 1rem;border-radius:var(--r);
+        position:relative;transition:background 160ms var(--ease)}
+  .tier:hover{background:oklch(96% .006 240)}
+  .tier + .tier{margin-top:.15rem}
+  .t-name{font-weight:700;font-size:1.02rem}
+  .t-meta{display:block;font-size:.84rem;color:var(--text-subtle);margin-top:.12rem}
+  .t-price{font-weight:800;font-size:1.28rem;letter-spacing:-.02em;white-space:nowrap}
+  .t-price small{font-weight:600;font-size:.8rem;color:var(--text-muted);margin-left:.18rem}
+  .t-contact{font-weight:700;font-size:.95rem;color:var(--accent)}
+
+  .tier--hot{background:var(--accent-light);border:1px solid oklch(84% .07 262)}
+  .tier--hot:hover{background:var(--accent-light)}
+  .t-badge{position:absolute;top:-.62rem;right:1rem;background:var(--accent);color:#fff;font-size:.64rem;font-weight:700;
+        letter-spacing:.06em;text-transform:uppercase;padding:.2rem .55rem;border-radius:9999px}
+
+  .incl{margin:1.5rem .4rem 0;padding-top:1.5rem;border-top:1px solid var(--border)}
+  .incl-title{font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)}
+  .incl-list{list-style:none;margin-top:.9rem;display:grid;grid-template-columns:1fr 1fr;gap:.55rem 1rem}
+  .incl-list li{display:flex;align-items:flex-start;gap:.5rem;font-size:.9rem;color:var(--text);line-height:1.35}
+  .incl-list li::before{content:'';flex:0 0 16px;height:16px;margin-top:.12rem;border-radius:50%;
+        background:var(--accent-light) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b5bdb' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/10px no-repeat}
+
+  .cta{display:block;text-align:center;margin:1.6rem .4rem 0;background:var(--accent);color:#fff;font-weight:700;font-size:1rem;
+        padding:.95rem;border-radius:9999px;text-decoration:none;transition:background 160ms var(--ease),transform 160ms var(--ease)}
+  .cta:hover{background:var(--accent-hover);transform:translateY(-1px)}
+  .foot{text-align:center;margin:.95rem .4rem 0;font-size:.82rem;color:var(--text-subtle)}
+
+  /* reveal */
+  .rev{opacity:0;transform:translateY(14px);animation:rise .8s var(--ease) forwards}
+  .rev.d1{animation-delay:.12s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  @media(max-width:980px){
+    .pricing{grid-template-columns:1fr;gap:3rem;padding:0 1.25rem 4rem;margin-top:-2rem}
+    .p-left{padding-top:3rem}
+    .nav{margin:0 1rem;gap:1rem;flex-wrap:wrap}
+    .nav .hide{display:none}
+  }
+</style>
+</head>
+<body>
+
+  <div class="band">
+    <nav class="nav">
+      <span class="brand"><b>R</b>apportly</span>
+      <a class="hide" href="#">Slik fungerer det</a>
+      <a class="hide" href="#">Priser</a>
+      <a class="hide" href="#">Kontakt</a>
+      <a class="login" href="#">Logg inn</a>
+      <a class="demo" href="#">Book gratis demo</a>
+    </nav>
+  </div>
+
+  <section class="pricing">
+    <div class="p-left rev">
+      <h2>Enkel,<br>forutsigbar<br>prising</h2>
+      <p>Du betaler for <strong>klientene du rapporterer på</strong> — ikke per bruker. Ubegrenset brukere i alle pakker, så hele byrået kan logge inn uten å koste mer.</p>
+      <div class="p-roi">
+        <p>3 timer × 50 klienter × 700 kr/time = <strong>105 000 kr</strong> spart hver måned.<br>Rapportly Vekst koster <strong>1 490 kr</strong>.</p>
+      </div>
+      <p class="p-note">Stort byrå med 150+ rapporter? <a href="#">Ta kontakt for Stor-pris.</a></p>
+    </div>
+
+    <div class="rev d1">
+      <div class="card">
+        <div class="card-head">
+          <span class="eyebrow">Priser</span>
+          <div class="from"><span class="from-num">Fra 790</span><span class="from-unit">kr / mnd</span></div>
+          <p class="from-sub">Ubegrenset brukere · du betaler per klient, ikke per innlogging</p>
+        </div>
+        <div class="card-body">
+          <ul class="tiers">
+            <li class="tier">
+              <div><span class="t-name">Start</span><span class="t-meta">Inntil 25 klienter</span></div>
+              <span class="t-price">790<small>kr</small></span>
+            </li>
+            <li class="tier tier--hot">
+              <span class="t-badge">Mest populær</span>
+              <div><span class="t-name">Vekst</span><span class="t-meta">Inntil 60 klienter</span></div>
+              <span class="t-price">1 490<small>kr</small></span>
+            </li>
+            <li class="tier">
+              <div><span class="t-name">Pluss</span><span class="t-meta">Inntil 100 klienter</span></div>
+              <span class="t-price">2 490<small>kr</small></span>
+            </li>
+            <li class="tier">
+              <div><span class="t-name">Stor</span><span class="t-meta">100+ klienter</span></div>
+              <span class="t-contact">Ta kontakt</span>
+            </li>
+          </ul>
+
+          <div class="incl">
+            <p class="incl-title">Alt inkludert i alle pakker</p>
+            <ul class="incl-list">
+              <li>White-label: byråets logo &amp; farger</li>
+              <li>Ubegrenset brukere</li>
+              <li>Automatisk generering &amp; levering</li>
+              <li>Alle maler &amp; forsider</li>
+              <li>PowerOffice Go-integrasjon</li>
+              <li>Tripletex-integrasjon</li>
+            </ul>
+          </div>
+
+          <a href="#" class="cta">Prøv gratis i 14 dager</a>
+          <p class="foot">Ingen oppstartskostnad · ingen bindingstid · avslutt når som helst</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
