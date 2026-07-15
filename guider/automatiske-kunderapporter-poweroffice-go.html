@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatiske kunderapporter i PowerOffice Go – komplett guide (2026)</title>
+  <meta name="description" content="Slik lager du profesjonelle, automatiske måneds-, kvartals- og årsrapporter til kundene rett fra PowerOffice Go – i byråets eget design, med nøkkeltall og AI-kommentarer, sendt med ett klikk.">
+  <meta name="keywords" content="PowerOffice Go rapporter, kunderapport PowerOffice Go, automatiske månedsrapporter, klientrapportering regnskapsbyrå, rapporteringsverktøy regnskap, AI regnskapskommentar, Tripletex rapportering">
+  <link rel="canonical" href="https://rapportly.no/guider/automatiske-kunderapporter-poweroffice-go">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Automatiske kunderapporter i PowerOffice Go – komplett guide">
+  <meta property="og:description" content="Slik lager du profesjonelle, automatiske måneds-, kvartals- og årsrapporter til kundene rett fra PowerOffice Go – i byråets eget design, med nøkkeltall og AI-kommentarer.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rapportly.no/guider/automatiske-kunderapporter-poweroffice-go">
+  <meta property="og:image" content="https://rapportly.no/og-image.png">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:site_name" content="Rapportly">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Automatiske kunderapporter i PowerOffice Go – komplett guide">
+  <meta name="twitter:description" content="Slik lager du profesjonelle, automatiske måneds-, kvartals- og årsrapporter til kundene rett fra PowerOffice Go – i byråets eget design, med nøkkeltall og AI-kommentarer.">
+  <meta name="twitter:image" content="https://rapportly.no/og-image.png">
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Automatiske kunderapporter i PowerOffice Go – komplett guide",
+    "description": "Slik lager du profesjonelle, automatiske måneds-, kvartals- og årsrapporter til kundene rett fra PowerOffice Go – i byråets eget design, med nøkkeltall og AI-kommentarer, sendt med ett klikk.",
+    "image": "https://rapportly.no/og-image.png",
+    "author": { "@type": "Organization", "name": "Rapportly", "url": "https://rapportly.no" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Rapportly",
+      "logo": { "@type": "ImageObject", "url": "https://rapportly.no/logo.png" }
+    },
+    "datePublished": "2026-07-15",
+    "dateModified": "2026-07-15",
+    "inLanguage": "nb-NO",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rapportly.no/guider/automatiske-kunderapporter-poweroffice-go" }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Hjem", "item": "https://rapportly.no/" },
+      { "@type": "ListItem", "position": 2, "name": "Automatiske kunderapporter i PowerOffice Go", "item": "https://rapportly.no/guider/automatiske-kunderapporter-poweroffice-go" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Henter Rapportly tallene automatisk fra PowerOffice Go?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Rapportly kobler seg til PowerOffice Go og henter resultat, balanse, nøkkeltall, kontantstrøm og budsjett automatisk via API-et – du slipper manuell eksport og kopiering av tall."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan jeg sende kunderapportene automatisk?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rapportly genererer rapportene automatisk på fast dato og legger dem klare til godkjenning. Du leser gjennom, kvalitetssikrer og sender til kunden med ett klikk. Ingen rapport går ut før du har godkjent den."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan jeg tilpasse design og logo på rapportene?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Rapportene bruker byråets logo, farger og forside gjennomgående, og du styrer hvilke seksjoner som er med og rekkefølgen. Rapportene ser ut som byrået har laget dem selv."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Fungerer det også med Tripletex?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Rapportly kobler seg både til PowerOffice Go og Tripletex, og fremgangsmåten er den samme: tallene hentes automatisk, og du får ferdige rapporter i byråets design klare til godkjenning."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hvor mye tid sparer et byrå på automatiske kunderapporter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Å sette sammen en merket kunderapport for hånd tar fort 2–4 timer per klient hver måned. Med Rapportly faller det til noen minutter – tallene hentes automatisk, og du bruker tiden på rådgivning i stedet for tallknusing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hva koster Rapportly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rapportly priser etter antall klienter du rapporterer på – ikke per bruker. Fra 1 490 kr/mnd for inntil 25 klienter, med ubegrenset antall brukere inkludert. Ingen oppstartskostnad og ingen bindingstid."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>@font-face{font-family:'Figtree';src:url('/fonts/figtree.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}</style>
+  <style>
+    :root {
+      --bg:           oklch(97.5% 0.005 230);
+      --surface:      oklch(99.5% 0.003 230);
+      --surface-2:    oklch(94.5% 0.008 235);
+      --text:         oklch(16%   0.008 240);
+      --text-muted:   oklch(40%   0.012 240);
+      --text-subtle:  oklch(55%   0.008 240);
+      --border:       oklch(87%   0.008 240);
+      --primary:      oklch(26%   0.10  262);
+      --accent:       oklch(58%   0.22  260);
+      --accent-hover: oklch(52%   0.22  260);
+      --accent-light: oklch(94%   0.05  262);
+      --ink:          oklch(20%   0.08  258);
+      --r-sm: 6px; --r: 12px; --r-lg: 18px; --r-xl: 26px;
+      --shadow-sm: 0 1px 3px oklch(0% 0 0/.06), 0 1px 2px oklch(0% 0 0/.04);
+      --shadow:    0 4px 16px oklch(0% 0 0/.07), 0 2px 4px oklch(0% 0 0/.04);
+      --shadow-lg: 0 24px 64px oklch(0% 0 0/.14), 0 6px 16px oklch(0% 0 0/.07);
+      --ease: cubic-bezier(0.16,1,0.3,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Figtree', system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav-wrap { position: sticky; top: 0; z-index: 100; display: flex; justify-content: center; padding: 1rem 1.5rem; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+      width: 100%; max-width: 1040px;
+      background: oklch(20% 0.08 258 / 0.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid oklch(35% 0.08 258); border-radius: 9999px;
+      padding: .6rem .7rem .6rem 1.4rem;
+      box-shadow: 0 4px 24px oklch(0% 0 0/.20);
+    }
+    .nav-logo img { height: 26px; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; margin-left: auto; }
+    .nav-links a { color: oklch(90% 0.02 258); font-size: .9rem; font-weight: 500; transition: color 160ms var(--ease); }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      font-size: .875rem; font-weight: 700; color: #fff;
+      background: var(--accent); padding: .55rem 1.35rem; border-radius: 9999px;
+      box-shadow: 0 2px 16px oklch(58% .22 260/.3);
+      transition: background 160ms var(--ease), transform 160ms var(--ease);
+    }
+    .nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    /* LAYOUT */
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+    main { padding: 2.5rem 0 4rem; }
+
+    .breadcrumb { font-size: .85rem; color: var(--text-subtle); margin-bottom: 2rem; }
+    .breadcrumb a { color: var(--accent); font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .eyebrow { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    h1 { font-size: clamp(2rem, 1.4rem + 3vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.1rem; }
+    .lead { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1.75rem; }
+    .byline { font-size: .85rem; color: var(--text-subtle); padding-bottom: 2rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+
+    article h2 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 1.9rem); font-weight: 800; letter-spacing: -0.015em; margin: 2.75rem 0 1rem; }
+    article h3 { font-size: 1.2rem; font-weight: 700; margin: 1.75rem 0 .6rem; }
+    article p { margin-bottom: 1.1rem; color: oklch(24% 0.01 240); }
+    article ul, article ol { margin: 0 0 1.3rem 1.25rem; }
+    article li { margin-bottom: .55rem; color: oklch(24% 0.01 240); }
+    article strong { font-weight: 700; color: var(--text); }
+    article a { color: var(--accent); font-weight: 600; }
+    article a:hover { text-decoration: underline; }
+
+    .tldr {
+      background: var(--accent-light); border: 1px solid oklch(85% 0.05 262);
+      border-radius: var(--r-lg); padding: 1.5rem 1.75rem; margin: 0 0 2.5rem;
+    }
+    .tldr h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .75rem; color: var(--primary); }
+    .tldr ul { margin: 0 0 0 1.1rem; }
+    .tldr li { margin-bottom: .5rem; }
+
+    .checklist { list-style: none; margin-left: 0; }
+    .checklist li { position: relative; padding-left: 1.9rem; }
+    .checklist li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 800; }
+
+    .steps { list-style: none; counter-reset: s; margin-left: 0; }
+    .steps > li { position: relative; padding-left: 3rem; margin-bottom: 1.4rem; }
+    .steps > li::before {
+      counter-increment: s; content: counter(s, decimal-leading-zero);
+      position: absolute; left: 0; top: -2px; font-weight: 800; font-size: .95rem;
+      color: var(--accent); background: var(--accent-light);
+      width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+    .steps > li strong { display: block; margin-bottom: .15rem; }
+
+    .cta {
+      margin: 3.5rem 0 0; background: var(--ink); color: #fff;
+      border-radius: var(--r-xl); padding: 2.75rem 2rem; text-align: center;
+    }
+    .cta h2 { color: #fff; margin: 0 0 .6rem; }
+    .cta p { color: oklch(85% 0.02 258); margin: 0 auto 1.6rem; max-width: 34rem; }
+    .cta-btn {
+      display: inline-flex; align-items: center; font-size: 1rem; font-weight: 700; color: #fff;
+      background: var(--accent); padding: .95rem 2.1rem; border-radius: 9999px;
+      box-shadow: 0 2px 20px oklch(58% .22 260/.4); transition: background 160ms var(--ease), transform 200ms var(--ease);
+    }
+    .cta-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+    .callout { background: var(--surface-2); border-radius: var(--r-lg); padding: 1.25rem 1.5rem; margin: 2rem 0 0; font-size: .98rem; }
+
+    details.faq { border-bottom: 1px solid var(--border); padding: 0; }
+    details.faq summary { cursor: pointer; list-style: none; padding: 1.1rem 0; font-weight: 700; font-size: 1.05rem; display: flex; justify-content: space-between; gap: 1rem; }
+    details.faq summary::-webkit-details-marker { display: none; }
+    details.faq summary::after { content: "+"; color: var(--accent); font-weight: 700; }
+    details.faq[open] summary::after { content: "–"; }
+    details.faq p { padding: 0 0 1.2rem; margin: 0; color: var(--text-muted); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 0; margin-top: 4rem; }
+    .footer-in { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .footer-logo img { height: 24px; }
+    .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-nav a { color: var(--text-muted); font-size: .9rem; }
+    .footer-nav a:hover { color: var(--text); }
+    .footer-copy { width: 100%; font-size: .82rem; color: var(--text-subtle); padding-top: 1.25rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a href="/" class="nav-logo" aria-label="Rapportly – til forsiden"><img src="/logo.png" alt="Rapportly"></a>
+      <div class="nav-links">
+        <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/#priser">Priser</a>
+        <a href="/#kontakt">Kontakt</a>
+      </div>
+      <a href="/#kontakt" class="nav-cta">Book gratis demo</a>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <nav class="breadcrumb" aria-label="Brødsmulesti">
+      <a href="/">Hjem</a> &nbsp;/&nbsp; <span>Automatiske kunderapporter i PowerOffice Go</span>
+    </nav>
+
+    <article>
+      <span class="eyebrow">Guide for regnskapsbyrå</span>
+      <h1>Automatiske kunderapporter i PowerOffice Go</h1>
+      <p class="lead">Rapportly henter tallene dine direkte fra <strong>PowerOffice Go</strong> og lager profesjonelle, ferdig-designede <strong>kunderapporter</strong> automatisk — måneds-, kvartals- og årsrapporter i byråets eget uttrykk, som du sender til kunden med ett klikk etter en rask gjennomlesning. Denne guiden viser hvordan du setter det opp.</p>
+      <p class="byline">Skrevet av Rapportly · Oppdatert 15. juli 2026 · 5 min lesetid</p>
+
+      <div class="tldr">
+        <h2>Kort oppsummert</h2>
+        <ul>
+          <li>Rapportly kobler seg <strong>direkte til PowerOffice Go</strong> (og Tripletex) og henter tallene automatisk — ingen manuell eksport.</li>
+          <li>Du får profesjonelle kunderapporter i <strong>to formater</strong>, i byråets eget design, med nøkkeltall og AI-genererte kommentarer.</li>
+          <li>Rapportene <strong>genereres automatisk</strong> på fast dato — du leser gjennom og <strong>sender med ett klikk</strong>.</li>
+        </ul>
+      </div>
+
+      <h2>Rett fra PowerOffice Go — uten manuell eksport</h2>
+      <p>Rapportly kobler seg direkte til PowerOffice Go og henter tallene automatisk via API-et. Du slipper å eksportere til Excel, lime inn i maler eller kopiere tall mellom systemer. Resultatregnskap, balanse, nøkkeltall, kontantstrøm og budsjett hentes og settes sammen for deg — riktig hver gang, klart til å bli en ferdig kunderapport.</p>
+      <p>Det er den samme koblingen som gjør at rapportene alltid er oppdatert: hver gang en rapport genereres, hentes ferske tall fra PowerOffice Go.</p>
+
+      <h2>Profesjonelle rapporter i byråets eget design</h2>
+      <p>Rapportene bærer byråets logo, farger og forside gjennomgående — de ser ut som om dere har laget dem selv, ikke som et generisk systemutdrag. Du bestemmer hvilke seksjoner som skal med, rekkefølgen på dem, og hvordan tallene presenteres. Resultatet er en rapport kunden faktisk vil åpne, lese og bruke til å ta beslutninger.</p>
+
+      <h2>Hva en god kunderapport inneholder</h2>
+      <p>En fullverdig <strong>månedsrapport</strong> (eller kvartals- og årsrapport) fra Rapportly kan inkludere:</p>
+      <ul class="checklist">
+        <li><strong>Kort sammendrag</strong> — det viktigste øverst, i klartekst.</li>
+        <li><strong>Resultatregnskap</strong> — perioden og hittil i år, mot fjoråret og budsjett.</li>
+        <li><strong>Balanse</strong> — eiendeler, egenkapital og gjeld ved periodeslutt.</li>
+        <li><strong>Nøkkeltall</strong> — likviditetsgrad, soliditet, driftsmargin, arbeidskapital og betalingstid.</li>
+        <li><strong>Kontantstrøm</strong> — hvor pengene faktisk gikk.</li>
+        <li><strong>Budsjett mot faktisk</strong> — avvik verdt å kommentere.</li>
+        <li><strong>Kommentar</strong> — en forklaring kunden forstår, ikke bare tall.</li>
+        <li><strong>Byråets design</strong> — logo, farger og en profesjonell forside.</li>
+      </ul>
+      <p>Du velger selv hvilke seksjoner hver kunde skal ha.</p>
+
+      <h2>To rapportformater: standard og forenklet</h2>
+      <p>Samme tall, to helt ulike lesere. Rapportly lager begge fra samme datagrunnlag, så du kan gi hver kunde det som passer dem:</p>
+      <ul>
+        <li><strong>Standard rapport (fullstendig)</strong> — full regnskapsdetalj: resultatregnskap, balanse, nøkkeltall, kontantstrøm, budsjett mot faktisk og aldersfordelte reskontroer. For kunder, daglig ledere og styrer som vil ha alle tallene.</li>
+        <li><strong>Forenklet rapport (klientvennlig)</strong> — de samme tallene forklart i klartekst, uten regnskapsjargong og med enkle grafer. Laget for bedriftseiere uten regnskapsbakgrunn, så kunden faktisk forstår hvordan det går.</li>
+      </ul>
+      <p>Du velger format per kunde og per rapport, og begge bruker byråets design gjennomgående. Mange byråer sender det <strong>forenklede</strong> formatet til eieren og <strong>standard</strong>formatet til regnskapsansvarlig eller styret.</p>
+
+      <h2>Automatisk generering — sendt med ett klikk etter gjennomlesning</h2>
+      <p>Dette er kjernen i Rapportly. Du setter opp rapporten én gang, og lar den <strong>genereres automatisk på fast dato</strong> hver periode. Rapportly henter ferske tall fra PowerOffice Go, bygger rapporten og legger den <strong>klar til godkjenning</strong> i innboksen din.</p>
+      <p>Du leser gjennom, kvalitetssikrer, og <strong>sender til kunden med ett klikk</strong>. Ingen rapport går ut før du har godkjent den — du har alltid siste ord. Automatikken tar grovarbeidet; den faglige kontrollen er din.</p>
+
+      <h2>AI-genererte kommentarer klientene forstår</h2>
+      <p>Den mest tidkrevende delen av en kunderapport er ofte ikke tallene, men å <em>forklare</em> dem. Rapportly lager et <strong>førsteutkast til regnskapskommentaren automatisk</strong>, basert på tallene i perioden — utvikling i resultat, likviditet, marginer og budsjettavvik, i nøktern norsk fagtone. Du finpusser og godkjenner. Av personvernhensyn sendes kundenavn aldri til AI-en.</p>
+
+      <h2>Slik kommer du i gang</h2>
+      <ol class="steps">
+        <li><strong>Koble til PowerOffice Go</strong> Du kobler klienten til med noen klikk. Rapportly henter tallene direkte via API-et — ingen manuell eksport.</li>
+        <li><strong>Velg oppsett</strong> Rapporttype (måned, kvartal, tertial, halvår eller år), format og hvilke seksjoner som skal med. Byråets design ligger inne fra start.</li>
+        <li><strong>La den gå automatisk</strong> Rapporten genereres på fast dato hver periode og legges klar til godkjenning.</li>
+        <li><strong>Les gjennom og send</strong> Kvalitetssikre, juster ved behov, og send til kunden med ett klikk.</li>
+      </ol>
+
+      <div class="callout">Bruker noen av klientene dine Tripletex i stedet? Se <a href="/guider/automatiske-kunderapporter-tripletex">Automatiske kunderapporter i Tripletex</a> — samme flyt, samme rapporter.</div>
+
+      <div class="cta">
+        <h2>Se det på dine egne klienttall</h2>
+        <p>Book en gratis demo, så viser vi deg flyten live — ferdig konfigurert med byråets logo og farger, koblet til PowerOffice Go.</p>
+        <a href="/#kontakt" class="cta-btn">Book gratis demo</a>
+      </div>
+
+      <h2>Ofte stilte spørsmål</h2>
+      <details class="faq">
+        <summary>Henter Rapportly tallene automatisk fra PowerOffice Go?</summary>
+        <p>Ja. Rapportly kobler seg til PowerOffice Go og henter resultat, balanse, nøkkeltall, kontantstrøm og budsjett automatisk via API-et — du slipper manuell eksport og kopiering av tall.</p>
+      </details>
+      <details class="faq">
+        <summary>Kan jeg sende kunderapportene automatisk?</summary>
+        <p>Rapportly genererer rapportene automatisk på fast dato og legger dem klare til godkjenning. Du leser gjennom, kvalitetssikrer og sender til kunden med ett klikk. Ingen rapport går ut før du har godkjent den.</p>
+      </details>
+      <details class="faq">
+        <summary>Kan jeg tilpasse design og logo på rapportene?</summary>
+        <p>Ja. Rapportene bruker byråets logo, farger og forside gjennomgående, og du styrer hvilke seksjoner som er med og rekkefølgen. Rapportene ser ut som byrået har laget dem selv.</p>
+      </details>
+      <details class="faq">
+        <summary>Fungerer det også med Tripletex?</summary>
+        <p>Ja. Rapportly kobler seg både til PowerOffice Go og Tripletex, og fremgangsmåten er den samme: tallene hentes automatisk, og du får ferdige rapporter i byråets design klare til godkjenning.</p>
+      </details>
+      <details class="faq">
+        <summary>Hvor mye tid sparer et byrå på automatiske kunderapporter?</summary>
+        <p>Å sette sammen en merket kunderapport for hånd tar fort 2–4 timer per klient hver måned. Med Rapportly faller det til noen minutter — tallene hentes automatisk, og du bruker tiden på rådgivning i stedet for tallknusing.</p>
+      </details>
+      <details class="faq">
+        <summary>Hva koster Rapportly?</summary>
+        <p>Rapportly priser etter antall klienter du rapporterer på — ikke per bruker. Fra 1 490 kr/mnd for inntil 25 klienter, med ubegrenset antall brukere inkludert. Ingen oppstartskostnad og ingen bindingstid. <a href="/#priser">Se alle priser</a>.</p>
+      </details>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-in">
+      <a href="/" class="footer-logo"><img src="/logo.png" alt="Rapportly"></a>
+      <nav class="footer-nav">
+        <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/#priser">Priser</a>
+        <a href="/#kontakt">Kontakt</a>
+        <a href="/personvern">Personvern</a>
+      </nav>
+      <span class="footer-copy">&copy; 2026 Rapportly · Larsen Digital Solutions</span>
+    </div>
+  </footer>
+
+</body>
+</html>
