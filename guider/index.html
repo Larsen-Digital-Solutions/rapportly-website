@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guider for regnskapsbyrå – rapportering og kunderapporter | Rapportly</title>
+  <meta name="description" content="Praktiske guider for regnskapsbyrå: automatiske kunderapporter, klientrapportering og rapportering fra PowerOffice Go og Tripletex – slik lager du profesjonelle rapporter kundene forstår.">
+  <link rel="canonical" href="https://rapportly.no/guider">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+
+  <meta property="og:title" content="Guider for regnskapsbyrå – rapportering og kunderapporter">
+  <meta property="og:description" content="Praktiske guider for regnskapsbyrå: automatiske kunderapporter og klientrapportering fra PowerOffice Go og Tripletex.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rapportly.no/guider">
+  <meta property="og:image" content="https://rapportly.no/og-image.png">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:site_name" content="Rapportly">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Guider for regnskapsbyrå – rapportering og kunderapporter">
+  <meta name="twitter:description" content="Praktiske guider for regnskapsbyrå: automatiske kunderapporter og klientrapportering fra PowerOffice Go og Tripletex.">
+  <meta name="twitter:image" content="https://rapportly.no/og-image.png">
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Hjem", "item": "https://rapportly.no/" },
+      { "@type": "ListItem", "position": 2, "name": "Guider", "item": "https://rapportly.no/guider" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: ItemList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Guider for regnskapsbyrå",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url": "https://rapportly.no/guider/automatiske-kunderapporter-poweroffice-go",
+        "name": "Automatiske kunderapporter i PowerOffice Go"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url": "https://rapportly.no/guider/automatiske-kunderapporter-tripletex",
+        "name": "Automatiske kunderapporter i Tripletex"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "url": "https://rapportly.no/guider/hva-bor-en-manedsrapport-inneholde",
+        "name": "Hva bør en månedsrapport til kunden inneholde?"
+      }
+    ]
+  }
+  </script>
+
+  <style>@font-face{font-family:'Figtree';src:url('/fonts/figtree.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}</style>
+  <style>
+    :root {
+      --bg:           oklch(97.5% 0.005 230);
+      --surface:      oklch(99.5% 0.003 230);
+      --surface-2:    oklch(94.5% 0.008 235);
+      --text:         oklch(16%   0.008 240);
+      --text-muted:   oklch(40%   0.012 240);
+      --text-subtle:  oklch(55%   0.008 240);
+      --border:       oklch(87%   0.008 240);
+      --primary:      oklch(26%   0.10  262);
+      --accent:       oklch(58%   0.22  260);
+      --accent-hover: oklch(52%   0.22  260);
+      --accent-light: oklch(94%   0.05  262);
+      --ink:          oklch(20%   0.08  258);
+      --r-sm: 6px; --r: 12px; --r-lg: 18px; --r-xl: 26px;
+      --shadow-sm: 0 1px 3px oklch(0% 0 0/.06), 0 1px 2px oklch(0% 0 0/.04);
+      --shadow:    0 4px 16px oklch(0% 0 0/.07), 0 2px 4px oklch(0% 0 0/.04);
+      --ease: cubic-bezier(0.16,1,0.3,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Figtree', system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav-wrap { position: sticky; top: 0; z-index: 100; display: flex; justify-content: center; padding: 1rem 1.5rem; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+      width: 100%; max-width: 1040px;
+      background: oklch(20% 0.08 258 / 0.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid oklch(35% 0.08 258); border-radius: 9999px;
+      padding: .6rem .7rem .6rem 1.4rem;
+      box-shadow: 0 4px 24px oklch(0% 0 0/.20);
+    }
+    .nav-logo img { height: 26px; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; margin-left: auto; }
+    .nav-links a { color: oklch(90% 0.02 258); font-size: .9rem; font-weight: 500; transition: color 160ms var(--ease); }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      font-size: .875rem; font-weight: 700; color: #fff;
+      background: var(--accent); padding: .55rem 1.35rem; border-radius: 9999px;
+      box-shadow: 0 2px 16px oklch(58% .22 260/.3);
+      transition: background 160ms var(--ease), transform 160ms var(--ease);
+    }
+    .nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    /* LAYOUT */
+    .wrap { max-width: 820px; margin: 0 auto; padding: 0 1.5rem; }
+    main { padding: 2.5rem 0 4rem; }
+
+    .breadcrumb { font-size: .85rem; color: var(--text-subtle); margin-bottom: 2rem; }
+    .breadcrumb a { color: var(--accent); font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .eyebrow { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    h1 { font-size: clamp(2rem, 1.4rem + 3vw, 2.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .lead { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1rem; max-width: 42rem; }
+
+    .guide-grid { display: grid; gap: 1rem; margin: 2.5rem 0 0; }
+    .guide-card {
+      display: block; border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 1.5rem 1.75rem; background: var(--surface);
+      transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease), transform 160ms var(--ease);
+    }
+    .guide-card:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-2px); }
+    .guide-card .tag { font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); }
+    .guide-card h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.01em; margin: .5rem 0 .4rem; color: var(--text); }
+    .guide-card p { margin: 0; color: var(--text-muted); font-size: .98rem; }
+    .guide-card .arrow { display: inline-block; margin-top: .8rem; color: var(--accent); font-weight: 700; font-size: .95rem; }
+
+    .cta {
+      margin: 3.5rem 0 0; background: var(--ink); color: #fff;
+      border-radius: var(--r-xl); padding: 2.5rem 2rem; text-align: center;
+    }
+    .cta h2 { color: #fff; margin: 0 0 .6rem; font-size: 1.6rem; font-weight: 800; }
+    .cta p { color: oklch(85% 0.02 258); margin: 0 auto 1.6rem; max-width: 34rem; }
+    .cta strong { color: #fff; }
+    .cta-btn {
+      display: inline-flex; align-items: center; font-size: 1rem; font-weight: 700; color: #fff;
+      background: var(--accent); padding: .95rem 2.1rem; border-radius: 9999px;
+      box-shadow: 0 2px 20px oklch(58% .22 260/.4); transition: background 160ms var(--ease), transform 200ms var(--ease);
+    }
+    .cta-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 3rem 0; margin-top: 4rem; }
+    .footer-in { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .footer-logo img { height: 24px; }
+    .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-nav a { color: oklch(85% 0.02 258); font-size: .9rem; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-copy { width: 100%; font-size: .82rem; color: oklch(62% 0.03 258); padding-top: 1.25rem; border-top: 1px solid oklch(34% 0.06 258); }
+  </style>
+</head>
+<body>
+
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a href="/" class="nav-logo" aria-label="Rapportly – til forsiden"><img src="/logo.png" alt="Rapportly"></a>
+      <div class="nav-links">
+        <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/guider">Guider</a>
+        <a href="/#priser">Priser</a>
+        <a href="/#kontakt">Kontakt</a>
+      </div>
+      <a href="/#kontakt" class="nav-cta">Book gratis demo</a>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <nav class="breadcrumb" aria-label="Brødsmulesti">
+      <a href="/">Hjem</a> &nbsp;/&nbsp; <span>Guider</span>
+    </nav>
+
+    <span class="eyebrow">Kunnskapsbase</span>
+    <h1>Guider for regnskapsbyrå</h1>
+    <p class="lead">Praktiske guider om klientrapportering og automatiske kunderapporter — hvordan du henter tallene fra regnskapssystemet og leverer profesjonelle rapporter kundene faktisk forstår.</p>
+
+    <div class="guide-grid">
+      <a class="guide-card" href="/guider/automatiske-kunderapporter-poweroffice-go">
+        <span class="tag">PowerOffice Go</span>
+        <h2>Automatiske kunderapporter i PowerOffice Go</h2>
+        <p>Slik henter du tallene direkte fra PowerOffice Go og lager profesjonelle måneds-, kvartals- og årsrapporter i byråets eget design — sendt med ett klikk.</p>
+        <span class="arrow">Les guiden →</span>
+      </a>
+      <a class="guide-card" href="/guider/automatiske-kunderapporter-tripletex">
+        <span class="tag">Tripletex</span>
+        <h2>Automatiske kunderapporter i Tripletex</h2>
+        <p>Slik kobler du Tripletex til Rapportly og lager ferdig-designede kunderapporter automatisk — i to formater, klare til godkjenning og utsending.</p>
+        <span class="arrow">Les guiden →</span>
+      </a>
+      <a class="guide-card" href="/guider/hva-bor-en-manedsrapport-inneholde">
+        <span class="tag">Fagguide</span>
+        <h2>Hva bør en månedsrapport til kunden inneholde?</h2>
+        <p>Byggeklossene i en god månedsrapport, kravene fra GRFS, aldersfordelte lister og nøkkeltall — og hvordan du tilpasser rapporten til mottakeren.</p>
+        <span class="arrow">Les guiden →</span>
+      </a>
+    </div>
+
+    <div class="cta">
+      <h2>Se Rapportly på dine egne klienttall</h2>
+      <p>Book en gratis demo, så viser vi deg flyten live — ferdig satt opp med byråets logo og farger.</p>
+      <a href="/#kontakt" class="cta-btn">Book gratis demo</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-in">
+      <a href="/" class="footer-logo"><img src="/logo.png" alt="Rapportly"></a>
+      <nav class="footer-nav">
+        <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/guider">Guider</a>
+        <a href="/#priser">Priser</a>
+        <a href="/#kontakt">Kontakt</a>
+        <a href="/personvern">Personvern</a>
+      </nav>
+      <span class="footer-copy">&copy; 2026 Rapportly · Larsen Digital Solutions</span>
+    </div>
+  </footer>
+
+</body>
+</html>

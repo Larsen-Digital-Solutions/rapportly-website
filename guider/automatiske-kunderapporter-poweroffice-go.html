@@ -220,6 +220,7 @@
     }
     .cta h2 { color: #fff; margin: 0 0 .6rem; }
     .cta p { color: oklch(85% 0.02 258); margin: 0 auto 1.6rem; max-width: 34rem; }
+    .cta strong { color: #fff; }
     .cta-btn {
       display: inline-flex; align-items: center; font-size: 1rem; font-weight: 700; color: #fff;
       background: var(--accent); padding: .95rem 2.1rem; border-radius: 9999px;
@@ -237,13 +238,13 @@
     details.faq p { padding: 0 0 1.2rem; margin: 0; color: var(--text-muted); }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 2.5rem 0; margin-top: 4rem; }
+    footer { background: var(--ink); padding: 3rem 0; margin-top: 4rem; }
     .footer-in { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; }
     .footer-logo img { height: 24px; }
     .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .footer-nav a { color: var(--text-muted); font-size: .9rem; }
-    .footer-nav a:hover { color: var(--text); }
-    .footer-copy { width: 100%; font-size: .82rem; color: var(--text-subtle); padding-top: 1.25rem; border-top: 1px solid var(--border); }
+    .footer-nav a { color: oklch(85% 0.02 258); font-size: .9rem; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-copy { width: 100%; font-size: .82rem; color: oklch(62% 0.03 258); padding-top: 1.25rem; border-top: 1px solid oklch(34% 0.06 258); }
   </style>
 </head>
 <body>
@@ -253,6 +254,7 @@
       <a href="/" class="nav-logo" aria-label="Rapportly – til forsiden"><img src="/logo.png" alt="Rapportly"></a>
       <div class="nav-links">
         <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/guider">Guider</a>
         <a href="/#priser">Priser</a>
         <a href="/#kontakt">Kontakt</a>
       </div>
@@ -365,6 +367,7 @@
       <a href="/" class="footer-logo"><img src="/logo.png" alt="Rapportly"></a>
       <nav class="footer-nav">
         <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/guider">Guider</a>
         <a href="/#priser">Priser</a>
         <a href="/#kontakt">Kontakt</a>
         <a href="/personvern">Personvern</a>
