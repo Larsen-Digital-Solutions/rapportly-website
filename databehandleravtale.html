@@ -247,7 +247,7 @@
         <li>Administrere brukerkontoer og autentisering for Behandlingsansvarliges ansatte</li>
         <li>Hente finansdata read-only fra tilkoblede regnskapssystemer (Tripletex, PowerOffice Go)</li>
         <li>Generere finansielle rapporter (PDF) og sende disse til Behandlingsansvarliges klienter</li>
-        <li>Generere AI-baserte tekstoppsummeringer basert på anonymiserte aggregerte regnskapstall</li>
+        <li>Generere AI-baserte tekstoppsummeringer basert på pseudonymiserte aggregerte regnskapstall</li>
         <li>Lagre genererte rapporter for historikk og gjenbruk</li>
         <li>Teknisk drift, overvåking og feilsøking av tjenesten</li>
       </ul>
@@ -279,6 +279,9 @@
       <p>
         Dersom Databehandler er forpliktet til å behandle opplysninger etter EU- eller nasjonal rett, skal Databehandler informere Behandlingsansvarlig om dette rettslige kravet, med mindre slik informasjon er forbudt av hensyn til viktige samfunnsinteresser.
       </p>
+      <p>
+        <strong>Behandlingsansvarliges garantier:</strong> Behandlingsansvarlig innestår for at det foreligger gyldig behandlingsgrunnlag etter GDPR art. 6 (og art. 9 der relevant) for all behandling som instrueres, at nødvendig informasjon er gitt til de registrerte, og at alle instrukser er i samsvar med gjeldende lov. Databehandler kan legge til grunn at mottatte instrukser er lovlige.
+      </p>
     </div>
 
     <div class="divider"></div>
@@ -302,10 +305,10 @@
       <ul>
         <li>Kryptering av data i hvile (AES-256) og under overføring (TLS 1.3)</li>
         <li>Row-Level Security (RLS) på alle databasetabeller — byråer kan kun se egne data</li>
-        <li>Multi-faktor autentisering (MFA) for alle brukere</li>
+        <li>Multifaktor-autentisering (MFA) tilbys alle brukerkontoer (obligatorisk håndheving under innføring)</li>
         <li>Kryptert lagring av tilgangsnøkler til regnskapssystemer</li>
         <li>Teknisk filtrering slik at regnskapsdata ikke overføres til feilovervåkingsverktøy</li>
-        <li>Dataminimering ved AI-kall: kun anonymiserte aggregerte tall overføres — ikke firmanavn, org.nr. eller kontaktpersoner</li>
+        <li>Dataminimering ved AI-kall: kun pseudonymiserte aggregerte tall overføres — ikke firmanavn, org.nr. eller kontaktpersoner (kunde-/leverandørnavn erstattes med «Kunde 1 / Leverandør 1»)</li>
         <li>Automatiske sikkerhetsoppdateringer og regelmessig sårbarhetsvurdering</li>
         <li>Datalagring primært i Frankfurt, EU</li>
       </ul>
@@ -340,7 +343,7 @@
     <div class="section">
       <h2>7. Underdatabehandlere (GDPR art. 28(2) og (4))</h2>
       <p>
-        Behandlingsansvarlig gir med aksept av denne Avtalen generell forhåndsgodkjenning til bruk av underdatabehandlerne listet nedenfor. Databehandler pålegger samme datavernforpliktelser overfor sine underdatabehandlere som følger av denne Avtalen, jf. GDPR art. 28(4).
+        Behandlingsansvarlig gir med aksept av denne Avtalen generell forhåndsgodkjenning til bruk av underdatabehandlerne listet nedenfor. Databehandler pålegger samme datavernforpliktelser overfor sine underdatabehandlere som følger av denne Avtalen, jf. GDPR art. 28(4). <strong>Dersom en underdatabehandler ikke oppfyller sine personvernforpliktelser, forblir Databehandler fullt ut ansvarlig overfor Behandlingsansvarlig for oppfyllelsen av disse forpliktelsene</strong>, jf. GDPR art. 28(4).
       </p>
 
       <table>
@@ -367,7 +370,7 @@
           </tr>
           <tr>
             <td>Anthropic, PBC</td>
-            <td>AI-generering av anonymiserte regnskapskommentarer. Mottar kun aggregerte nøkkeltall — ikke firmanavn, org.nr. eller kontaktpersoner.</td>
+            <td>AI-generering av regnskapskommentarer basert på pseudonymiserte nøkkeltall. Mottar kun aggregerte nøkkeltall — ikke firmanavn, org.nr. eller kontaktpersoner.</td>
             <td>USA</td>
             <td>SCCs, Module 3 (GDPR art. 46(2)(c)) + TIA gjennomført</td>
           </tr>
@@ -375,7 +378,7 @@
             <td>Resend Inc.</td>
             <td>E-postutsendelse av rapporter</td>
             <td>USA (sending rutes via eu-west-1-endepunkt)</td>
-            <td>EU-U.S. Data Privacy Framework (art. 45) + SCCs Module 3 (art. 46) som reserve</td>
+            <td>SCCs Module 3 (art. 46(2)(c)) som primært grunnlag, supplert av EU-U.S. Data Privacy Framework (art. 45)</td>
           </tr>
           <tr>
             <td>Functional Software, Inc. (Sentry)</td>
@@ -402,7 +405,7 @@
     <div class="section">
       <h2>8. Bruddvarsling (GDPR art. 33–34)</h2>
       <p>
-        Databehandler varsler Behandlingsansvarlig uten ugrunnet opphold, og senest innen 48 timer etter at Databehandler er blitt kjent med et sikkerhetsbrudd som kan ha konsekvenser for personopplysninger. Varselet skal inneholde:
+        Databehandler varsler Behandlingsansvarlig uten ugrunnet opphold, og normalt innen 48 timer etter at Databehandler er blitt kjent med et sikkerhetsbrudd som kan ha konsekvenser for personopplysninger. Varselet skal inneholde:
       </p>
       <ul>
         <li>En beskrivelse av bruddets art og omfang</li>
@@ -440,7 +443,7 @@
     <div class="section">
       <h2>10. Sletting og tilbakelevering ved opphør</h2>
       <p>
-        Ved avslutning av avtaleforholdet, uavhengig av årsak:
+        Ved avslutning av avtaleforholdet skal Databehandler, <strong>etter Behandlingsansvarliges valg, enten slette eller tilbakelevere</strong> alle personopplysninger, og slette eksisterende kopier, med mindre lagring kreves etter EU- eller nasjonal rett (herunder bokføringsloven). Behandlingsansvarlig angir sitt valg skriftlig innen 14 dager etter avslutning; gjøres ikke noe valg, sletter Databehandler dataene etter fristene nedenfor:
       </p>
       <ul>
         <li>Tilbyr Databehandler Behandlingsansvarlig eksport av alle rapporter og data i JSON/CSV-format innen 14 dager etter avslutningsdato</li>
@@ -459,7 +462,7 @@
     <div class="section">
       <h2>11. Ansvar og ansvarsavgrensning</h2>
       <p>
-        Databehandler er ansvarlig overfor Behandlingsansvarlig for dokumentert tap som direkte skyldes at Databehandler har behandlet personopplysninger i strid med denne Avtalen eller GDPR, i henhold til GDPR art. 82. Databehandlerens ansvar er begrenset til den andel av tapet som Databehandler er direkte skyld i, og kan ikke overstige det Behandlingsansvarlig har betalt i abonnementsgebyr for de siste 3 månedene før det skadevoldende forholdet inntraff — med mindre tapet skyldes Databehandlerens forsett eller grove uaktsomhet, eller slikt tak er i strid med ufravikelig lov.
+        Databehandler er ansvarlig overfor Behandlingsansvarlig for dokumentert tap som direkte skyldes at Databehandler har behandlet personopplysninger i strid med denne Avtalen eller GDPR, i henhold til GDPR art. 82. Databehandlerens ansvar er begrenset til den andel av tapet som Databehandler er direkte skyld i, og kan ikke overstige det Behandlingsansvarlig har betalt i abonnementsgebyr for de siste 3 månedene før det skadevoldende forholdet inntraff — med mindre tapet skyldes Databehandlerens forsett eller grove uaktsomhet, eller slikt tak er i strid med ufravikelig lov. <strong>Ansvarsbegrensningen gjelder ikke det ansvar Databehandler måtte ha direkte overfor registrerte etter GDPR art. 82.</strong>
       </p>
       <p>
         Behandlingsansvarlig er selv fullt ut ansvarlig for at det foreligger et lovlig behandlingsgrunnlag etter GDPR art. 6 (og art. 9 der relevant) for den behandling Behandlingsansvarlig instruerer Databehandler til å utføre. Databehandler er ikke ansvarlig for krav som oppstår som følge av manglende eller ulovlig behandlingsgrunnlag hos Behandlingsansvarlig, uriktige opplysninger gitt i instrukser, eller Behandlingsansvarligs egne overtredelser av GDPR.

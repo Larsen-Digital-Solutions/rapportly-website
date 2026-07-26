@@ -1,0 +1,13 @@
+# Secrets — skal ALDRI til GitHub
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel/
+
+# Avhengigheter
+node_modules/
+
+# OS/editor
+.DS_Store

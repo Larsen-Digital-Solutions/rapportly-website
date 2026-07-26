@@ -205,7 +205,7 @@
   <div class="page-header">
     <span class="page-header-label">Juridisk</span>
     <h1>Personvernerklæring</h1>
-    <p class="page-header-meta">Sist oppdatert: 8. juni 2026 &nbsp;·&nbsp; Versjon 3.1</p>
+    <p class="page-header-meta">Sist oppdatert: 23. juli 2026 &nbsp;·&nbsp; Versjon 3.2</p>
   </div>
 
   <!-- CONTENT -->
@@ -277,7 +277,7 @@
 
       <div class="highlight-box" style="margin-top: 1rem;">
         <p>
-          <strong>Om AI-genererte kommentarer:</strong> For å lage en kort oppsummerende tekst i rapporten overføres et begrenset sett aggregerte regnskapstall til vår AI-leverandør. Det overføres <em>ikke</em> firmanavn, org.nr., kontaktpersoner eller navngitte kunder/leverandører — disse anonymiseres eksplisitt i koden før overføring. Kun anonymiserte nøkkeltall (omsetning, driftsresultat, årsresultat o.l.) oversendes. Se punkt 5 om tredjelandsoverføring og databehandleravtalen for full liste over underdatabehandlere.
+          <strong>Om AI-genererte kommentarer:</strong> For å lage en kort oppsummerende tekst i rapporten overføres et begrenset sett aggregerte regnskapstall til vår AI-leverandør. Det overføres <em>ikke</em> firmanavn, org.nr., kontaktpersoner eller navngitte kunder/leverandører — disse pseudonymiseres eksplisitt i koden før overføring (kunde-/leverandørnavn erstattes med «Kunde 1 / Leverandør 1»). Kun pseudonymiserte nøkkeltall (omsetning, driftsresultat, årsresultat o.l.) oversendes. Se punkt 5 om tredjelandsoverføring og databehandleravtalen for full liste over underdatabehandlere.
         </p>
       </div>
     </div>
@@ -297,7 +297,7 @@
         <tbody>
           <tr>
             <td>Opprette og administrere brukerkonto for regnskapsbyråets ansatte</td>
-            <td>Avtale — art. 6(1)(b)</td>
+            <td>Berettiget interesse — art. 6(1)(f)</td>
           </tr>
           <tr>
             <td>Koble til regnskapssystemer og hente finansdata</td>
@@ -337,7 +337,7 @@
         <tbody>
           <tr>
             <td>Brukerkontodata (navn, e-post, sesjonsdata)</td>
-            <td>Så lenge kontoen er aktiv. Slettes innen 90 dager etter bekreftet avslutning av avtaleforholdet.</td>
+            <td>Så lenge kontoen er aktiv. Slettes innen 30 dager etter bekreftet avslutning av avtaleforholdet.</td>
           </tr>
           <tr>
             <td>Finansdata-snapshot (innhentet fra regnskapssystem under rapportgenerering)</td>
@@ -365,18 +365,18 @@
     <div class="section">
       <h2>5. Overføring til tredjeland</h2>
       <p>
-        Vår primære datalagring skjer innenfor EØS. For generering av AI-kommentarer overføres anonymiserte aggregerte regnskapstall til en leverandør i USA:
+        Vår primære datalagring skjer innenfor EØS. For generering av AI-kommentarer overføres pseudonymiserte aggregerte regnskapstall til en leverandør i USA:
       </p>
       <div class="highlight-box">
         <p>
-          For å generere en kort oppsummerende tekst i rapporten oversendes et begrenset sett anonymiserte finansielle nøkkeltall til en underdatabehandler (AI-leverandør) lokalisert i USA. Det overføres <em>ikke</em> firmanavn, org.nr., kontaktpersoner eller navngitte kunder/leverandører. Dataene lagres ikke av leverandøren etter at svaret er returnert, og brukes ikke til modelltrening. Overføringen skjer på grunnlag av EUs standardavtalevilkår (SCCs, Module 3 — processor-to-processor) i henhold til GDPR art. 46(2)(c), og leverandøren har gjennomført en Transfer Impact Assessment (TIA). Se Databehandleravtalen for leverandørens fulle navn og kontaktinformasjon.
+          For å generere en kort oppsummerende tekst i rapporten oversendes et begrenset sett pseudonymiserte finansielle nøkkeltall (med lav re-identifiseringsrisiko) til en underdatabehandler (AI-leverandør) lokalisert i USA. Det overføres <em>ikke</em> firmanavn, org.nr., kontaktpersoner eller navngitte kunder/leverandører. Dataene lagres ikke av leverandøren etter at svaret er returnert, og brukes ikke til modelltrening. Overføringen skjer på grunnlag av EUs standardavtalevilkår (SCCs, Module 3 — processor-to-processor) i henhold til GDPR art. 46(2)(c), og leverandøren har gjennomført en Transfer Impact Assessment (TIA). Se Databehandleravtalen for leverandørens fulle navn og kontaktinformasjon.
         </p>
       </div>
       <p style="margin-top: 1rem;">
         En fullstendig liste over alle underdatabehandlere, inkludert region og overføringsgrunnlag, finnes i Databehandleravtalen, som inngås med hver kunde (regnskapsbyrå) og gjøres tilgjengelig ved avtaleinngåelse eller på forespørsel.
       </p>
       <p style="margin-top: 1rem;">
-        <strong>Analyse:</strong> Nettstedet bruker Vercels innebygde, informasjonskapselfrie besøksstatistikk (Vercel Web Analytics), som ikke samler personidentifiserende opplysninger og ikke setter cookies. I tillegg bruker vi Google Analytics for anonymisert besøksstatistikk. Google Analytics lastes <strong>kun hvis du samtykker</strong> via cookie-banneret, og setter da informasjonskapsler. Behandlingsgrunnlaget er samtykke (personvernforordningen art. 6 nr. 1 bokstav a). Du kan avslå, og trekke tilbake samtykket når som helst ved å slette informasjonskapslene i nettleseren.
+        <strong>Analyse:</strong> Nettstedet bruker Vercels innebygde besøksstatistikk (Vercel Web Analytics), som ikke setter informasjonskapsler og ikke lagrer vedvarende identifikatorer. I tillegg bruker vi Google Analytics til besøksstatistikk. Google Analytics lastes <strong>kun hvis du samtykker</strong> via cookie-banneret, setter da informasjonskapsler og innebærer overføring av data til Google i USA (på grunnlag av EUs standardavtalevilkår og/eller EU-U.S. Data Privacy Framework). Behandlingsgrunnlaget er samtykke (personvernforordningen art. 6 nr. 1 bokstav a). Du kan avslå, og trekke tilbake samtykket når som helst via lenken «Informasjonskapsler» nederst på siden.
       </p>
     </div>
 
@@ -413,7 +413,7 @@
     <div class="section">
       <h2>7. Sikkerhetsbrudd</h2>
       <p>
-        Ved et sikkerhetsbrudd som kan innebære risiko for de registrerte, vil Larsen Digital Solutions varsle berørte regnskapsbyråer (behandlingsansvarlige) uten ugrunnet opphold, og senest innen 48 timer etter at vi er blitt kjent med bruddet, jf. GDPR art. 33(4) og Databehandleravtalen pkt. 8. Dersom ikke all nødvendig informasjon er tilgjengelig innen denne fristen, gis et foreløpig varsel og supplerende informasjon oversendes uten ugrunnet opphold. Byråene er selv ansvarlige — som behandlingsansvarlige — for å vurdere og gjennomføre videre varsling til Datatilsynet innen 72 timer (art. 33) og til sine klienter der det er nødvendig (art. 34).
+        Ved et sikkerhetsbrudd som kan innebære risiko for de registrerte, vil Larsen Digital Solutions varsle berørte regnskapsbyråer (behandlingsansvarlige) uten ugrunnet opphold, og normalt innen 48 timer etter at vi er blitt kjent med bruddet, jf. GDPR art. 33(2) og Databehandleravtalen pkt. 8. Dersom ikke all nødvendig informasjon er tilgjengelig innen denne fristen, gis et foreløpig varsel og supplerende informasjon oversendes uten ugrunnet opphold. Byråene er selv ansvarlige — som behandlingsansvarlige — for å vurdere og gjennomføre videre varsling til Datatilsynet innen 72 timer (art. 33) og til sine klienter der det er nødvendig (art. 34).
       </p>
     </div>
 
@@ -472,6 +472,7 @@
         <div class="footer-legal">
           <a href="personvern.html">Personvernerklæring</a>
           <a href="tjenestevilkar.html">Tjenestevilkår</a>
+          <a href="#" onclick="if(window.rapportlyResetConsent){rapportlyResetConsent();}return false;">Informasjonskapsler</a>
         </div>
       </div>
     </footer>

@@ -48,7 +48,7 @@
     wrap.innerHTML =
       '<div class="cb-inner">' +
         '<p class="cb-title">Informasjonskapsler</p>' +
-        '<p>Vi bruker informasjonskapsler til anonym besøksstatistikk (Google Analytics) for å gjøre nettsiden bedre. <a href="/personvern">Les mer</a>.</p>' +
+        '<p>Vi bruker informasjonskapsler til besøksstatistikk (Google Analytics) for å gjøre nettsiden bedre. <a href="personvern.html">Les mer</a>.</p>' +
         '<div class="cb-btns">' +
           '<button type="button" class="cb-decline">Avslå</button>' +
           '<button type="button" class="cb-accept">Godta</button>' +
@@ -58,6 +58,12 @@
     wrap.querySelector('.cb-accept').addEventListener('click', function () { remember('granted'); });
     wrap.querySelector('.cb-decline').addEventListener('click', function () { remember('denied'); });
   }
+
+  /* Lar brukeren endre/trekke tilbake samtykke — kalles fra «Informasjonskapsler»-lenken i footer */
+  window.rapportlyResetConsent = function () {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    if (!document.getElementById('cookie-banner')) showBanner();
+  };
 
   var choice = null;
   try { choice = localStorage.getItem(KEY); } catch (e) {}
