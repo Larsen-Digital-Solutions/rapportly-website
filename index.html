@@ -276,6 +276,25 @@
       min-height: 100vh;
     }
     .hero-content { display: flex; flex-direction: column; gap: 2rem; align-items: flex-start; }
+    /* Nyhetsmerke over overskriften. Lys-på-mørk pill: myk aksentgradient, hårfin
+       ramme, halo-ring og blur — så den løfter seg fra hero-bakgrunnen. */
+    .hero-nyhet {
+      display: inline-flex; align-items: center; gap: .7rem; flex-wrap: wrap;
+      padding: .5rem 1.05rem; border-radius: 9999px;
+      background: linear-gradient(100deg, oklch(58% .22 260 / .24), oklch(58% .22 260 / .07));
+      border: 1px solid oklch(66% .20 260 / .40);
+      box-shadow: 0 0 0 4px oklch(58% .22 260 / .06), 0 6px 22px oklch(48% .20 262 / .26);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      font-size: .9375rem; line-height: 1.4; color: oklch(91% .03 250);
+      margin-bottom: -.8rem;  /* strammer inn hero-content sin 2rem-gap */
+    }
+    .hero-nyhet b {
+      font-size: .6875rem; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: oklch(85% .17 258);
+    }
+    .hero-nyhet .sep { width: 1px; height: 1rem; background: oklch(66% .20 260 / .45); }
+    /* Forklaringen vises bare når hero-kolonnen er bred nok til én linje. */
+    @media (max-width: 1200px) { .hero-nyhet .lang { display: none; } }
     .hero-heading {
       font-size: clamp(2.75rem, 4.5vw, 5.25rem); font-weight: 900;
       line-height: .96; letter-spacing: -.065em;
@@ -919,6 +938,9 @@
     <div class="hero-bg-fade"></div>
     <div class="hero">
       <div class="hero-content">
+        <div class="hero-nyhet reveal">
+          <b>Nyhet</b><span class="sep"></span><span>Konsernrapport<span class="lang"> — flere selskaper i én rapport</span></span>
+        </div>
         <h1 class="hero-heading reveal">
           Rapporter på<br><em>autopilot.</em>
         </h1>
