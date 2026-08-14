@@ -205,7 +205,7 @@
   <div class="page-header">
     <span class="page-header-label">Juridisk</span>
     <h1>Databehandleravtale</h1>
-    <p class="page-header-meta">Sist oppdatert: 8. juni 2026 &nbsp;·&nbsp; Versjon 1.1</p>
+    <p class="page-header-meta">Sist oppdatert: 14. august 2026 &nbsp;·&nbsp; Versjon 1.2</p>
   </div>
 
   <!-- CONTENT -->
@@ -304,13 +304,13 @@
       </p>
       <ul>
         <li>Kryptering av data i hvile (AES-256) og under overføring (TLS 1.3)</li>
-        <li>Row-Level Security (RLS) på alle databasetabeller — byråer kan kun se egne data</li>
-        <li>Multifaktor-autentisering (MFA) tilbys alle brukerkontoer (obligatorisk håndheving under innføring)</li>
-        <li>Kryptert lagring av tilgangsnøkler til regnskapssystemer</li>
+        <li>Row-Level Security (RLS) på alle databasetabeller — byråer kan kun se egne data. Tilgang håndheves i databasen, ikke i applikasjonen</li>
+        <li>Tilgangsnøkler til regnskapssystemer lagres i en database som ikke er lesbar for noen brukerrolle — kun tjenestens egen serverlogikk har tilgang</li>
+        <li>Filer (logoer, genererte rapporter) lagres i lukkede lagringsområder som er tilgangsstyrt per byrå</li>
         <li>Teknisk filtrering slik at regnskapsdata ikke overføres til feilovervåkingsverktøy</li>
         <li>Dataminimering ved AI-kall: kun pseudonymiserte aggregerte tall overføres — ikke firmanavn, org.nr. eller kontaktpersoner (kunde-/leverandørnavn erstattes med «Kunde 1 / Leverandør 1»)</li>
         <li>Automatiske sikkerhetsoppdateringer og regelmessig sårbarhetsvurdering</li>
-        <li>Datalagring primært i Frankfurt, EU</li>
+        <li>Datalagring i EU (Irland)</li>
       </ul>
       <p style="margin-top: 1rem;">
         Databehandler vurderer løpende egnetheten av tiltakene og oppdaterer dem ved behov.
@@ -359,7 +359,7 @@
           <tr>
             <td>Supabase Inc.</td>
             <td>Database, autentisering og serverlogikk</td>
-            <td>EU (Frankfurt)</td>
+            <td>EU (Irland)</td>
             <td>EØS — ingen tredjelandsoverføring</td>
           </tr>
           <tr>
@@ -370,7 +370,7 @@
           </tr>
           <tr>
             <td>Anthropic, PBC</td>
-            <td>AI-generering av regnskapskommentarer basert på pseudonymiserte nøkkeltall. Mottar kun aggregerte nøkkeltall — ikke firmanavn, org.nr. eller kontaktpersoner.</td>
+            <td>AI-generering av regnskapskommentarer basert på pseudonymiserte nøkkeltall. Mottar kun aggregerte nøkkeltall og perioden — ikke firmanavn, org.nr., kontonummer eller kontaktpersoner. For sammenstilte rapporter overføres antall selskaper i gruppen, ikke navnene.</td>
             <td>USA</td>
             <td>SCCs, Module 3 (GDPR art. 46(2)(c)) + TIA gjennomført</td>
           </tr>
