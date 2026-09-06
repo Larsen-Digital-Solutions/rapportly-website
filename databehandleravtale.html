@@ -205,7 +205,7 @@
   <div class="page-header">
     <span class="page-header-label">Juridisk</span>
     <h1>Databehandleravtale</h1>
-    <p class="page-header-meta">Sist oppdatert: 24. august 2026 &nbsp;·&nbsp; Versjon 1.4</p>
+    <p class="page-header-meta">Sist oppdatert: 5. september 2026 &nbsp;·&nbsp; Versjon 1.7</p>
   </div>
 
   <!-- CONTENT -->
@@ -303,7 +303,7 @@
         Databehandler har implementert tekniske og organisatoriske tiltak for å sikre et sikkerhetsnivå som er egnet for risikoen ved behandlingen, jf. GDPR art. 32. Tiltakene inkluderer blant annet:
       </p>
       <ul>
-        <li>Kryptering av data i hvile (AES-256) og under overføring (TLS 1.3)</li>
+        <li>Kryptering av data i hvile (AES-256) og under overføring (TLS 1.3). E-postutsending bruker påtvunget TLS — en melding sendes ikke dersom forbindelsen til mottakerens e-postserver ikke kan sikres</li>
         <li>Row-Level Security (RLS) på alle databasetabeller — byråer kan kun se egne data. Tilgang håndheves i databasen, ikke i applikasjonen</li>
         <li>Tilgangsnøkler til regnskapssystemer lagres i en database som ikke er lesbar for noen brukerrolle — kun tjenestens egen serverlogikk har tilgang</li>
         <li>Filer (logoer, genererte rapporter) lagres i lukkede lagringsområder som er tilgangsstyrt per byrå</li>
@@ -377,13 +377,19 @@
           <tr>
             <td>Resend Inc.</td>
             <td>E-postutsendelse av rapporter</td>
-            <td>USA (sending rutes via eu-west-1-endepunkt)</td>
+            <td>USA. Utsending skjer fra Resends EU-region (Irland) etter innstilling på avsenderdomenet; kontodata, logger og metadata lagres uansett i USA</td>
             <td>SCCs Module 3 (art. 46(2)(c)) som primært grunnlag, supplert av EU-U.S. Data Privacy Framework (art. 45)</td>
           </tr>
           <tr>
             <td>Functional Software, Inc. (Sentry)</td>
             <td>Teknisk feilovervåking. Regnskapsdata filtreres ut teknisk før innsending.</td>
-            <td>Frankfurt, EU (ingest.de.sentry.io)</td>
+            <td>Frankfurt, Tyskland — Sentrys EU-dataregion, bekreftet i organisasjonsinnstillingene 05.09.2026</td>
+            <td>Data lagres i EU. Sentrys databehandleravtale punkt 6.1 gir likevel ingen kontraktsfestet EU-lås, og SCCs Module 3 (art. 46(2)(c)) samt EU-U.S. Data Privacy Framework (art. 45) gjelder derfor som overføringsgrunnlag</td>
+          </tr>
+          <tr>
+            <td>Hetzner Online GmbH</td>
+            <td>Servervirksomhet og lagring for Databehandlers egne sikkerhetskopier. Uttrekket lages på en server Databehandler disponerer, krypteres der før opplasting, og slettes fra serveren umiddelbart etter. Hetzner har ikke tilgang til innholdet i klartekst.</td>
+            <td>EU (Helsinki, Finland)</td>
             <td>EØS — ingen tredjelandsoverføring</td>
           </tr>
         </tbody>
@@ -454,6 +460,14 @@
       <p style="margin-top: 1rem;">
         Databehandler sikrer at underdatabehandlerne følger tilsvarende sletteprosedyrer.
       </p>
+      <p style="margin-top: 1rem;">
+        <strong>Sikkerhetskopier:</strong> Sletting etter dette punktet gjelder produksjonssystemene.
+        Krypterte sikkerhetskopier inngår i en fast oppbevaringsplan på inntil fem år, slik at
+        Behandlingsansvarlig kan oppfylle sin egen oppbevaringsplikt for oppdragsdokumentasjon etter
+        regnskapsførerloven § 5-3. Sikkerhetskopiene er krypterte, brukes utelukkende til gjenoppretting,
+        og overskrives fortløpende etter planen. Ønsker Behandlingsansvarlig at også sikkerhetskopier
+        slettes, bekreftes dette skriftlig, og Databehandler bekrefter når siste kopi er rullet ut.
+      </p>
     </div>
 
     <div class="divider"></div>
@@ -486,7 +500,35 @@
 
     <!-- 13 -->
     <div class="section">
-      <h2>13. Kontakt</h2>
+      <h2>13. Endringer i denne avtalen</h2>
+      <p>
+        Databehandler kan oppdatere denne Avtalen når det er nødvendig for å (a) etterleve endringer i
+        personvernlovgivningen eller pålegg fra tilsynsmyndighet, (b) gjenspeile endringer i underdatabehandlere
+        etter punkt 7, eller (c) rette eller presisere beskrivelsen av den faktiske behandlingen.
+      </p>
+      <p>
+        Endringer som <strong>ikke reduserer</strong> beskyttelsesnivået for personopplysningene, trer i kraft når
+        Behandlingsansvarlig er varslet skriftlig, med angivelse av hva som er endret.
+      </p>
+      <p>
+        Endringer som <strong>reduserer</strong> beskyttelsesnivået, krever Behandlingsansvarliges skriftlige
+        samtykke. Alternativt kan Databehandler varsle endringen minst 60 dager før den trer i kraft;
+        Behandlingsansvarlig kan da si opp Tjenestevilkårene med virkning fra endringstidspunktet.
+      </p>
+      <p>
+        Hver versjon av denne Avtalen er nummerert og datert. Gjeldende versjon, med oversikt over hva som er
+        endret i hver versjon, er tilgjengelig på
+        <a href="https://rapportly.no/databehandleravtale">rapportly.no/databehandleravtale</a>.
+        <strong>Den versjonen som er vedlagt en signert kundeavtale, gjelder mellom partene inntil endring er
+        varslet etter dette punktet.</strong>
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 14 -->
+    <div class="section">
+      <h2>14. Kontakt</h2>
       <div class="info-box">
         <div class="info-row">
           <div class="info-item">
@@ -499,6 +541,46 @@
           </div>
         </div>
       </div>
+    </div>
+
+
+    <div class="divider"></div>
+
+    <!-- Versjonshistorikk -->
+    <div class="section">
+      <h2>Versjonshistorikk</h2>
+      <p>
+        Oversikten viser hva som er endret i hver versjon. Den versjonen som er vedlagt en signert kundeavtale,
+        gjelder mellom partene inntil endring er varslet etter punkt 13.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Versjon</th><th>Dato</th><th>Hva som er endret</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.7</td>
+            <td style="white-space:nowrap">5. september 2026</td>
+            <td>Nytt punkt 13 om endringer i avtalen, og denne versjonshistorikken.</td>
+          </tr>
+          <tr>
+            <td>1.6</td>
+            <td style="white-space:nowrap">5. september 2026</td>
+            <td>Rettelser i punkt 5 og 7 etter gjennomgang mot underdatabehandlernes egne databehandleravtaler:
+              Sentry oppgis nå med SCCs og EU-U.S. Data Privacy Framework som overføringsgrunnlag ved siden av
+              EU-lagring i Frankfurt, ettersom EU-regionen er en konfigurasjon og ikke kontraktsfestet;
+              Resend-raden presiserer at utsending skjer fra EU-regionen Ireland (eu-west-1) mens kontodata og
+              logger ligger i USA; Hetzners rolle oppgis som servervirksomhet og lagring. Punkt 5 presiserer at
+              e-postutsending bruker påtvunget TLS. Ingen av endringene reduserer beskyttelsesnivået.</td>
+          </tr>
+          <tr>
+            <td>1.5</td>
+            <td style="white-space:nowrap">1. september 2026</td>
+            <td>Hetzner Online GmbH lagt til som underdatabehandler for krypterte sikkerhetskopier, med
+              tilhørende presisering i punkt 10 om sikkerhetskopienes oppbevaringsplan.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
   </div>
