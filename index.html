@@ -830,7 +830,11 @@
     .pt-tier:hover { background: oklch(96% .006 240); }
     .pt-tier + .pt-tier { margin-top: .15rem; }
     .pt-name { font-weight: 700; font-size: 1.02rem; }
-    .pt-meta { display: block; font-size: .84rem; color: var(--text-subtle); margin-top: .12rem; }
+    /* Klientgrensa er det ENESTE som skiller pakkene fra hverandre. Sto paa
+       --text-subtle, samme dempede grå som fotnoter, og forsvant ved siden av
+       prisen. Nå --text-muted og litt tyngre: lesbar uten å konkurrere med
+       pakkenavnet over. */
+    .pt-meta { display: block; font-size: .84rem; color: var(--text-muted); font-weight: 500; margin-top: .12rem; }
     .pt-price { font-weight: 800; font-size: 1.28rem; letter-spacing: -.02em; white-space: nowrap; }
     .pt-price small { font-weight: 600; font-size: .8rem; color: var(--text-muted); margin-left: .18rem; }
     .pt-contact { font-weight: 700; font-size: .95rem; color: var(--accent); text-decoration: none; }
@@ -1244,7 +1248,7 @@
             </ul>
           </div>
           <a href="#kontakt" class="pt-cta">Prøv gratis i 14 dager</a>
-          <p class="pt-foot">Ingen oppstartskostnad · ingen bindingstid · avslutt når som helst</p>
+          <p class="pt-foot">Alle priser er eks. mva. · ingen oppstartskostnad · ingen bindingstid · avslutt når som helst</p>
         </div>
       </div>
     </div>
