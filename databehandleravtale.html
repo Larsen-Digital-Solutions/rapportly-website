@@ -247,7 +247,7 @@
         <li>Administrere brukerkontoer og autentisering for Behandlingsansvarliges ansatte</li>
         <li>Hente finansdata read-only fra tilkoblede regnskapssystemer (Tripletex, PowerOffice Go)</li>
         <li>Generere finansielle rapporter (PDF) og sende disse til Behandlingsansvarliges klienter</li>
-        <li>Generere AI-baserte tekstoppsummeringer basert på pseudonymiserte aggregerte regnskapstall</li>
+        <li>Utforme tekstlige oppsummeringer i rapportene på grunnlag av pseudonymiserte, aggregerte regnskapstall</li>
         <li>Lagre genererte rapporter for historikk og gjenbruk</li>
         <li>Teknisk drift, overvåking og feilsøking av tjenesten</li>
       </ul>
@@ -308,7 +308,7 @@
         <li>Tilgangsnøkler til regnskapssystemer lagres i en database som ikke er lesbar for noen brukerrolle — kun tjenestens egen serverlogikk har tilgang</li>
         <li>Filer (logoer, genererte rapporter) lagres i lukkede lagringsområder som er tilgangsstyrt per byrå</li>
         <li>Teknisk filtrering slik at regnskapsdata ikke overføres til feilovervåkingsverktøy</li>
-        <li>Dataminimering ved AI-kall: kun pseudonymiserte aggregerte tall overføres — ikke firmanavn, org.nr. eller kontaktpersoner (kunde-/leverandørnavn erstattes med «Kunde 1 / Leverandør 1»)</li>
+        <li>Dataminimering ved utforming av rapportkommentarer: kun pseudonymiserte aggregerte tall overføres — ikke firmanavn, org.nr. eller kontaktpersoner (kunde-/leverandørnavn erstattes med «Kunde 1 / Leverandør 1»)</li>
         <li>Automatiske sikkerhetsoppdateringer og regelmessig sårbarhetsvurdering</li>
         <li>Primær datalagring i EU (Irland). Enkelte underdatabehandlere behandler data utenfor EØS — se punkt 7</li>
       </ul>
@@ -370,7 +370,7 @@
           </tr>
           <tr>
             <td>Anthropic, PBC</td>
-            <td><strong>AI-kommentarer:</strong> AI-generering av regnskapskommentarer basert på pseudonymiserte nøkkeltall. Mottar kun aggregerte nøkkeltall og perioden — ikke firmanavn, org.nr., kontonummer eller kontaktpersoner. For sammenstilte rapporter overføres antall selskaper i gruppen, ikke navnene.<br><br><strong>Support og feilsøking:</strong> Når Behandlingsansvarlig ber om bistand, kan Databehandler bruke Claude — Anthropics bedriftstjeneste under Anthropics kommersielle vilkår og databehandleravtale — til å analysere det som er nødvendig for å løse henvendelsen, for eksempel feilmeldinger, skjermbilder og rapportdata. Anthropic bruker ikke disse dataene til å trene modeller.</td>
+            <td>(a) Utforming av kommentarer i rapportene på grunnlag av pseudonymiserte nøkkeltall. Kun aggregerte nøkkeltall og perioden overføres — ikke firmanavn, organisasjonsnummer, kontonumre eller kontaktpersoner. For sammenstilte rapporter oppgis antall selskaper i gruppen, ikke navnene.<br><br>(b) Bistand ved support og feilsøking, når Behandlingsansvarlig selv ber om det. Behandlingen er begrenset til opplysninger som er nødvendige for å løse den aktuelle henvendelsen.<br><br>Opplysningene behandles etter Anthropics databehandleravtale og brukes ikke til trening av Anthropics modeller.</td>
             <td>USA</td>
             <td>SCCs, Module 3 (GDPR art. 46(2)(c)) + TIA gjennomført</td>
           </tr>
@@ -561,9 +561,10 @@
           <tr>
             <td>2.0</td>
             <td style="white-space:nowrap">28. september 2026</td>
-            <td>Punkt 7: Anthropic brukes nå også til support og feilsøking når Behandlingsansvarlig ber om
-              bistand, i Anthropics bedriftstjeneste under kommersielle vilkår og databehandleravtale. Anthropic
-              bruker ikke dataene til å trene modeller. Endringen gjelder en underdatabehandler og varsles
+            <td>Punkt 3 og 5: ordlyden om rapportkommentarer er presisert, uten endring i behandlingen.
+              Punkt 7: formålet for Anthropic er utvidet til også å omfatte bistand ved support og feilsøking,
+              når Behandlingsansvarlig selv ber om det. Opplysningene behandles etter Anthropics databehandleravtale
+              og brukes ikke til trening av Anthropics modeller. Ingen nye underdatabehandlere. Endringen varsles
               eksisterende kunder skriftlig minimum 15 dager før den trer i kraft, jf. punkt 7.</td>
           </tr>
           <tr>
