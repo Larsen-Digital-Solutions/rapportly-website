@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sikkerhet og personvern — Rapportly</title>
+  <meta name="description" content="Slik beskytter Rapportly klientdataene til regnskapsbyråene: lagring i EU/EØS, kryptering, strengt skille mellom byråer, lesetilgang til regnskapet og full kontroll over egne data.">
+  <link rel="canonical" href="https://rapportly.no/sikkerhet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <style>
+    @font-face{font-family:'Figtree';src:url('/fonts/figtree.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+    :root {
+      --bg:           oklch(97.5% 0.005 230);
+      --surface:      oklch(99.5% 0.003 230);
+      --text:         oklch(16%   0.008 240);
+      --text-muted:   oklch(50%   0.012 240);
+      --text-subtle:  oklch(68%   0.008 240);
+      --border:       oklch(87%   0.008 240);
+      --primary:      oklch(26%   0.10  262);
+      --accent:       oklch(58%   0.22  260);
+      --r: 12px;
+      --ease: cubic-bezier(0.16,1,0.3,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Figtree', system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav-wrap {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center;
+      padding: 1.25rem 1.5rem; pointer-events: none;
+    }
+    .nav {
+      display: flex; align-items: center; gap: 2.5rem;
+      background: oklch(20% 0.08 258 / 0.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid oklch(35% 0.08 258); border-radius: 9999px;
+      padding: .75rem 1rem .75rem 1.5rem;
+      box-shadow: 0 4px 24px oklch(0% 0 0/.20); pointer-events: all;
+    }
+    .nav-logo img { height: 26px; display: block; }
+    .nav-links { display: flex; align-items: center; gap: .125rem; }
+    .nav-links a {
+      font-size: .875rem; font-weight: 500; color: oklch(72% 0.04 240);
+      padding: .375rem .75rem; border-radius: 9999px;
+      transition: color 160ms var(--ease), background 160ms var(--ease);
+    }
+    .nav-links a:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
+    .nav-cta {
+      font-size: .875rem; font-weight: 700; color: oklch(16% 0.08 258);
+      background: oklch(97% 0.01 240); padding: .5625rem 1.375rem; border-radius: 9999px;
+      transition: background 160ms var(--ease);
+    }
+    .nav-cta:hover { background: oklch(90% 0.03 262); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 10rem 6rem 5rem;
+      max-width: 860px; margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-subtle); margin-bottom: 1.25rem; display: block;
+    }
+    .page-header h1 {
+      font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 900;
+      letter-spacing: -.05em; line-height: 1.06;
+    }
+    .page-header-meta {
+      margin-top: 1.25rem; font-size: .875rem; color: var(--text-subtle);
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 860px; margin: 0 auto;
+      padding: 4rem 6rem 8rem;
+    }
+    .section { margin-bottom: 3.5rem; }
+    .section:last-child { margin-bottom: 0; }
+    .section h2 {
+      font-size: 1.125rem; font-weight: 800; letter-spacing: -.025em;
+      margin-bottom: 1rem; color: var(--text);
+    }
+    .section p {
+      font-size: .9375rem; color: var(--text-muted); line-height: 1.75;
+      margin-bottom: .875rem;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul {
+      list-style: none; display: flex; flex-direction: column; gap: .5rem;
+      margin-top: .5rem;
+    }
+    .section ul li {
+      font-size: .9375rem; color: var(--text-muted); line-height: 1.7;
+      padding-left: 1.25rem; position: relative;
+    }
+    .section ul li::before {
+      content: '—'; position: absolute; left: 0;
+      color: var(--border); font-weight: 700;
+    }
+    .section a { color: var(--accent); font-weight: 600; }
+    .section a:hover { text-decoration: underline; }
+    .divider { height: 1px; background: var(--border); margin: 3.5rem 0; }
+
+    .info-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem 1.75rem;
+      margin-top: 1rem;
+    }
+    .info-box p { margin-bottom: 0; }
+    .info-row { display: flex; flex-direction: column; gap: .5rem; }
+    .info-item { display: flex; gap: 1rem; font-size: .9375rem; }
+    .info-label { font-weight: 700; color: var(--text); min-width: 9rem; flex-shrink: 0; }
+    .info-value { color: var(--text-muted); }
+
+    /* TABLE */
+    .section table {
+      width: 100%; border-collapse: collapse;
+      margin-top: 1rem; font-size: .9rem;
+    }
+    .section table th {
+      text-align: left; padding: .625rem 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      font-weight: 700; color: var(--text); font-size: .875rem;
+    }
+    .section table td {
+      padding: .625rem 1rem; border: 1px solid var(--border);
+      color: var(--text-muted); vertical-align: top;
+    }
+    .section table tr:nth-child(even) td { background: var(--surface); }
+
+    /* HIGHLIGHT BOX */
+    .highlight-box {
+      background: oklch(96% 0.03 262); border: 1px solid oklch(82% 0.06 262);
+      border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1rem;
+    }
+    .highlight-box p {
+      color: oklch(32% 0.10 262); font-size: .9rem; margin-bottom: 0;
+    }
+
+    /* FOOTER */
+    .footer-outer { border-top: 1px solid var(--border); }
+    footer {
+      padding: 2.5rem 6rem 2rem; max-width: 1280px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .footer-top {
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      padding-top: 1.25rem; border-top: 1px solid var(--border);
+    }
+    .footer-logo img { height: 20px; filter: brightness(0); opacity: .5; }
+    .footer-nav { display: flex; gap: 1.75rem; }
+    .footer-nav a { font-size: .875rem; color: var(--text-subtle); transition: color 160ms var(--ease); }
+    .footer-nav a:hover { color: var(--text-muted); }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+    .footer-legal a { font-size: .8rem; color: var(--text-subtle); transition: color 160ms var(--ease); }
+    .footer-legal a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: .8rem; color: var(--text-subtle); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header { padding: 8rem 1.5rem 3.5rem; }
+      .content { padding: 3rem 1.5rem 5rem; }
+      footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 2rem 1.5rem; }
+      .info-item { flex-direction: column; gap: .2rem; }
+      .info-label { min-width: unset; }
+      .section table { font-size: .8rem; }
+    }
+    /* SIKKERHET */
+    .page-header-ingress { margin-top: 1.25rem; font-size: 1.0625rem; line-height: 1.7; color: var(--text-muted); max-width: 40rem; }
+    .facts { display: flex; flex-wrap: wrap; gap: .625rem 1.5rem; margin-top: 1.75rem; }
+    .facts span { display: inline-flex; align-items: center; gap: .5rem; font-size: .9rem; font-weight: 600; color: var(--text); }
+    .facts svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
+    .item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1.375rem 1.5rem; }
+    .item-ikon { width: 36px; height: 36px; border-radius: 9px; background: oklch(95% 0.03 262); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: .875rem; }
+    .item-ikon svg { width: 19px; height: 19px; }
+    .item h3 { font-size: 1rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: .375rem; color: var(--text); }
+    .item p { font-size: .9375rem; color: var(--text-muted); line-height: 1.65; margin: 0; }
+    .to-kol { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .punkter { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .punkter p { margin: 0; }
+    .punkter strong { color: var(--text); }
+    .dokumenter { display: flex; flex-direction: column; margin-top: 1rem; border-top: 1px solid var(--border); }
+    .dokumenter a, .dokumenter div { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .875rem 0; border-bottom: 1px solid var(--border); font-size: .9375rem; }
+    .section .dokumenter a { color: var(--text); font-weight: 700; }
+    .section .dokumenter a:hover { text-decoration: none; color: var(--accent); }
+    .dokumenter div { color: var(--text-muted); }
+    .dokumenter div strong { color: var(--text); font-weight: 700; }
+    .dokumenter .pil { color: var(--accent); font-weight: 700; }
+    .kontakt-boks { background: var(--primary); color: oklch(97% 0.01 240); border-radius: 14px; padding: 1.75rem 2rem; }
+    .kontakt-boks h2 { color: oklch(97% 0.01 240) !important; margin-bottom: .5rem !important; }
+    .section .kontakt-boks p { color: oklch(85% 0.03 255); }
+    .section .kontakt-boks a { color: oklch(97% 0.01 240); text-decoration: underline; }
+    @media (max-width: 768px) {
+      .grid, .to-kol { grid-template-columns: 1fr; }
+      .to-kol { gap: 3rem; }
+      .kontakt-boks { padding: 1.5rem; }
+    }
+  </style>
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+  <script defer src="/consent.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a href="/" class="nav-logo"><img src="logo.png" alt="Rapportly"></a>
+      <div class="nav-links">
+        <a href="index.html#hvordan">Slik fungerer det</a>
+        <a href="index.html#priser">Priser</a>
+        <a href="index.html#kontakt">Kontakt</a>
+      </div>
+      <a href="index.html#kontakt" class="nav-cta">Bli kunde</a>
+    </nav>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <span class="page-header-label">Sikkerhet og personvern</span>
+    <h1>Klientdataene deres er trygge hos oss</h1>
+    <p class="page-header-ingress">
+      Regnskapsbyråer håndterer noen av de mest følsomme opplysningene en virksomhet har. Sikkerhet og
+      personvern er derfor en del av hvordan Rapportly er bygget, ikke noe som er lagt til etterpå.
+    </p>
+    <div class="facts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Lagret i EU/EØS</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Kryptert hele veien</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Byråene strengt skilt</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Dere eier dataene</span>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div class="section">
+      <h2>Slik beskytter vi dataene deres</h2>
+      <div class="grid">
+        <div class="item">
+          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+          <h3>Lagret i EU/EØS</h3>
+          <p>Dataene deres lagres i datasentre innenfor EU/EØS, hos leverandører som oppfyller anerkjente internasjonale sikkerhetsstandarder.</p>
+        </div>
+        <div class="item">
+          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <h3>Kryptert hele veien</h3>
+          <p>All data krypteres både når de sendes og når de lagres, med sterk og anerkjent kryptering.</p>
+        </div>
+        <div class="item">
+          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg></div>
+          <h3>Hvert byrå for seg</h3>
+          <p>Byråene er strengt skilt fra hverandre. Et byrå kan aldri se et annet byrås data. Det er sikret i selve databasen, ikke bare i appen.</p>
+        </div>
+        <div class="item">
+          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Vi endrer aldri regnskapet</h3>
+          <p>Rapportly har bare lesetilgang til regnskapssystemet. Vi henter tallene rapportene trenger, og kan aldri endre eller slette noe i regnskapet.</p>
+        </div>
+        <div class="item">
+          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="m17 11 2 2 4-4"/></svg></div>
+          <h3>Dere styrer tilgangen</h3>
+          <p>Byrået bestemmer selv hvem som har tilgang, med egne roller for administrator og ansatt. To-trinns innlogging kan slås på for ekstra sikkerhet.</p>
+        </div>
+        <div class="item">
+          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></div>
+          <h3>Dataene tilhører dere</h3>
+          <p>Rapporter og data tilhører byrået og kan eksporteres når som helst. Selve regnskapet ligger alltid trygt i deres eget regnskapssystem.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="to-kol">
+      <div class="section">
+        <h2>Drift og beredskap</h2>
+        <div class="punkter">
+          <p><strong>Sikkerhetskopier.</strong> Dataene sikkerhetskopieres jevnlig og lagres kryptert, adskilt fra driftsmiljøet. Gjenoppretting er testet.</p>
+          <p><strong>Overvåking.</strong> Tjenesten overvåkes kontinuerlig, slik at feil oppdages og rettes raskt.</p>
+          <p><strong>Sikker utvikling.</strong> Endringer testes før de tas i bruk, og tilgangen til driftsmiljøet er begrenset og beskyttet med to-trinns innlogging.</p>
+          <p><strong>Hendelser.</strong> Vi har faste rutiner for å håndtere sikkerhetshendelser, og berørte byråer varsles uten ugrunnet opphold.</p>
+        </div>
+      </div>
+      <div class="section">
+        <h2>Personvern og GDPR</h2>
+        <div class="punkter">
+          <p><strong>Bygget for GDPR.</strong> Rapportly gjør det enkelt for byrået å etterleve personvernregelverket. Byrået er behandlingsansvarlig, og Rapportly AS er databehandler etter en standard databehandleravtale.</p>
+          <p><strong>Bare det som trengs.</strong> Vi behandler bare opplysningene som trengs for å lage rapportene, og bruker dem aldri til andre formål.</p>
+          <p><strong>Nøye utvalgte leverandører.</strong> Alle leverandørene våre har databehandleravtale og anerkjente sikkerhetssertifiseringer.</p>
+          <p><strong>Norsk selskap.</strong> Rapportly er utviklet og driftes fra Norge, og avtalene følger norsk lov.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>Dokumentasjon</h2>
+      <div class="dokumenter">
+        <a href="personvern.html">Personvernerklæring <span class="pil">→</span></a>
+        <a href="tjenestevilkar.html">Tjenestevilkår <span class="pil">→</span></a>
+        <div><span><strong>Databehandleravtale</strong> — inngås med hvert byrå, og ligger tilgjengelig i appen.</span></div>
+      </div>
+      <p style="margin-top: 1.25rem;">
+        Skal byrået gjennomføre en leverandørvurdering? Vi sender utfyllende sikkerhetsdokumentasjon på forespørsel.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="kontakt-boks">
+        <h2>Kontakt</h2>
+        <p>Spørsmål om sikkerhet eller personvern, eller har du oppdaget en sårbarhet? Skriv til <a href="mailto:hei@rapportly.no">hei@rapportly.no</a>.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-outer">
+    <footer>
+      <div class="footer-top">
+        <a href="/" class="footer-logo"><img src="logo.png" alt="Rapportly"></a>
+        <nav class="footer-nav">
+          <a href="index.html#hvordan">Slik fungerer det</a>
+          <a href="index.html#priser">Priser</a>
+          <a href="index.html#kontakt">Kontakt</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Rapportly AS</span>
+        <div class="footer-legal">
+          <a href="personvern.html">Personvernerklæring</a>
+          <a href="tjenestevilkar.html">Tjenestevilkår</a>
+          <a href="sikkerhet">Sikkerhet</a>
+          <a href="#" onclick="if(window.rapportlyResetConsent){rapportlyResetConsent();}return false;">Informasjonskapsler</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>
