@@ -1332,6 +1332,11 @@
           <label class="form-label" for="melding">Melding (valgfritt)</label>
           <textarea class="form-textarea" id="melding" name="melding" placeholder="Fortell gjerne om byrået og hvor mange klienter dere har..."></textarea>
         </div>
+        <!-- Usynlig for mennesker; roboter fyller det ut, og da sendes ingenting. -->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+          <label for="nettsted">Nettsted</label>
+          <input type="text" id="nettsted" name="nettsted" tabindex="-1" autocomplete="off">
+        </div>
         <button type="submit" class="form-submit">Send henvendelse</button>
         <p style="margin-top:.75rem;font-size:.8rem;color:oklch(75% .04 255);">Vi bruker opplysningene bare til å svare deg. Les <a href="personvern.html" style="color:inherit;text-decoration:underline;">personvernerklæringen</a>.</p>
         <div class="form-success" id="formSuccess">Takk! Vi tar kontakt innen én arbeidsdag.</div>
@@ -1548,10 +1553,11 @@
       btn.disabled = true;
       btn.textContent = 'Sender...';
       try {
-        const res = await fetch('https://formspree.io/f/mqejlvvz', {
+        // Egen funksjon hos Supabase → e-post til hei@rapportly.no via Resend (erstatter Formspree 30.09.2026).
+        const res = await fetch('https://uknssnhiwjftcdosepiv.supabase.co/functions/v1/kontaktskjema', {
           method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+          headers: { 'Content-Type': 'application/json' }
         });
         if (res.ok) {
           form.querySelectorAll('input,textarea,button').forEach(el => el.disabled = true);
@@ -1559,7 +1565,9 @@
         } else {
           btn.disabled = false;
           btn.textContent = 'Send henvendelse';
-          alert('Noe gikk galt. Prøv igjen eller send e-post direkte til hei@rapportly.no');
+          // Funksjonen sier hva som er galt (for eksempel en e-postadresse som ikke ser riktig ut).
+          const feil = (await res.json().catch(() => ({}))).error;
+          alert(feil || 'Noe gikk galt. Prøv igjen eller send e-post direkte til hei@rapportly.no');
         }
       } catch {
         btn.disabled = false;
