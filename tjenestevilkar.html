@@ -207,7 +207,7 @@
     .toc a { display: block; font-size: .84rem; line-height: 1.4; color: var(--text-muted); padding: .4rem 0 .4rem .9rem; margin-left: -2px; border-left: 2px solid transparent; transition: color 140ms var(--ease), border-color 140ms var(--ease); }
     .toc a:hover { color: var(--text); }
     .toc a.aktiv { color: var(--primary); font-weight: 700; border-left-color: var(--accent); }
-    .oppsett .content { max-width: none; margin: 0; padding: 3rem 3.25rem;
+    .oppsett .content { min-width: 0; max-width: none; margin: 0; padding: 3rem 3.25rem;
       background: #fff; border: 1px solid var(--border); border-radius: var(--r);
       box-shadow: 0 1px 2px oklch(20% .05 258 / .04), 0 8px 24px oklch(20% .05 258 / .05); }
     .section h2 { font-size: 1.3125rem !important; font-weight: 900 !important; letter-spacing: -.035em !important; margin-bottom: 1rem !important; scroll-margin-top: 7rem; }
@@ -228,6 +228,7 @@
     @media (max-width: 768px) {
       .topp-innhold { padding: 8rem 1.5rem 3rem; }
       .topp h1 { font-size: 1.95rem; hyphens: auto; overflow-wrap: break-word; }
+      .oppsett .section table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .oppsett { padding: 1.5rem 1rem 4rem; }
       .oppsett .content { padding: 1.75rem 1.25rem; }
     }
