@@ -19,6 +19,8 @@
       --border:       oklch(87%   0.008 240);
       --primary:      oklch(26%   0.10  262);
       --accent:       oklch(58%   0.22  260);
+      --accent-hover: oklch(52%   0.22  260);
+      --accent-light: oklch(94%   0.05  262);
       --r: 12px;
       --ease: cubic-bezier(0.16,1,0.3,1);
     }
@@ -31,7 +33,7 @@
     }
     a { text-decoration: none; color: inherit; }
 
-    /* NAV */
+    /* ── NAV ── */
     .nav-wrap {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: center;
@@ -44,7 +46,9 @@
       border: 1px solid oklch(35% 0.08 258); border-radius: 9999px;
       padding: .75rem 1rem .75rem 1.5rem;
       box-shadow: 0 4px 24px oklch(0% 0 0/.20); pointer-events: all;
+      transition: box-shadow 220ms var(--ease);
     }
+    .nav.scrolled { box-shadow: 0 6px 32px oklch(0% 0 0/.28); }
     .nav-logo img { height: 26px; display: block; }
     .nav-links { display: flex; align-items: center; gap: .125rem; }
     .nav-links a {
@@ -53,30 +57,48 @@
       transition: color 160ms var(--ease), background 160ms var(--ease);
     }
     .nav-links a:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
+    .nav-login {
+      font-size: .875rem; font-weight: 500; color: oklch(72% 0.04 240);
+      padding: .375rem .75rem; border-radius: 9999px;
+      transition: color 160ms var(--ease), background 160ms var(--ease);
+    }
+    .nav-login:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
     .nav-cta {
       font-size: .875rem; font-weight: 700; color: oklch(16% 0.08 258);
       background: oklch(97% 0.01 240); padding: .5625rem 1.375rem; border-radius: 9999px;
-      transition: background 160ms var(--ease);
+      transition: background 160ms var(--ease), transform 160ms var(--ease);
     }
-    .nav-cta:hover { background: oklch(90% 0.03 262); }
+    .nav-cta:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .5rem; width: 2.4rem; height: 2.4rem; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+    .nav-toggle span { display: block; width: 20px; height: 2px; background: oklch(85% .03 255); border-radius: 2px; transition: transform 220ms var(--ease), opacity 160ms; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; position: absolute; top: calc(100% + .6rem); left: 0; right: 0;
+      flex-direction: column; gap: .12rem; padding: .55rem;
+      background: oklch(20% 0.08 258 / 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid oklch(35% 0.08 258); border-radius: 18px; box-shadow: 0 14px 44px oklch(0% 0 0/.4);
+      opacity: 0; visibility: hidden; transform: translateY(-8px);
+      transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 200ms;
+    }
+    .nav-mobile.open { opacity: 1; visibility: visible; transform: none; }
+    .nav-mobile a { color: oklch(82% .03 255); font-size: .95rem; font-weight: 500; padding: .72rem .85rem; border-radius: 10px; transition: background 140ms var(--ease), color 140ms var(--ease); }
+    .nav-mobile a:hover, .nav-mobile a:active { background: oklch(35% .07 258); color: oklch(98% .01 240); }
+    .nav-mobile-cta { margin-top: .4rem; background: oklch(97% .01 240); color: oklch(16% .08 258) !important; font-weight: 700 !important; text-align: center; }
+    .nav-mobile-cta:hover, .nav-mobile-cta:active { background: var(--accent-light) !important; }
 
-    /* PAGE HEADER */
-    .page-header {
-      padding: 10rem 6rem 5rem;
-      max-width: 860px; margin: 0 auto;
-      border-bottom: 1px solid var(--border);
-    }
-    .page-header-label {
-      font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--text-subtle); margin-bottom: 1.25rem; display: block;
-    }
-    .page-header h1 {
-      font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 900;
-      letter-spacing: -.05em; line-height: 1.06;
-    }
-    .page-header-meta {
-      margin-top: 1.25rem; font-size: .875rem; color: var(--text-subtle);
-    }
+    /* TOPP */
+    .topp { background: var(--primary); position: relative; overflow: hidden; }
+    .topp-rutenett { position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, oklch(58% .10 262 / .18) 1px, transparent 1px); background-size: 32px 32px; }
+    .topp-fade { position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 120% 70% at 50% 0%, transparent 20%, oklch(22% .09 262 / .92) 82%); }
+    .topp-innhold { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 9.5rem 3rem 4rem; }
+    .topp-etikett { display: block; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: oklch(78% .06 255); margin-bottom: 1.25rem; }
+    .topp h1 { font-size: clamp(2.5rem, 4.4vw, 3.75rem); font-weight: 900; line-height: 1; letter-spacing: -.055em; color: oklch(97% .01 240); }
+    .topp-meta { display: inline-flex; margin-top: 1.5rem; font-size: .8125rem; font-weight: 600; color: oklch(88% .03 250);
+      background: oklch(100% 0 0 / .06); border: 1px solid oklch(100% 0 0 / .14); padding: .45rem .9rem; border-radius: 9999px; }
 
     /* CONTENT */
     .content {
@@ -177,6 +199,38 @@
       .info-label { min-width: unset; }
       .section table { font-size: .8rem; }
     }
+    /* OPPSETT: innholdsfortegnelse + tekst i panel */
+    .oppsett { max-width: 1120px; margin: 0 auto; padding: 3.5rem 3rem 7rem; display: grid; grid-template-columns: 230px 1fr; gap: 3rem; align-items: start; }
+    .toc { position: sticky; top: 7rem; }
+    .toc-tittel { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-subtle); margin-bottom: .875rem; }
+    .toc ol { list-style: none; display: flex; flex-direction: column; gap: .125rem; border-left: 2px solid var(--border); }
+    .toc a { display: block; font-size: .84rem; line-height: 1.4; color: var(--text-muted); padding: .4rem 0 .4rem .9rem; margin-left: -2px; border-left: 2px solid transparent; transition: color 140ms var(--ease), border-color 140ms var(--ease); }
+    .toc a:hover { color: var(--text); }
+    .toc a.aktiv { color: var(--primary); font-weight: 700; border-left-color: var(--accent); }
+    .oppsett .content { max-width: none; margin: 0; padding: 3rem 3.25rem;
+      background: #fff; border: 1px solid var(--border); border-radius: var(--r);
+      box-shadow: 0 1px 2px oklch(20% .05 258 / .04), 0 8px 24px oklch(20% .05 258 / .05); }
+    .section h2 { font-size: 1.3125rem !important; font-weight: 900 !important; letter-spacing: -.035em !important; margin-bottom: 1rem !important; scroll-margin-top: 7rem; }
+    .oppsett .divider { margin: 2.75rem 0; }
+    .oppsett .info-box, .oppsett .highlight-box { border-radius: 10px; }
+    .oppsett .section table { border-radius: 10px; overflow: hidden; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border); }
+    .oppsett .section table th, .oppsett .section table td { border: 0; border-bottom: 1px solid var(--border); }
+    .oppsett .section table tr:last-child td { border-bottom: 0; }
+    .oppsett .section table th { background: var(--primary); color: oklch(97% .01 240); }
+    @media (max-width: 1024px) {
+      .nav-links, .nav-login, .nav-cta { display: none; }
+      .nav { position: relative; width: 100%; justify-content: space-between; gap: 1rem; padding: .55rem .65rem .55rem 1.25rem; }
+      .nav-toggle { display: flex; }
+      .nav-mobile { display: flex; }
+      .oppsett { grid-template-columns: 1fr; gap: 0; }
+      .toc { display: none; }
+    }
+    @media (max-width: 768px) {
+      .topp-innhold { padding: 8rem 1.5rem 3rem; }
+      .topp h1 { font-size: 1.95rem; hyphens: auto; overflow-wrap: break-word; }
+      .oppsett { padding: 1.5rem 1rem 4rem; }
+      .oppsett .content { padding: 1.75rem 1.25rem; }
+    }
   </style>
 
   <!-- Vercel Web Analytics -->
@@ -190,25 +244,60 @@
 
   <!-- NAV -->
   <div class="nav-wrap">
-    <nav class="nav">
+    <nav class="nav" id="mainNav">
       <a href="/" class="nav-logo"><img src="logo.png" alt="Rapportly"></a>
       <div class="nav-links">
-        <a href="index.html#hvordan">Slik fungerer det</a>
-        <a href="index.html#priser">Priser</a>
-        <a href="index.html#kontakt">Kontakt</a>
+        <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/guider">Guider</a>
+        <a href="/#priser">Priser</a>
+        <a href="/#kontakt">Kontakt</a>
       </div>
-      <a href="index.html#kontakt" class="nav-cta">Bli kunde</a>
+      <a href="https://app.rapportly.no" class="nav-login">Logg inn</a>
+      <a href="/#kontakt" class="nav-cta">Book gratis demo</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-mobile" id="navMobile">
+        <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/guider">Guider</a>
+        <a href="/#priser">Priser</a>
+        <a href="/#kontakt">Kontakt</a>
+        <a href="https://app.rapportly.no">Logg inn</a>
+        <a href="/#kontakt" class="nav-mobile-cta">Book gratis demo</a>
+      </div>
     </nav>
   </div>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header">
-    <span class="page-header-label">Juridisk</span>
-    <h1>Tjenestevilkår</h1>
-    <p class="page-header-meta">Sist oppdatert: 24. september 2026 &nbsp;·&nbsp; Versjon 1.3</p>
-  </div>
+  <!-- TOPP -->
+  <section class="topp">
+    <div class="topp-rutenett"></div>
+    <div class="topp-fade"></div>
+    <div class="topp-innhold">
+      <span class="topp-etikett">Juridisk</span>
+      <h1>Tjenestevilkår</h1>
+      <p class="topp-meta">Sist oppdatert: 24. september 2026 &nbsp;·&nbsp; Versjon 1.3</p>
+    </div>
+  </section>
 
   <!-- CONTENT -->
+  <div class="oppsett">
+    <nav class="toc" aria-label="Innhold">
+      <span class="toc-tittel">Innhold</span>
+      <ol>
+        <li><a href="#punkt-1">1. Tjenestebeskrivelse</a></li>
+        <li><a href="#punkt-2">2. Abonnement og betaling</a></li>
+        <li><a href="#punkt-3">3. Oppetid og tjenestenivå</a></li>
+        <li><a href="#punkt-4">4. Kundens forpliktelser, bruksregler og skadesløsholdelse</a></li>
+        <li><a href="#punkt-5">5. Immaterielle rettigheter</a></li>
+        <li><a href="#punkt-6">6. Ansvarsbegrensning</a></li>
+        <li><a href="#punkt-7">7. Oppsigelse og datasletting</a></li>
+        <li><a href="#punkt-8">8. Force majeure og beredskap</a></li>
+        <li><a href="#punkt-9">9. Endring av vilkår</a></li>
+        <li><a href="#punkt-10">10. Konfidensialitet</a></li>
+        <li><a href="#punkt-11">11. Lovvalg og verneting</a></li>
+        <li><a href="#punkt-12">12. Kontakt</a></li>
+      </ol>
+    </nav>
   <div class="content">
 
     <!-- INTRO -->
@@ -222,7 +311,7 @@
 
     <!-- 1 -->
     <div class="section">
-      <h2>1. Tjenestebeskrivelse</h2>
+      <h2 id="punkt-1">1. Tjenestebeskrivelse</h2>
       <p>
         Rapportly er en skybasert programvare (SaaS) som gir regnskapsbyråer mulighet til å:
       </p>
@@ -245,7 +334,7 @@
 
     <!-- 2 -->
     <div class="section">
-      <h2>2. Abonnement og betaling</h2>
+      <h2 id="punkt-2">2. Abonnement og betaling</h2>
       <p>
         Kunden betaler et månedlig eller årlig abonnementsgebyr i henhold til gjeldende prisliste på rapportly.no. Priser er oppgitt eksklusive merverdiavgift.
       </p>
@@ -264,7 +353,7 @@
 
     <!-- 3 -->
     <div class="section">
-      <h2>3. Oppetid og tjenestenivå</h2>
+      <h2 id="punkt-3">3. Oppetid og tjenestenivå</h2>
       <p>
         Leverandøren tilstreber høy tilgjengelighet for tjenesten:
       </p>
@@ -326,7 +415,7 @@
 
     <!-- 4 -->
     <div class="section">
-      <h2>4. Kundens forpliktelser, bruksregler og skadesløsholdelse</h2>
+      <h2 id="punkt-4">4. Kundens forpliktelser, bruksregler og skadesløsholdelse</h2>
       <p>Kunden er ansvarlig for:</p>
       <ul>
         <li>At ansatte som bruker tjenesten, er kjent med og overholder disse Vilkårene og Databehandleravtalen</li>
@@ -349,7 +438,7 @@
 
     <!-- 5 -->
     <div class="section">
-      <h2>5. Immaterielle rettigheter</h2>
+      <h2 id="punkt-5">5. Immaterielle rettigheter</h2>
       <p>
         Rapportly-plattformen, inkludert programvare, design, tekster, logoer og øvrig innhold utviklet av Leverandøren, er Leverandørens eiendom og beskyttes av norsk og internasjonal opphavsrett og annen immaterialrett.
       </p>
@@ -365,7 +454,7 @@
 
     <!-- 6 -->
     <div class="section">
-      <h2>6. Ansvarsbegrensning</h2>
+      <h2 id="punkt-6">6. Ansvarsbegrensning</h2>
       <p>
         Tjenesten leveres «som den er» («as-is»). Leverandøren gir ingen garantier — verken uttrykkelige eller underforståtte — for at tjenesten er fri for feil, at den er egnet for et bestemt formål, eller at oppetidsmål alltid vil oppnås. Dette gjelder fullt ut i dette B2B-forholdet mellom næringsdrivende.
       </p>
@@ -390,7 +479,7 @@
 
     <!-- 7 -->
     <div class="section">
-      <h2>7. Oppsigelse og datasletting</h2>
+      <h2 id="punkt-7">7. Oppsigelse og datasletting</h2>
       <p>
         Kunden kan si opp avtalen med én måneds skriftlig varsel til <a href="mailto:hei@rapportly.no">hei@rapportly.no</a>. Oppsigelse trer i kraft ved utløpet av den første hele faktureringsperioden etter varselsfristens utløp.
       </p>
@@ -415,7 +504,7 @@
 
     <!-- 8 -->
     <div class="section">
-      <h2>8. Force majeure og beredskap</h2>
+      <h2 id="punkt-8">8. Force majeure og beredskap</h2>
       <p>
         Leverandøren er ikke ansvarlig for manglende eller forsinket oppfyllelse av sine forpliktelser som skyldes forhold utenfor Leverandørens rimelige kontroll («force majeure»), herunder naturkatastrofer, krig, streik eller lockout utenfor Leverandørens virksomhet, myndighetspålegg, strømbortfall, alvorlig svikt hos kritisk infrastruktur, pandemi eller langvarig sykdom hos Leverandøren. Leverandøren varsler Kunden uten ugrunnet opphold om slike forhold og estimert varighet.
       </p>
@@ -432,7 +521,7 @@
 
     <!-- 9 -->
     <div class="section">
-      <h2>9. Endring av vilkår</h2>
+      <h2 id="punkt-9">9. Endring av vilkår</h2>
       <p>
         Leverandøren kan endre disse Vilkårene med minimum 30 dagers skriftlig varsel per e-post til Kundens registrerte kontaktadresse. Endringer trer i kraft ved utløpet av varslingsperioden.
       </p>
@@ -445,7 +534,7 @@
 
     <!-- 10 -->
     <div class="section">
-      <h2>10. Konfidensialitet</h2>
+      <h2 id="punkt-10">10. Konfidensialitet</h2>
       <p>
         Begge parter forplikter seg til å behandle den andre partens konfidensielle informasjon — herunder forretningsopplysninger, tekniske løsninger og kundedata — med den diskresjon som slike opplysninger krever. Taushetsplikten gjelder også etter at avtaleforholdet er avsluttet.
       </p>
@@ -455,7 +544,7 @@
 
     <!-- 11 -->
     <div class="section">
-      <h2>11. Lovvalg og verneting</h2>
+      <h2 id="punkt-11">11. Lovvalg og verneting</h2>
       <p>
         Disse Vilkårene er underlagt norsk rett. Eventuelle tvister søkes løst i minnelighet. Dersom det ikke oppnås enighet, er verneting Midtre Hålogaland tingrett.
       </p>
@@ -465,7 +554,7 @@
 
     <!-- 12 -->
     <div class="section">
-      <h2>12. Kontakt</h2>
+      <h2 id="punkt-12">12. Kontakt</h2>
       <div class="info-box">
         <div class="info-row">
           <div class="info-item">
@@ -484,6 +573,7 @@
       </div>
     </div>
 
+  </div>
   </div>
 
   <!-- FOOTER -->
@@ -508,5 +598,38 @@
     </footer>
   </div>
 
+  <script>
+    // Mobil-meny (hamburger)
+    (() => {
+      const toggle = document.getElementById('navToggle');
+      const menu = document.getElementById('navMobile');
+      if (!toggle || !menu) return;
+      const setOpen = (open) => {
+        menu.classList.toggle('open', open);
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Lukk meny' : 'Åpne meny');
+      };
+      toggle.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('click', (e) => {
+        if (menu.classList.contains('open') && !e.target.closest('#navMobile') && !e.target.closest('#navToggle')) setOpen(false);
+      });
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    })();
+
+    // Innholdsfortegnelsen: marker punktet som leses
+    (() => {
+      const lenker = [...document.querySelectorAll('.toc a')];
+      if (!lenker.length || !('IntersectionObserver' in window)) return;
+      const mål = lenker.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+      const sett = (id) => lenker.forEach(a => a.classList.toggle('aktiv', a.getAttribute('href') === '#' + id));
+      const obs = new IntersectionObserver((e) => {
+        const synlig = e.filter(x => x.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (synlig) sett(synlig.target.id);
+      }, { rootMargin: '-15% 0px -70% 0px' });
+      mål.forEach(m => obs.observe(m));
+    })();
+  </script>
 </body>
 </html>
