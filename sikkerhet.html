@@ -19,6 +19,8 @@
       --border:       oklch(87%   0.008 240);
       --primary:      oklch(26%   0.10  262);
       --accent:       oklch(58%   0.22  260);
+      --accent-hover: oklch(52%   0.22  260);
+      --accent-light: oklch(94%   0.05  262);
       --r: 12px;
       --ease: cubic-bezier(0.16,1,0.3,1);
     }
@@ -31,7 +33,7 @@
     }
     a { text-decoration: none; color: inherit; }
 
-    /* NAV */
+    /* ── NAV ── */
     .nav-wrap {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: center;
@@ -44,7 +46,9 @@
       border: 1px solid oklch(35% 0.08 258); border-radius: 9999px;
       padding: .75rem 1rem .75rem 1.5rem;
       box-shadow: 0 4px 24px oklch(0% 0 0/.20); pointer-events: all;
+      transition: box-shadow 220ms var(--ease);
     }
+    .nav.scrolled { box-shadow: 0 6px 32px oklch(0% 0 0/.28); }
     .nav-logo img { height: 26px; display: block; }
     .nav-links { display: flex; align-items: center; gap: .125rem; }
     .nav-links a {
@@ -53,30 +57,76 @@
       transition: color 160ms var(--ease), background 160ms var(--ease);
     }
     .nav-links a:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
+    .nav-login {
+      font-size: .875rem; font-weight: 500; color: oklch(72% 0.04 240);
+      padding: .375rem .75rem; border-radius: 9999px;
+      transition: color 160ms var(--ease), background 160ms var(--ease);
+    }
+    .nav-login:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
     .nav-cta {
       font-size: .875rem; font-weight: 700; color: oklch(16% 0.08 258);
       background: oklch(97% 0.01 240); padding: .5625rem 1.375rem; border-radius: 9999px;
-      transition: background 160ms var(--ease);
+      transition: background 160ms var(--ease), transform 160ms var(--ease);
     }
-    .nav-cta:hover { background: oklch(90% 0.03 262); }
+    .nav-cta:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .5rem; width: 2.4rem; height: 2.4rem; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+    .nav-toggle span { display: block; width: 20px; height: 2px; background: oklch(85% .03 255); border-radius: 2px; transition: transform 220ms var(--ease), opacity 160ms; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; position: absolute; top: calc(100% + .6rem); left: 0; right: 0;
+      flex-direction: column; gap: .12rem; padding: .55rem;
+      background: oklch(20% 0.08 258 / 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid oklch(35% 0.08 258); border-radius: 18px; box-shadow: 0 14px 44px oklch(0% 0 0/.4);
+      opacity: 0; visibility: hidden; transform: translateY(-8px);
+      transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 200ms;
+    }
+    .nav-mobile.open { opacity: 1; visibility: visible; transform: none; }
+    .nav-mobile a { color: oklch(82% .03 255); font-size: .95rem; font-weight: 500; padding: .72rem .85rem; border-radius: 10px; transition: background 140ms var(--ease), color 140ms var(--ease); }
+    .nav-mobile a:hover, .nav-mobile a:active { background: oklch(35% .07 258); color: oklch(98% .01 240); }
+    .nav-mobile-cta { margin-top: .4rem; background: oklch(97% .01 240); color: oklch(16% .08 258) !important; font-weight: 700 !important; text-align: center; }
+    .nav-mobile-cta:hover, .nav-mobile-cta:active { background: var(--accent-light) !important; }
 
-    /* PAGE HEADER */
-    .page-header {
-      padding: 10rem 6rem 5rem;
-      max-width: 860px; margin: 0 auto;
-      border-bottom: 1px solid var(--border);
+    /* TOPP */
+    .topp {
+      background: var(--primary); position: relative; overflow: hidden;
     }
-    .page-header-label {
-      font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--text-subtle); margin-bottom: 1.25rem; display: block;
+    .topp-rutenett {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, oklch(58% .10 262 / .18) 1px, transparent 1px);
+      background-size: 32px 32px;
     }
-    .page-header h1 {
-      font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 900;
-      letter-spacing: -.05em; line-height: 1.06;
+    .topp-fade {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 120% 70% at 50% 0%, transparent 20%, oklch(22% .09 262 / .92) 82%);
     }
-    .page-header-meta {
-      margin-top: 1.25rem; font-size: .875rem; color: var(--text-subtle);
+    .topp-innhold {
+      position: relative; z-index: 1; max-width: 1080px; margin: 0 auto;
+      padding: 10.5rem 6rem 5.5rem;
+      display: grid; grid-template-columns: 1.35fr .65fr; gap: 4rem; align-items: center;
     }
+    .topp-etikett {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: oklch(78% .06 255); margin-bottom: 1.5rem;
+    }
+    .topp h1 {
+      font-size: clamp(2.5rem, 4.4vw, 4.25rem); font-weight: 900;
+      line-height: 1; letter-spacing: -.055em; color: oklch(97% .01 240);
+    }
+    .topp h1 em { font-style: normal; color: var(--accent); }
+    .topp-ingress { margin-top: 1.5rem; font-size: 1.125rem; line-height: 1.72; color: oklch(70% .04 250); max-width: 38rem; }
+    .facts { display: flex; flex-wrap: wrap; gap: .625rem; margin-top: 2rem; }
+    .facts span {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .875rem; font-weight: 600; color: oklch(94% .02 250);
+      background: oklch(100% 0 0 / .06); border: 1px solid oklch(100% 0 0 / .14);
+      padding: .5rem .9rem; border-radius: 9999px;
+    }
+    .facts svg { width: 17px; height: 17px; color: oklch(72% .16 150); flex-shrink: 0; }
+    .skjold { display: flex; justify-content: center; }
+    .skjold svg { width: 100%; max-width: 260px; height: auto; filter: drop-shadow(0 24px 60px oklch(58% .22 260 / .35)); }
 
     /* CONTENT */
     .content {
@@ -178,10 +228,34 @@
       .section table { font-size: .8rem; }
     }
     /* SIKKERHET */
-    .page-header-ingress { margin-top: 1.25rem; font-size: 1.0625rem; line-height: 1.7; color: var(--text-muted); max-width: 40rem; }
-    .facts { display: flex; flex-wrap: wrap; gap: .625rem 1.5rem; margin-top: 1.75rem; }
-    .facts span { display: inline-flex; align-items: center; gap: .5rem; font-size: .9rem; font-weight: 600; color: var(--text); }
-    .facts svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
+    .content { max-width: 1080px; padding: 5rem 6rem 7rem; }
+    .section h2 { font-size: 1.625rem !important; font-weight: 900 !important; letter-spacing: -.04em !important; margin-bottom: .5rem !important; }
+    .seksjon-ingress { font-size: 1rem; color: var(--text-muted); max-width: 40rem; }
+    .grid { grid-template-columns: repeat(3, 1fr) !important; margin-top: 2rem !important; }
+    .item { background: #fff !important; box-shadow: 0 1px 2px oklch(20% .05 258 / .04), 0 8px 24px oklch(20% .05 258 / .05); }
+    .item-ikon { background: var(--primary) !important; color: oklch(97% .01 240) !important; }
+    .firma { margin-top: 1.25rem; font-size: .8125rem; color: oklch(78% .04 255); }
+    .kontakt-boks { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 2.25rem 2.5rem !important; }
+    .kontakt-knapp {
+      flex-shrink: 0; font-size: .9375rem; font-weight: 700; color: var(--primary) !important;
+      background: oklch(97% .01 240); padding: .8rem 1.6rem; border-radius: 9999px; text-decoration: none !important;
+      transition: background 160ms var(--ease);
+    }
+    .kontakt-knapp:hover { background: var(--accent-light); }
+    @media (max-width: 1024px) {
+      .nav-links, .nav-login, .nav-cta { display: none; }
+      .nav { position: relative; width: 100%; justify-content: space-between; gap: 1rem; padding: .55rem .65rem .55rem 1.25rem; }
+      .nav-toggle { display: flex; }
+      .nav-mobile { display: flex; }
+      .grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 768px) {
+      .topp-innhold { grid-template-columns: 1fr; padding: 8rem 1.5rem 3.5rem; gap: 0; }
+      .skjold { display: none; }
+      .content { padding: 3rem 1.5rem 5rem; }
+      .grid { grid-template-columns: 1fr !important; }
+      .kontakt-boks { flex-direction: column; align-items: flex-start; padding: 1.75rem 1.5rem !important; }
+    }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
     .item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1.375rem 1.5rem; }
     .item-ikon { width: 36px; height: 36px; border-radius: 9px; background: oklch(95% 0.03 262); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: .875rem; }
@@ -221,38 +295,71 @@
 
   <!-- NAV -->
   <div class="nav-wrap">
-    <nav class="nav">
+    <nav class="nav" id="mainNav">
       <a href="/" class="nav-logo"><img src="logo.png" alt="Rapportly"></a>
       <div class="nav-links">
-        <a href="index.html#hvordan">Slik fungerer det</a>
-        <a href="index.html#priser">Priser</a>
-        <a href="index.html#kontakt">Kontakt</a>
+        <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/guider">Guider</a>
+        <a href="/#priser">Priser</a>
+        <a href="/#kontakt">Kontakt</a>
       </div>
-      <a href="index.html#kontakt" class="nav-cta">Bli kunde</a>
+      <a href="https://app.rapportly.no" class="nav-login">Logg inn</a>
+      <a href="/#kontakt" class="nav-cta">Book gratis demo</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-mobile" id="navMobile">
+        <a href="/#hvordan">Slik fungerer det</a>
+        <a href="/guider">Guider</a>
+        <a href="/#priser">Priser</a>
+        <a href="/#kontakt">Kontakt</a>
+        <a href="https://app.rapportly.no">Logg inn</a>
+        <a href="/#kontakt" class="nav-mobile-cta">Book gratis demo</a>
+      </div>
     </nav>
   </div>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header">
-    <span class="page-header-label">Sikkerhet og personvern</span>
-    <h1>Klientdataene deres er trygge hos oss</h1>
-    <p class="page-header-ingress">
-      Regnskapsbyråer håndterer noen av de mest følsomme opplysningene en virksomhet har. Sikkerhet og
-      personvern er derfor en del av hvordan Rapportly er bygget, ikke noe som er lagt til etterpå.
-    </p>
-    <div class="facts">
+  <!-- TOPP -->
+  <section class="topp">
+    <div class="topp-rutenett"></div>
+    <div class="topp-fade"></div>
+    <div class="topp-innhold">
+      <div>
+        <span class="topp-etikett">Sikkerhet og personvern</span>
+        <h1>Klientdataene deres er <em>trygge</em> hos oss</h1>
+        <p class="topp-ingress">
+          Regnskapsbyråer håndterer noen av de mest følsomme opplysningene en virksomhet har. Sikkerhet og
+          personvern er derfor en del av hvordan Rapportly er bygget, ikke noe som er lagt til etterpå.
+        </p>
+        <div class="facts">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Lagret i EU/EØS</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Kryptert hele veien</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Byråene strengt skilt</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Dere eier dataene</span>
     </div>
-  </div>
+      </div>
+      <div class="skjold">
+        <svg viewBox="0 0 200 230" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="sk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="oklch(66% .2 260)"/><stop offset="1" stop-color="oklch(45% .2 262)"/></linearGradient>
+          </defs>
+          <path d="M100 8 186 40v62c0 58-37 99-86 120C51 201 14 160 14 102V40L100 8Z" fill="url(#sk)"/>
+          <path d="M100 8 186 40v62c0 58-37 99-86 120C51 201 14 160 14 102V40L100 8Z" stroke="oklch(100% 0 0 / .35)" stroke-width="2"/>
+          <rect x="70" y="104" width="60" height="48" rx="8" fill="oklch(97% .01 240)"/>
+          <path d="M80 104V90a20 20 0 0 1 40 0v14" stroke="oklch(97% .01 240)" stroke-width="9" stroke-linecap="round"/>
+          <circle cx="100" cy="124" r="6" fill="oklch(26% .10 262)"/>
+          <rect x="97" y="126" width="6" height="14" rx="3" fill="oklch(26% .10 262)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
 
   <!-- CONTENT -->
   <div class="content">
 
     <div class="section">
       <h2>Slik beskytter vi dataene deres</h2>
+      <p class="seksjon-ingress">Seks prinsipper som gjelder for alle byråer, fra første innlogging.</p>
       <div class="grid">
         <div class="item">
           <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
@@ -328,8 +435,12 @@
 
     <div class="section">
       <div class="kontakt-boks">
-        <h2>Kontakt</h2>
-        <p>Spørsmål om sikkerhet eller personvern, eller har du oppdaget en sårbarhet? Skriv til <a href="mailto:hei@rapportly.no">hei@rapportly.no</a>.</p>
+        <div>
+          <h2>Kontakt</h2>
+          <p>Spørsmål om sikkerhet eller personvern, eller har du oppdaget en sårbarhet? Skriv til <a href="mailto:hei@rapportly.no">hei@rapportly.no</a>.</p>
+          <p class="firma">Rapportly AS · Org.nr. 938 473 234 · Steiroveien 30A, 8404 Sortland</p>
+        </div>
+        <a href="mailto:hei@rapportly.no" class="kontakt-knapp">Kontakt oss</a>
       </div>
     </div>
 
@@ -358,5 +469,25 @@
     </footer>
   </div>
 
+  <script>
+    // Mobil-meny (hamburger)
+    (() => {
+      const toggle = document.getElementById('navToggle');
+      const menu = document.getElementById('navMobile');
+      if (!toggle || !menu) return;
+      const setOpen = (open) => {
+        menu.classList.toggle('open', open);
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Lukk meny' : 'Åpne meny');
+      };
+      toggle.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('click', (e) => {
+        if (menu.classList.contains('open') && !e.target.closest('#navMobile') && !e.target.closest('#navToggle')) setOpen(false);
+      });
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    })();
+  </script>
 </body>
 </html>
