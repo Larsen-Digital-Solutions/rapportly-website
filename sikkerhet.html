@@ -235,6 +235,16 @@
     .item { background: #fff !important; box-shadow: 0 1px 2px oklch(20% .05 258 / .04), 0 8px 24px oklch(20% .05 258 / .05); }
     .item-ikon { background: var(--primary) !important; color: oklch(97% .01 240) !important; }
     .firma { margin-top: 1.25rem; font-size: .8125rem; color: oklch(78% .04 255); }
+    .paneler { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .panel { background: #fff; border: 1px solid var(--border); border-radius: var(--r); padding: 2rem 2rem 1rem;
+      box-shadow: 0 1px 2px oklch(20% .05 258 / .04), 0 8px 24px oklch(20% .05 258 / .05); }
+    .panel-etikett { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+    .section .panel h2 { font-size: 1.375rem !important; margin-bottom: 1.25rem !important; }
+    .panel-punkt { display: grid; grid-template-columns: 34px 1fr; gap: 1rem; padding: 1.125rem 0; border-top: 1px solid var(--border); }
+    .panel-ikon { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-light); color: var(--primary); display: flex; align-items: center; justify-content: center; }
+    .panel-ikon svg { width: 18px; height: 18px; }
+    .panel-punkt h3 { font-size: .9875rem; font-weight: 800; letter-spacing: -.015em; color: var(--text); margin-bottom: .25rem; }
+    .section .panel-punkt p { font-size: .9rem; line-height: 1.65; margin: 0; }
     .kontakt-boks { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 2.25rem 2.5rem !important; }
     .kontakt-knapp {
       flex-shrink: 0; font-size: .9375rem; font-weight: 700; color: var(--primary) !important;
@@ -254,6 +264,8 @@
       .skjold { display: none; }
       .content { padding: 3rem 1.5rem 5rem; }
       .grid { grid-template-columns: 1fr !important; }
+      .paneler { grid-template-columns: 1fr; }
+      .panel { padding: 1.5rem 1.25rem .75rem; }
       .kontakt-boks { flex-direction: column; align-items: flex-start; padding: 1.75rem 1.5rem !important; }
     }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
@@ -396,24 +408,44 @@
 
     <div class="divider"></div>
 
-    <div class="to-kol">
-      <div class="section">
+    <div class="section paneler">
+      <div class="panel">
         <h2>Drift og beredskap</h2>
-        <div class="punkter">
-          <p><strong>Sikkerhetskopier.</strong> Dataene sikkerhetskopieres jevnlig og lagres kryptert, adskilt fra driftsmiljøet. Gjenoppretting er testet.</p>
-          <p><strong>Overvåking.</strong> Tjenesten overvåkes kontinuerlig, slik at feil oppdages og rettes raskt.</p>
-          <p><strong>Sikker utvikling.</strong> Endringer testes før de tas i bruk, og tilgangen til driftsmiljøet er begrenset og beskyttet med to-trinns innlogging.</p>
-          <p><strong>Hendelser.</strong> Vi har faste rutiner for å håndtere sikkerhetshendelser, og berørte byråer varsles uten ugrunnet opphold.</p>
-        </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+            <div><h3>Sikkerhetskopiering</h3><p>Automatiske, krypterte sikkerhetskopier lagres adskilt fra produksjonsmiljøet. Gjenoppretting er verifisert.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+            <div><h3>Overvåking</h3><p>Tjenesten overvåkes kontinuerlig. Feil varsles automatisk og følges opp raskt.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></div>
+            <div><h3>Sikker utvikling</h3><p>Alle endringer kvalitetssikres og testes før de settes i produksjon. Tilgangen til produksjonsmiljøet er begrenset og krever to-trinns autentisering.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></div>
+            <div><h3>Hendelseshåndtering</h3><p>Dokumenterte rutiner for håndtering av sikkerhetshendelser. Berørte byråer varsles uten ugrunnet opphold.</p></div>
+          </div>
       </div>
-      <div class="section">
+      <div class="panel">
         <h2>Personvern og GDPR</h2>
-        <div class="punkter">
-          <p><strong>Bygget for GDPR.</strong> Rapportly gjør det enkelt for byrået å etterleve personvernregelverket. Byrået er behandlingsansvarlig, og Rapportly AS er databehandler etter en standard databehandleravtale.</p>
-          <p><strong>Bare det som trengs.</strong> Vi behandler bare opplysningene som trengs for å lage rapportene, og bruker dem aldri til andre formål.</p>
-          <p><strong>Nøye utvalgte leverandører.</strong> Alle leverandørene våre har databehandleravtale og anerkjente sikkerhetssertifiseringer.</p>
-          <p><strong>Norsk selskap.</strong> Rapportly er utviklet og driftes fra Norge, og avtalene følger norsk lov.</p>
-        </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.2 8 9 4.6-.8 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <div><h3>Innebygd personvern</h3><p>Personvern er bygget inn i løsningen. Byrået er behandlingsansvarlig, og Rapportly AS er databehandler etter en standard databehandleravtale.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8L3 5Z"/></svg></div>
+            <div><h3>Dataminimering</h3><p>Vi behandler bare opplysningene som er nødvendige for å levere rapportene, og bruker dem aldri til andre formål.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m9 14.5-1.5 6.5 4.5-2.5 4.5 2.5-1.5-6.5"/></svg></div>
+            <div><h3>Leverandørstyring</h3><p>Alle underleverandører er underlagt databehandleravtale og har anerkjente sikkerhetssertifiseringer.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+            <div><h3>Norsk selskap</h3><p>Rapportly AS er et norsk selskap. Tjenesten utvikles og driftes fra Norge, og avtalene reguleres av norsk rett.</p></div>
+          </div>
       </div>
     </div>
 
