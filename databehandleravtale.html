@@ -58,11 +58,12 @@
     }
     .nav-links a:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
     .nav-login {
-      font-size: .875rem; font-weight: 500; color: oklch(72% 0.04 240);
-      padding: .375rem .75rem; border-radius: 9999px;
-      transition: color 160ms var(--ease), background 160ms var(--ease);
+      font-size: .875rem; font-weight: 700; color: #fff;
+      padding: calc(.5625rem - 1px) 1.25rem; border-radius: 9999px; border: 1px solid oklch(100% 0 0 / .5);
+      transition: background 160ms var(--ease), border-color 160ms var(--ease);
     }
-    .nav-login:hover { color: oklch(97% 0.01 240); background: oklch(35% 0.07 258); }
+    .nav-login:hover { color: #fff; background: oklch(100% 0 0 / .1); border-color: oklch(100% 0 0 / .85); }
+    .nav-login + .nav-cta { margin-left: -1.75rem; }
     .nav-cta {
       font-size: .875rem; font-weight: 700; color: oklch(16% 0.08 258);
       background: oklch(97% 0.01 240); padding: .5625rem 1.375rem; border-radius: 9999px;
@@ -87,6 +88,7 @@
     .nav-mobile a:hover, .nav-mobile a:active { background: oklch(35% .07 258); color: oklch(98% .01 240); }
     .nav-mobile-cta { margin-top: .4rem; background: oklch(97% .01 240); color: oklch(16% .08 258) !important; font-weight: 700 !important; text-align: center; }
     .nav-mobile-cta:hover, .nav-mobile-cta:active { background: var(--accent-light) !important; }
+    .nav-mobile-login { margin-top: .4rem; text-align: center; font-weight: 700 !important; color: #fff !important; border: 1px solid oklch(100% 0 0 / .5); padding: calc(.72rem - 1px) .85rem !important; }
 
     /* TOPP */
     .topp { background: var(--primary); position: relative; overflow: hidden; }
@@ -280,7 +282,7 @@
         <a href="/#priser">Priser</a>
         <a href="/sikkerhet">Sikkerhet</a>
         <a href="/#kontakt">Kontakt</a>
-        <a href="https://app.rapportly.no">Logg inn</a>
+        <a href="https://app.rapportly.no" class="nav-mobile-login">Logg inn</a>
         <a href="/#kontakt" class="nav-mobile-cta">Book gratis demo</a>
       </div>
     </nav>
