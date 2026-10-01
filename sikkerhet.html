@@ -298,6 +298,50 @@
   </script>
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
   <script defer src="/consent.js"></script>
+  <style id="sikkerhet-v3">
+    .topp-oppdatert { margin-top: 1.5rem; font-size: .8125rem; color: oklch(70% .03 250); }
+    .hopp { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 3.25rem; }
+    .hopp a { font-size: .84rem; font-weight: 600; color: var(--text-muted); background: #fff; border: 1px solid var(--border);
+      border-radius: 9999px; padding: .45rem .95rem; text-decoration: none; transition: color 160ms var(--ease), border-color 160ms var(--ease); }
+    .hopp a:hover { color: var(--primary); border-color: var(--accent); }
+    .content [id] { scroll-margin-top: 7rem; }
+    .section > .panel-etikett { margin-bottom: .6rem; }
+    .varsling { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--r);
+      padding: 2rem 2.25rem; box-shadow: 0 1px 2px oklch(20% .05 258 / .04), 0 8px 24px oklch(20% .05 258 / .05); }
+    /* Ikoner uten fargede bokser: tynn strek i en hårfin ring (som Supabase/Linear) */
+    .content .grid { gap: 2.5rem 2.75rem !important; margin-top: 2.25rem !important; }
+    .content .grid .item { background: transparent !important; box-shadow: none !important; border: 0 !important;
+      border-top: 1px solid var(--border) !important; border-radius: 0 !important; padding: 1.75rem 0 0 !important; }
+    .content .item-ikon, .content .panel-ikon { background: transparent !important; color: var(--primary) !important;
+      border: 1px solid var(--border); border-radius: 50%; }
+    .content .item-ikon { width: 44px; height: 44px; margin-bottom: 1.1rem; }
+    .content .item-ikon svg { width: 22px; height: 22px; }
+    .content .panel-punkt { grid-template-columns: 36px 1fr; }
+    .content .panel-ikon { width: 36px; height: 36px; }
+    .content .panel-ikon svg { width: 18px; height: 18px; }
+    .content .item h3 { font-size: 1.05rem; }
+    /* Sertifiseringene som typografi, uten ikoner */
+    .sert-merke { display: block !important; padding: 1.35rem 1.5rem !important; }
+    .sert-type { display: block; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: oklch(72% .06 255); margin-bottom: .45rem; }
+    .sert-merke h3 { font-size: 1.3rem !important; letter-spacing: -.02em !important; margin-bottom: .35rem !important; }
+    .section .varsling h2 { margin-bottom: .6rem !important; }
+    .section .varsling-fin { font-size: .85rem; margin: 0; }
+    .faq { margin-top: 1.5rem; border-top: 1px solid var(--border); }
+    .faq details { border-bottom: 1px solid var(--border); }
+    .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+      padding: 1.15rem 0; font-size: 1rem; font-weight: 700; color: var(--text); }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 1.375rem; font-weight: 400; color: var(--accent); flex-shrink: 0; transition: transform 200ms var(--ease); }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .section .faq p { margin: 0; padding: 0 2.5rem 1.25rem 0; }
+    @media (max-width: 768px) {
+      .hopp { margin-bottom: 2.25rem; }
+      .varsling { padding: 1.5rem 1.25rem; }
+      .content .grid { gap: 0 !important; }
+      .content .grid .item { padding: 1.5rem 0 !important; }
+      .section .faq p { padding-right: 0; }
+    }
+  </style>
   <style id="sf-css">
     footer.sf { display: block; max-width: none; margin: 0; padding: 0; gap: 0; flex-direction: initial; align-items: initial;
       background: oklch(19% .07 262); color: oklch(86% .02 250); border-top: 1px solid oklch(100% 0 0 / .08);
@@ -380,7 +424,9 @@
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Kryptert hele veien</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Byråene strengt skilt</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Dere eier dataene</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Sertifiserte underleverandører</span>
     </div>
+        <p class="topp-oppdatert">Sist oppdatert 1. oktober 2026</p>
       </div>
       <div class="skjold">
         <svg viewBox="0 0 200 230" fill="none" aria-hidden="true">
@@ -401,37 +447,48 @@
   <!-- CONTENT -->
   <div class="content">
 
-    <div class="section">
+    <nav class="hopp" aria-label="Innhold på siden">
+      <a href="#datasikkerhet">Datasikkerhet</a>
+      <a href="#sertifiseringer">Sertifiseringer</a>
+      <a href="#drift">Drift</a>
+      <a href="#personvern">Personvern</a>
+      <a href="#sarbarheter">Sårbarheter</a>
+      <a href="#sporsmal">Spørsmål</a>
+      <a href="#dokumentasjon">Dokumentasjon</a>
+    </nav>
+
+    <div class="section" id="datasikkerhet">
+      <span class="panel-etikett">Datasikkerhet</span>
       <h2>Slik beskytter vi dataene deres</h2>
       <p class="seksjon-ingress">Seks prinsipper som gjelder for alle byråer, fra første innlogging.</p>
       <div class="grid">
         <div class="item">
-          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+          <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm89.8,96H173.89c-1.54-40.77-18.48-68.23-30.43-82.67A90.19,90.19,0,0,1,217.8,122ZM128,215.83a110,110,0,0,1-15.19-19.45A128.37,128.37,0,0,1,94.13,134h67.74a128.37,128.37,0,0,1-18.68,62.38A110,110,0,0,1,128,215.83ZM94.13,122a128.37,128.37,0,0,1,18.68-62.38A110,110,0,0,1,128,40.17a110,110,0,0,1,15.19,19.45A128.37,128.37,0,0,1,161.87,122Zm18.41-82.67c-12,14.44-28.89,41.9-30.43,82.67H38.2A90.19,90.19,0,0,1,112.54,39.33ZM38.2,134H82.11c1.54,40.77,18.48,68.23,30.43,82.67A90.19,90.19,0,0,1,38.2,134Zm105.26,82.67c11.95-14.44,28.89-41.9,30.43-82.67H217.8A90.19,90.19,0,0,1,143.46,216.67Z"/></svg></div>
           <h3>Lagret i EU/EØS</h3>
-          <p>Dataene deres lagres i datasentre innenfor EU/EØS, hos leverandører som oppfyller anerkjente internasjonale sikkerhetsstandarder.</p>
+          <p>Dataene deres lagres i datasentre innenfor EU/EØS, hos leverandører som er sertifisert etter ISO/IEC 27001.</p>
         </div>
         <div class="item">
-          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M208,82H174V56a46,46,0,0,0-92,0V82H48A14,14,0,0,0,34,96V208a14,14,0,0,0,14,14H208a14,14,0,0,0,14-14V96A14,14,0,0,0,208,82ZM94,56a34,34,0,0,1,68,0V82H94ZM210,208a2,2,0,0,1-2,2H48a2,2,0,0,1-2-2V96a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2Zm-72-56a10,10,0,1,1-10-10A10,10,0,0,1,138,152Z"/></svg></div>
           <h3>Kryptert hele veien</h3>
-          <p>All data krypteres både når de sendes og når de lagres, med sterk og anerkjent kryptering.</p>
+          <p>All data krypteres med AES-256 når de lagres, og med TLS 1.2 eller nyere når de sendes. Appen tvinger kryptert tilkobling (HSTS) og begrenser hva nettleseren får laste inn (CSP).</p>
         </div>
         <div class="item">
-          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 4.5-9 4.5-9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg></div>
+          <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M208,138H48a14,14,0,0,0-14,14v40a14,14,0,0,0,14,14H208a14,14,0,0,0,14-14V152A14,14,0,0,0,208,138Zm2,54a2,2,0,0,1-2,2H48a2,2,0,0,1-2-2V152a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2ZM208,50H48A14,14,0,0,0,34,64v40a14,14,0,0,0,14,14H208a14,14,0,0,0,14-14V64A14,14,0,0,0,208,50Zm2,54a2,2,0,0,1-2,2H48a2,2,0,0,1-2-2V64a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2Z"/></svg></div>
           <h3>Isolert på radnivå</h3>
           <p>Hvert byrå er logisk isolert i databasen med tilgangskontroll på radnivå (Row-Level Security). Hver forespørsel kontrolleres mot den innloggede brukerens tilgang før data returneres, så et byrå kan ikke lese et annet byrås data.</p>
         </div>
         <div class="item">
-          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M245.48,125.57c-.34-.78-8.66-19.23-27.24-37.81C201,70.54,171.38,50,128,50S55,70.54,37.76,87.76c-18.58,18.58-26.9,37-27.24,37.81a6,6,0,0,0,0,4.88c.34.77,8.66,19.22,27.24,37.8C55,185.47,84.62,206,128,206s73-20.53,90.24-37.75c18.58-18.58,26.9-37,27.24-37.8A6,6,0,0,0,245.48,125.57ZM128,194c-31.38,0-58.78-11.42-81.45-33.93A134.77,134.77,0,0,1,22.69,128,134.56,134.56,0,0,1,46.55,95.94C69.22,73.42,96.62,62,128,62s58.78,11.42,81.45,33.94A134.56,134.56,0,0,1,233.31,128C226.94,140.21,195,194,128,194Zm0-112a46,46,0,1,0,46,46A46.06,46.06,0,0,0,128,82Zm0,80a34,34,0,1,1,34-34A34,34,0,0,1,128,162Z"/></svg></div>
           <h3>Vi endrer aldri regnskapet</h3>
           <p>Rapportly har bare lesetilgang til regnskapssystemet. Vi henter tallene rapportene trenger, og kan aldri endre eller slette noe i regnskapet.</p>
         </div>
         <div class="item">
-          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="m17 11 2 2 4-4"/></svg></div>
+          <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M215.15,40.85A78,78,0,0,0,86.2,121.31l-56.1,56.1a13.94,13.94,0,0,0-4.1,9.9V216a14,14,0,0,0,14,14H72a6,6,0,0,0,6-6V206H96a6,6,0,0,0,6-6V182h18a6,6,0,0,0,4.24-1.76l10.45-10.44A77.59,77.59,0,0,0,160,174h.1A78,78,0,0,0,215.15,40.85ZM226,98.16c-1.12,35.16-30.67,63.8-65.88,63.84a65.93,65.93,0,0,1-24.51-4.67,6,6,0,0,0-6.64,1.26L117.51,170H96a6,6,0,0,0-6,6v18H72a6,6,0,0,0-6,6v18H40a2,2,0,0,1-2-2V187.31a2,2,0,0,1,.58-1.41l58.83-58.83a6,6,0,0,0,1.26-6.64A65.61,65.61,0,0,1,94,95.92C94,60.71,122.68,31.16,157.83,30A66,66,0,0,1,226,98.16ZM190,76a10,10,0,1,1-10-10A10,10,0,0,1,190,76Z"/></svg></div>
           <h3>Dere styrer tilgangen</h3>
-          <p>Byrået bestemmer selv hvem som har tilgang, med egne roller for administrator og ansatt. To-trinns innlogging kan slås på for ekstra sikkerhet.</p>
+          <p>Byrået bestemmer selv hvem som har tilgang, med egne roller for administrator og ansatt. To-trinns innlogging (2FA) kan slås på for ekstra sikkerhet.</p>
         </div>
         <div class="item">
-          <div class="item-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></div>
+          <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M214,112v96a14,14,0,0,1-14,14H56a14,14,0,0,1-14-14V112A14,14,0,0,1,56,98H80a6,6,0,0,1,0,12H56a2,2,0,0,0-2,2v96a2,2,0,0,0,2,2H200a2,2,0,0,0,2-2V112a2,2,0,0,0-2-2H176a6,6,0,0,1,0-12h24A14,14,0,0,1,214,112ZM92.24,68.24,122,38.49V136a6,6,0,0,0,12,0V38.49l29.76,29.75a6,6,0,1,0,8.48-8.48l-40-40a6,6,0,0,0-8.48,0l-40,40a6,6,0,1,0,8.48,8.48Z"/></svg></div>
           <h3>Dataene tilhører dere</h3>
           <p>Rapporter og data tilhører byrået og kan eksporteres når som helst. Selve regnskapet ligger alltid trygt i deres eget regnskapssystem.</p>
         </div>
@@ -440,50 +497,7 @@
 
     <div class="divider"></div>
 
-    <div class="section paneler">
-      <div class="panel">
-        <h2>Drift og beredskap</h2>
-          <div class="panel-punkt">
-            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
-            <div><h3>Sikkerhetskopiering</h3><p>Automatiske, krypterte sikkerhetskopier lagres adskilt fra produksjonsmiljøet. Gjenoppretting er verifisert.</p></div>
-          </div>
-          <div class="panel-punkt">
-            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
-            <div><h3>Overvåking</h3><p>Tjenesten overvåkes kontinuerlig. Feil varsles automatisk og følges opp raskt.</p></div>
-          </div>
-          <div class="panel-punkt">
-            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></div>
-            <div><h3>Sikker utvikling</h3><p>Alle endringer kvalitetssikres og testes før de settes i produksjon. Tilgangen til produksjonsmiljøet er begrenset og krever to-trinns autentisering.</p></div>
-          </div>
-          <div class="panel-punkt">
-            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></div>
-            <div><h3>Hendelseshåndtering</h3><p>Dokumenterte rutiner for håndtering av sikkerhetshendelser. Berørte byråer varsles uten ugrunnet opphold.</p></div>
-          </div>
-      </div>
-      <div class="panel">
-        <h2>Personvern og GDPR</h2>
-          <div class="panel-punkt">
-            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.2 8 9 4.6-.8 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-            <div><h3>Innebygd personvern</h3><p>Personvern er bygget inn i løsningen. Byrået er behandlingsansvarlig, og Rapportly AS er databehandler etter en standard databehandleravtale.</p></div>
-          </div>
-          <div class="panel-punkt">
-            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8L3 5Z"/></svg></div>
-            <div><h3>Dataminimering</h3><p>Vi behandler bare opplysningene som er nødvendige for å levere rapportene, og bruker dem aldri til andre formål.</p></div>
-          </div>
-          <div class="panel-punkt">
-            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m9 14.5-1.5 6.5 4.5-2.5 4.5 2.5-1.5-6.5"/></svg></div>
-            <div><h3>Leverandørstyring</h3><p>Alle underleverandører er underlagt databehandleravtale og har anerkjente sikkerhetssertifiseringer.</p></div>
-          </div>
-          <div class="panel-punkt">
-            <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
-            <div><h3>Norsk selskap</h3><p>Rapportly AS er et norsk selskap. Tjenesten utvikles og driftes fra Norge, og avtalene reguleres av norsk rett.</p></div>
-          </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="section">
+    <div class="section" id="sertifiseringer">
       <div class="sertifisering">
         <div>
           <span class="panel-etikett">Leverandørkjeden</span>
@@ -492,12 +506,12 @@
         </div>
         <div class="sert-merker">
           <div class="sert-merke">
-            <div class="sert-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m9 14.5-1.5 6.5 4.5-2.5 4.5 2.5-1.5-6.5"/></svg></div>
-            <div><h3>ISO/IEC 27001</h3><p>Den internasjonale standarden for styring av informasjonssikkerhet. Leverandørene av database, drift, sikkerhetskopier og AI er sertifisert.</p></div>
+            <span class="sert-type">Sertifisering</span>
+            <h3>ISO/IEC 27001</h3><p>Den internasjonale standarden for styring av informasjonssikkerhet. Leverandørene av database, drift og sikkerhetskopier er sertifisert.</p>
           </div>
           <div class="sert-merke">
-            <div class="sert-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.2 8 9 4.6-.8 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-            <div><h3>SOC 2 Type II</h3><p>Uavhengig revisjon av at sikkerhetskontrollene virker i praksis over tid, ikke bare på papiret.</p></div>
+            <span class="sert-type">Revisjonsrapport</span>
+            <h3>SOC 2 Type II</h3><p>Uavhengig revisjon av at sikkerhetskontrollene virker i praksis over tid, ikke bare på papiret.</p>
           </div>
         </div>
         <div class="sert-fot">
@@ -508,15 +522,112 @@
 
     <div class="divider"></div>
 
-    <div class="section">
-      <h2>Dokumentasjon</h2>
+    <div class="section paneler" id="drift">
+      <div class="panel">
+        <span class="panel-etikett">Drift</span>
+        <h2>Drift og beredskap</h2>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,26C75.29,26,34,49.72,34,80v96c0,30.28,41.29,54,94,54s94-23.72,94-54V80C222,49.72,180.71,26,128,26Zm0,12c44.45,0,82,19.23,82,42s-37.55,42-82,42S46,102.77,46,80,83.55,38,128,38Zm82,138c0,22.77-37.55,42-82,42s-82-19.23-82-42V154.79C62,171.16,92.37,182,128,182s66-10.84,82-27.21Zm0-48c0,22.77-37.55,42-82,42s-82-19.23-82-42V106.79C62,123.16,92.37,134,128,134s66-10.84,82-27.21Z"/></svg></div>
+            <div><h3>Sikkerhetskopiering</h3><p>Automatiske, krypterte sikkerhetskopier lagres adskilt fra produksjonsmiljøet, i et ISO/IEC 27001-sertifisert datasenter i EU. Gjenoppretting er verifisert.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M238,128a6,6,0,0,1-6,6H203.71l-38.34,76.68A6,6,0,0,1,160,214h-.3a6,6,0,0,1-5.31-3.85L95.51,55.57,61.46,130.48A6,6,0,0,1,56,134H24a6,6,0,0,1,0-12H52.14l38.4-84.48a6,6,0,0,1,11.07.34L160.74,193.1l33.89-67.78A6,6,0,0,1,200,122h32A6,6,0,0,1,238,128Z"/></svg></div>
+            <div><h3>Overvåking</h3><p>Tjenesten overvåkes kontinuerlig. Feil varsles automatisk og følges opp raskt.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M230,64a30,30,0,1,0-36,29.4V112a10,10,0,0,1-10,10H96a21.84,21.84,0,0,0-10,2.42v-31a30,30,0,1,0-12,0v69.2a30,30,0,1,0,12,0V144a10,10,0,0,1,10-10h88a22,22,0,0,0,22-22V93.4A30.05,30.05,0,0,0,230,64ZM62,64A18,18,0,1,1,80,82,18,18,0,0,1,62,64ZM98,192a18,18,0,1,1-18-18A18,18,0,0,1,98,192ZM200,82a18,18,0,1,1,18-18A18,18,0,0,1,200,82Z"/></svg></div>
+            <div><h3>Sikker utvikling</h3><p>Alle endringer kvalitetssikres og testes før de settes i produksjon. Tilgangen til produksjonsmiljøet er begrenset og krever to-trinns autentisering.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M166,224a6,6,0,0,1-6,6H96a6,6,0,0,1,0-12h64A6,6,0,0,1,166,224Zm54.11-33a13.83,13.83,0,0,1-12.1,7H48a14,14,0,0,1-12.06-21.06C41.59,167.2,50,139.74,50,104a78,78,0,1,1,156,0c0,35.73,8.42,63.2,14.08,72.94A13.9,13.9,0,0,1,220.11,191Zm-10.41-8C202.13,170,194,139.68,194,104a66,66,0,1,0-132,0c0,35.69-8.14,66-15.71,79a2,2,0,0,0,0,2,1.9,1.9,0,0,0,1.7,1H208a1.9,1.9,0,0,0,1.7-1A2,2,0,0,0,209.7,183Z"/></svg></div>
+            <div><h3>Hendelseshåndtering</h3><p>Dokumenterte rutiner for håndtering av sikkerhetshendelser. Berørte byråer varsles uten ugrunnet opphold, slik GDPR artikkel 33 krever.</p></div>
+          </div>
+      </div>
+      <div class="panel" id="personvern">
+        <span class="panel-etikett">Personvern</span>
+        <h2>Personvern og GDPR</h2>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M208,42H48A14,14,0,0,0,34,56v56c0,51.94,25.12,83.4,46.2,100.64,22.73,18.6,45.27,24.89,46.22,25.15a6,6,0,0,0,3.16,0c.95-.26,23.49-6.55,46.22-25.15C196.88,195.4,222,163.94,222,112V56A14,14,0,0,0,208,42Zm2,70c0,37.76-13.94,68.39-41.44,91.06A131.17,131.17,0,0,1,128,225.72a130.94,130.94,0,0,1-40.56-22.66C59.94,180.39,46,149.76,46,112V56a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2ZM172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76Z"/></svg></div>
+            <div><h3>Innebygd personvern</h3><p>Personvern er bygget inn i løsningen. Byrået er behandlingsansvarlig, og Rapportly AS er databehandler etter en databehandleravtale i tråd med GDPR artikkel 28.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M198,136a6,6,0,0,1-6,6H64a6,6,0,0,1,0-12H192A6,6,0,0,1,198,136Zm34-54H24a6,6,0,0,0,0,12H232a6,6,0,0,0,0-12Zm-80,96H104a6,6,0,0,0,0,12h48a6,6,0,0,0,0-12Z"/></svg></div>
+            <div><h3>Dataminimering</h3><p>Vi behandler bare opplysningene som er nødvendige for å levere rapportene, og bruker dem aldri til andre formål.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224.42,104.2c-3.9-4.07-7.93-8.27-9.55-12.18-1.5-3.63-1.58-9-1.67-14.68-.14-9.38-.3-20-7.42-27.12S188,42.94,178.66,42.8c-5.68-.09-11-.17-14.68-1.67-3.91-1.62-8.11-5.65-12.18-9.55C145.16,25.22,137.64,18,128,18s-17.16,7.22-23.8,13.58c-4.07,3.9-8.27,7.93-12.18,9.55-3.63,1.5-9,1.58-14.68,1.67-9.38.14-20,.3-27.12,7.42S42.94,68,42.8,77.34c-.09,5.68-.17,11-1.67,14.68-1.62,3.91-5.65,8.11-9.55,12.18C25.22,110.84,18,118.36,18,128s7.22,17.16,13.58,23.8c3.9,4.07,7.93,8.27,9.55,12.18,1.5,3.63,1.58,9,1.67,14.68.14,9.38.3,20,7.42,27.12S68,213.06,77.34,213.2c5.68.09,11,.17,14.68,1.67,3.91,1.62,8.11,5.65,12.18,9.55C110.84,230.78,118.36,238,128,238s17.16-7.22,23.8-13.58c4.07-3.9,8.27-7.93,12.18-9.55,3.63-1.5,9-1.58,14.68-1.67,9.38-.14,20-.3,27.12-7.42s7.28-17.74,7.42-27.12c.09-5.68.17-11,1.67-14.68,1.62-3.91,5.65-8.11,9.55-12.18C230.78,145.16,238,137.64,238,128S230.78,110.84,224.42,104.2Zm-8.66,39.3c-4.67,4.86-9.5,9.9-12,15.9-2.38,5.74-2.48,12.52-2.58,19.08-.11,7.44-.23,15.14-3.9,18.82s-11.38,3.79-18.82,3.9c-6.56.1-13.34.2-19.08,2.58-6,2.48-11,7.31-15.91,12-5.25,5-10.68,10.24-15.49,10.24s-10.24-5.21-15.5-10.24c-4.86-4.67-9.9-9.5-15.9-12-5.74-2.38-12.52-2.48-19.08-2.58-7.44-.11-15.14-.23-18.82-3.9s-3.79-11.38-3.9-18.82c-.1-6.56-.2-13.34-2.58-19.08-2.48-6-7.31-11-12-15.91C35.21,138.24,30,132.81,30,128s5.21-10.24,10.24-15.5c4.67-4.86,9.5-9.9,12-15.9,2.38-5.74,2.48-12.52,2.58-19.08.11-7.44.23-15.14,3.9-18.82s11.38-3.79,18.82-3.9c6.56-.1,13.34-.2,19.08-2.58,6-2.48,11-7.31,15.91-12C117.76,35.21,123.19,30,128,30s10.24,5.21,15.5,10.24c4.86,4.67,9.9,9.5,15.9,12,5.74,2.38,12.52,2.48,19.08,2.58,7.44.11,15.14.23,18.82,3.9s3.79,11.38,3.9,18.82c.1,6.56.2,13.34,2.58,19.08,2.48,6,7.31,11,12,15.91,5,5.25,10.24,10.68,10.24,15.49S220.79,138.24,215.76,143.5ZM172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76Z"/></svg></div>
+            <div><h3>Leverandørstyring</h3><p>Alle underleverandører er underlagt databehandleravtale, og er sertifisert etter ISO/IEC 27001 eller revidert etter SOC 2 Type II.</p></div>
+          </div>
+          <div class="panel-punkt">
+            <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,66a38,38,0,1,0,38,38A38,38,0,0,0,128,66Zm0,64a26,26,0,1,1,26-26A26,26,0,0,1,128,130Zm0-112a86.1,86.1,0,0,0-86,86c0,30.91,14.34,63.74,41.47,94.94a252.32,252.32,0,0,0,41.09,38,6,6,0,0,0,6.88,0,252.32,252.32,0,0,0,41.09-38c27.13-31.2,41.47-64,41.47-94.94A86.1,86.1,0,0,0,128,18Zm0,206.51C113,212.93,54,163.62,54,104a74,74,0,0,1,148,0C202,163.62,143,212.93,128,224.51Z"/></svg></div>
+            <div><h3>Norsk selskap</h3><p>Rapportly AS er et norsk selskap. Tjenesten utvikles og driftes fra Norge, og avtalene reguleres av norsk rett.</p></div>
+          </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section" id="sarbarheter">
+      <div class="varsling">
+        <div>
+          <span class="panel-etikett">Ansvarlig varsling</span>
+          <h2>Har du funnet en sårbarhet?</h2>
+          <p>Vi setter pris på at sikkerhetsforskere og brukere sier fra. Send en beskrivelse til <a href="mailto:hei@rapportly.no">hei@rapportly.no</a>, så undersøker vi saken og holder deg orientert. Vi ber om at sårbarheten ikke gjøres kjent før den er rettet.</p>
+          <p class="varsling-fin">Kontaktinformasjonen finnes også i <a href="/.well-known/security.txt">security.txt</a> (RFC 9116).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section" id="sporsmal">
+      <span class="panel-etikett">Vanlige spørsmål</span>
+      <h2>Spørsmål byråer ofte stiller</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvor lagres dataene?</summary>
+          <p>I datasentre innenfor EU/EØS, kryptert med AES-256. Sikkerhetskopiene lagres også i EU, adskilt fra produksjonsmiljøet. Enkelte underleverandører, for eksempel for e-postutsending, behandler opplysninger utenfor EØS, med EUs standardkontrakter (GDPR art. 46) som grunnlag.</p>
+        </details>
+        <details>
+          <summary>Hvem har tilgang til byråets data?</summary>
+          <p>Bare byråets egne brukere, med rollene byrået selv tildeler. Tilgangen til produksjonsmiljøet hos oss er begrenset og krever to-trinns autentisering.</p>
+        </details>
+        <details>
+          <summary>Brukes dataene til å trene AI?</summary>
+          <p>Nei. Opplysningene brukes ikke til å trene AI-modeller.</p>
+        </details>
+        <details>
+          <summary>Er Rapportly sertifisert?</summary>
+          <p>Rapportly AS har ikke egen sertifisering. Alle underleverandørene våre er sertifisert etter ISO/IEC 27001 eller revidert etter SOC 2 Type II, og byrået har revisjonsrett etter databehandleravtalen.</p>
+        </details>
+        <details>
+          <summary>Hva skjer ved et sikkerhetsbrudd?</summary>
+          <p>Vi varsler berørte byråer uten ugrunnet opphold, normalt innen 48 timer, med informasjonen byrået trenger for å vurdere melding til Datatilsynet.</p>
+        </details>
+        <details>
+          <summary>Hva skjer med dataene hvis vi avslutter?</summary>
+          <p>Dere får eksportert rapporter og data, og dataene slettes etter fristene i databehandleravtalen.</p>
+        </details>
+        <details>
+          <summary>Hvilke underleverandører bruker dere?</summary>
+          <p>Alle står i databehandleravtalen, med formål, plassering og overføringsgrunnlag. Vi varsler minst 15 dager før vi bytter eller legger til en underleverandør.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section" id="dokumentasjon">
+      <span class="panel-etikett">Dokumentasjon</span>
+      <h2>Dokumentasjon og leverandørvurdering</h2>
       <div class="dokumenter">
-        <a href="personvern.html">Personvernerklæring <span class="pil">→</span></a>
-        <a href="tjenestevilkar.html">Tjenestevilkår <span class="pil">→</span></a>
+        <a href="/personvern">Personvernerklæring <span class="pil">→</span></a>
+        <a href="/tjenestevilkar">Tjenestevilkår <span class="pil">→</span></a>
         <div><span><strong>Databehandleravtale</strong> — inngås med hvert byrå, og ligger tilgjengelig i appen.</span></div>
+        <div><span><strong>Sikkerhetsdokumentasjon</strong> — utfylt sikkerhetsspørreskjema og oversikt over underleverandører, på forespørsel.</span></div>
       </div>
       <p style="margin-top: 1.25rem;">
-        Skal byrået gjennomføre en leverandørvurdering? Vi sender utfyllende sikkerhetsdokumentasjon på forespørsel.
+        Skal byrået gjennomføre en leverandørvurdering? Ta kontakt, så sender vi det dere trenger.
       </p>
     </div>
 
@@ -526,7 +637,7 @@
       <div class="kontakt-boks">
         <div>
           <h2>Kontakt</h2>
-          <p>Spørsmål om sikkerhet eller personvern, eller har du oppdaget en sårbarhet? Skriv til <a href="mailto:hei@rapportly.no">hei@rapportly.no</a>.</p>
+          <p>Spørsmål om sikkerhet eller personvern? Skriv til <a href="mailto:hei@rapportly.no">hei@rapportly.no</a>.</p>
           <p class="firma">Rapportly AS · Org.nr. 938 473 234 · Steiroveien 30A, 8404 Sortland</p>
         </div>
         <a href="mailto:hei@rapportly.no" class="kontakt-knapp">Kontakt oss</a>
