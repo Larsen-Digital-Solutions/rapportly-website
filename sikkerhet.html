@@ -224,6 +224,22 @@
     .panel-ikon svg { width: 18px; height: 18px; }
     .panel-punkt h3 { font-size: .9875rem; font-weight: 800; letter-spacing: -.015em; color: var(--text); margin-bottom: .25rem; }
     .section .panel-punkt p { font-size: .9rem; line-height: 1.65; margin: 0; }
+    .sertifisering { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2.5rem; align-items: center;
+      background: var(--primary); border-radius: var(--r); padding: 2.75rem 2.75rem;
+      box-shadow: 0 1px 2px oklch(20% .05 258 / .06), 0 12px 32px oklch(20% .05 258 / .12); }
+    .sertifisering .panel-etikett { color: oklch(78% .06 255); }
+    .section .sertifisering h2 { color: oklch(97% .01 240); font-size: 1.5rem !important; line-height: 1.2; margin-bottom: .875rem !important; }
+    .section .sertifisering p { color: oklch(80% .03 250); }
+    .sert-merker { display: flex; flex-direction: column; gap: .875rem; }
+    .sert-merke { display: grid; grid-template-columns: 40px 1fr; gap: 1rem; align-items: start;
+      background: oklch(100% 0 0 / .06); border: 1px solid oklch(100% 0 0 / .14); border-radius: 12px; padding: 1.125rem 1.25rem; }
+    .sert-ikon { width: 40px; height: 40px; border-radius: 10px; background: oklch(100% 0 0 / .1); color: oklch(97% .01 240);
+      display: flex; align-items: center; justify-content: center; }
+    .sert-ikon svg { width: 20px; height: 20px; }
+    .sert-merke h3 { font-size: 1rem; font-weight: 800; letter-spacing: -.01em; color: oklch(97% .01 240); margin-bottom: .2rem; }
+    .section .sert-merke p { font-size: .875rem; line-height: 1.6; margin: 0; color: oklch(78% .03 250); }
+    .sert-fot { grid-column: 1 / -1; padding-top: 1.25rem; border-top: 1px solid oklch(100% 0 0 / .12); }
+    .section .sert-fot p { font-size: .8125rem; color: oklch(72% .03 250); margin: 0; }
     .kontakt-boks { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 2.25rem 2.5rem !important; }
     .kontakt-knapp {
       flex-shrink: 0; font-size: .9375rem; font-weight: 700; color: var(--primary) !important;
@@ -244,6 +260,7 @@
       .content { padding: 3rem 1.5rem 5rem; }
       .grid { grid-template-columns: 1fr !important; }
       .paneler { grid-template-columns: 1fr; }
+      .sertifisering { grid-template-columns: 1fr; gap: 1.75rem; padding: 2rem 1.5rem; }
       .panel { padding: 1.5rem 1.25rem .75rem; }
       .kontakt-boks { flex-direction: column; align-items: flex-start; padding: 1.75rem 1.5rem !important; }
     }
@@ -461,6 +478,31 @@
             <div class="panel-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
             <div><h3>Norsk selskap</h3><p>Rapportly AS er et norsk selskap. Tjenesten utvikles og driftes fra Norge, og avtalene reguleres av norsk rett.</p></div>
           </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="sertifisering">
+        <div>
+          <span class="panel-etikett">Leverandørkjeden</span>
+          <h2>Sertifiserte underleverandører</h2>
+          <p>Rapportly er bygget på infrastruktur fra anerkjente, internasjonale leverandører. Alle underleverandørene som lagrer eller behandler data for oss, er uavhengig revidert etter internasjonale standarder for informasjonssikkerhet, og alle er underlagt databehandleravtale.</p>
+        </div>
+        <div class="sert-merker">
+          <div class="sert-merke">
+            <div class="sert-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m9 14.5-1.5 6.5 4.5-2.5 4.5 2.5-1.5-6.5"/></svg></div>
+            <div><h3>ISO/IEC 27001</h3><p>Den internasjonale standarden for styring av informasjonssikkerhet. Leverandørene av database, drift, sikkerhetskopier og AI er sertifisert.</p></div>
+          </div>
+          <div class="sert-merke">
+            <div class="sert-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.2 8 9 4.6-.8 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <div><h3>SOC 2 Type II</h3><p>Uavhengig revisjon av at sikkerhetskontrollene virker i praksis over tid, ikke bare på papiret.</p></div>
+          </div>
+        </div>
+        <div class="sert-fot">
+          <p>Hver underleverandør har minst én av disse, og de fleste har begge. Oversikten over underleverandørene står i databehandleravtalen.</p>
+        </div>
       </div>
     </div>
 
