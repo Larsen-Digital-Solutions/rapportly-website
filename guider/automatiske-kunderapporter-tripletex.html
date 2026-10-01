@@ -238,15 +238,45 @@
     details.faq p { padding: 0 0 1.2rem; margin: 0; color: var(--text-muted); }
 
     /* FOOTER */
-    footer { background: var(--ink); padding: 3rem 0; margin-top: 4rem; }
-    .footer-in { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; }
-    .footer-logo img { height: 24px; }
-    .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .footer-nav a { color: oklch(85% 0.02 258); font-size: .9rem; }
-    .footer-nav a:hover { color: #fff; }
-    .footer-copy { width: 100%; font-size: .82rem; color: oklch(62% 0.03 258); padding-top: 1.25rem; border-top: 1px solid oklch(34% 0.06 258); }
   </style>
   <script defer src="/consent.js"></script>
+  <style id="sf-css">
+    footer.sf { display: block; max-width: none; margin: 0; padding: 0; gap: 0; flex-direction: initial; align-items: initial;
+      background: oklch(19% .07 262); color: oklch(86% .02 250); border-top: 1px solid oklch(100% 0 0 / .08);
+      font-family: 'Figtree', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .sf *, .sf *::before, .sf *::after { box-sizing: border-box; }
+    .sf a { text-decoration: none; }
+    .sf-inner { max-width: 1280px; margin: 0 auto; padding: 4.5rem 6rem 2.25rem; }
+    .sf-top { display: grid; grid-template-columns: minmax(0, 1.45fr) repeat(3, minmax(0, 1fr)); gap: 3rem; }
+    .sf-logo { display: inline-block; }
+    .sf-logo img { height: 28px; width: auto; display: block; }
+    .sf-tagline { margin: 1.25rem 0 0; font-size: .9375rem; line-height: 1.65; color: oklch(74% .03 250); max-width: 21rem; }
+    .sf-mail { display: inline-block; margin-top: 1.25rem; font-size: .9375rem; font-weight: 600; color: #fff;
+      padding-bottom: 2px; border-bottom: 1px solid oklch(100% 0 0 / .28); transition: border-color 160ms ease; }
+    .sf-mail:hover { border-bottom-color: #fff; }
+    .sf-h { margin: 0 0 1.1rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: oklch(78% .06 255); }
+    .sf-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .7rem; }
+    .sf-col a { font-size: .9rem; line-height: 1.45; color: oklch(86% .02 250); transition: color 160ms ease; }
+    .sf-col a:hover { color: #fff; }
+    .sf-systems { margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid oklch(100% 0 0 / .1);
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.75rem; font-size: .875rem; color: oklch(80% .03 250); }
+    .sf-systems .sf-h { margin: 0 .25rem 0 0; }
+    .sf-bottom { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid oklch(100% 0 0 / .1);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; font-size: .8rem; color: oklch(66% .03 255); }
+    @media (max-width: 1024px) {
+      .sf-inner { padding: 3.75rem 3rem 2rem; }
+      .sf-top { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.75rem 2rem; }
+      .sf-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .sf-inner { padding: 3rem 1.25rem 1.75rem; }
+      .sf-top { grid-template-columns: 1fr 1fr; gap: 2.25rem 1.5rem; }
+      .sf-systems { margin-top: 2.5rem; gap: .4rem 1.25rem; }
+      .sf-systems .sf-h { flex-basis: 100%; }
+      .sf-bottom { flex-direction: column; }
+    }
+  </style>
+  <style>footer.sf { margin-top: 4rem; }</style>
 </head>
 <body>
 
@@ -362,17 +392,51 @@
     </article>
   </main>
 
-  <footer>
-    <div class="footer-in">
-      <a href="/" class="footer-logo"><img src="/logo.png" alt="Rapportly"></a>
-      <nav class="footer-nav">
-        <a href="/#hvordan">Slik fungerer det</a>
-        <a href="/guider">Guider</a>
-        <a href="/#priser">Priser</a>
-        <a href="/#kontakt">Kontakt</a>
-        <a href="/personvern">Personvern</a>
-      </nav>
-      <span class="footer-copy">&copy; 2026 Rapportly AS</span>
+  <footer class="sf">
+    <div class="sf-inner">
+      <div class="sf-top">
+        <div class="sf-brand">
+          <a href="/" class="sf-logo" aria-label="Rapportly – til forsiden"><img src="/logo.png" alt="Rapportly" width="82" height="28"></a>
+          <p class="sf-tagline">Automatiserte klientrapporter for regnskapsbyråer, hentet rett fra regnskapssystemet.</p>
+          <a class="sf-mail" href="mailto:hei@rapportly.no">hei@rapportly.no</a>
+        </div>
+        <nav class="sf-col" aria-label="Produkt">
+          <p class="sf-h">Produkt</p>
+          <ul>
+            <li><a href="/#hvordan">Slik fungerer det</a></li>
+            <li><a href="/#priser">Priser</a></li>
+            <li><a href="/eksempelrapport.pdf" target="_blank" rel="noopener">Eksempelrapport</a></li>
+            <li><a href="https://app.rapportly.no">Logg inn</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="Ressurser">
+          <p class="sf-h">Ressurser</p>
+          <ul>
+            <li><a href="/guider">Alle guider</a></li>
+            <li><a href="/guider/nokkeltall-forklart">Nøkkeltall forklart</a></li>
+            <li><a href="/guider/hva-bor-en-manedsrapport-inneholde">Innhold i en månedsrapport</a></li>
+            <li><a href="/guider/automatiske-kunderapporter-tripletex">Rapporter fra Tripletex</a></li>
+            <li><a href="/guider/automatiske-kunderapporter-poweroffice-go">Rapporter fra PowerOffice Go</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="Selskap">
+          <p class="sf-h">Selskap</p>
+          <ul>
+            <li><a href="/#kontakt">Kontakt</a></li>
+            <li><a href="/sikkerhet">Sikkerhet</a></li>
+            <li><a href="/personvern">Personvernerklæring</a></li>
+            <li><a href="/tjenestevilkar">Tjenestevilkår</a></li>
+            <li><a href="#" onclick="if(window.rapportlyResetConsent){rapportlyResetConsent();}return false;">Informasjonskapsler</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sf-systems">
+        <span class="sf-h">Kobles til</span>
+        <span>PowerOffice Go</span><span>Tripletex</span><span>Visma eAccounting</span><span>Finago</span><span>Systima</span>
+      </div>
+      <div class="sf-bottom">
+        <span>&copy; 2026 Rapportly AS &middot; Org.nr. 938 473 234</span>
+      </div>
     </div>
   </footer>
 
