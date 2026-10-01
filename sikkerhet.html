@@ -299,6 +299,7 @@
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
   <script defer src="/consent.js"></script>
   <style id="sikkerhet-v3">
+    .nav-links a[aria-current="page"], .nav-mobile a[aria-current="page"] { color: #fff; }
     .topp-oppdatert { margin-top: 1.5rem; font-size: .8125rem; color: oklch(70% .03 250); }
     .hopp { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 3.25rem; }
     .hopp a { font-size: .84rem; font-weight: 600; color: var(--text-muted); background: #fff; border: 1px solid var(--border);
@@ -389,6 +390,7 @@
         <a href="/#hvordan">Slik fungerer det</a>
         <a href="/guider">Guider</a>
         <a href="/#priser">Priser</a>
+        <a href="/sikkerhet" aria-current="page">Sikkerhet</a>
         <a href="/#kontakt">Kontakt</a>
       </div>
       <a href="https://app.rapportly.no" class="nav-login">Logg inn</a>
@@ -400,6 +402,7 @@
         <a href="/#hvordan">Slik fungerer det</a>
         <a href="/guider">Guider</a>
         <a href="/#priser">Priser</a>
+        <a href="/sikkerhet" aria-current="page">Sikkerhet</a>
         <a href="/#kontakt">Kontakt</a>
         <a href="https://app.rapportly.no">Logg inn</a>
         <a href="/#kontakt" class="nav-mobile-cta">Book gratis demo</a>
@@ -528,7 +531,7 @@
         <h2>Drift og beredskap</h2>
           <div class="panel-punkt">
             <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,26C75.29,26,34,49.72,34,80v96c0,30.28,41.29,54,94,54s94-23.72,94-54V80C222,49.72,180.71,26,128,26Zm0,12c44.45,0,82,19.23,82,42s-37.55,42-82,42S46,102.77,46,80,83.55,38,128,38Zm82,138c0,22.77-37.55,42-82,42s-82-19.23-82-42V154.79C62,171.16,92.37,182,128,182s66-10.84,82-27.21Zm0-48c0,22.77-37.55,42-82,42s-82-19.23-82-42V106.79C62,123.16,92.37,134,128,134s66-10.84,82-27.21Z"/></svg></div>
-            <div><h3>Sikkerhetskopiering</h3><p>Automatiske, krypterte sikkerhetskopier lagres adskilt fra produksjonsmiljøet, i et ISO/IEC 27001-sertifisert datasenter i EU. Gjenoppretting er verifisert.</p></div>
+            <div><h3>Sikkerhetskopiering</h3><p>Automatiske, krypterte sikkerhetskopier lagres separat, i et ISO/IEC 27001-sertifisert datasenter i EU. Gjenoppretting er verifisert.</p></div>
           </div>
           <div class="panel-punkt">
             <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M238,128a6,6,0,0,1-6,6H203.71l-38.34,76.68A6,6,0,0,1,160,214h-.3a6,6,0,0,1-5.31-3.85L95.51,55.57,61.46,130.48A6,6,0,0,1,56,134H24a6,6,0,0,1,0-12H52.14l38.4-84.48a6,6,0,0,1,11.07.34L160.74,193.1l33.89-67.78A6,6,0,0,1,200,122h32A6,6,0,0,1,238,128Z"/></svg></div>
@@ -536,7 +539,7 @@
           </div>
           <div class="panel-punkt">
             <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M230,64a30,30,0,1,0-36,29.4V112a10,10,0,0,1-10,10H96a21.84,21.84,0,0,0-10,2.42v-31a30,30,0,1,0-12,0v69.2a30,30,0,1,0,12,0V144a10,10,0,0,1,10-10h88a22,22,0,0,0,22-22V93.4A30.05,30.05,0,0,0,230,64ZM62,64A18,18,0,1,1,80,82,18,18,0,0,1,62,64ZM98,192a18,18,0,1,1-18-18A18,18,0,0,1,98,192ZM200,82a18,18,0,1,1,18-18A18,18,0,0,1,200,82Z"/></svg></div>
-            <div><h3>Sikker utvikling</h3><p>Alle endringer kvalitetssikres og testes før de settes i produksjon. Tilgangen til produksjonsmiljøet er begrenset og krever to-trinns autentisering.</p></div>
+            <div><h3>Sikker utvikling</h3><p>Alle endringer kvalitetssikres og testes før de tas i bruk.</p></div>
           </div>
           <div class="panel-punkt">
             <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M166,224a6,6,0,0,1-6,6H96a6,6,0,0,1,0-12h64A6,6,0,0,1,166,224Zm54.11-33a13.83,13.83,0,0,1-12.1,7H48a14,14,0,0,1-12.06-21.06C41.59,167.2,50,139.74,50,104a78,78,0,1,1,156,0c0,35.73,8.42,63.2,14.08,72.94A13.9,13.9,0,0,1,220.11,191Zm-10.41-8C202.13,170,194,139.68,194,104a66,66,0,1,0-132,0c0,35.69-8.14,66-15.71,79a2,2,0,0,0,0,2,1.9,1.9,0,0,0,1.7,1H208a1.9,1.9,0,0,0,1.7-1A2,2,0,0,0,209.7,183Z"/></svg></div>
@@ -586,11 +589,11 @@
       <div class="faq">
         <details>
           <summary>Hvor lagres dataene?</summary>
-          <p>I datasentre innenfor EU/EØS, kryptert med AES-256. Sikkerhetskopiene lagres også i EU, adskilt fra produksjonsmiljøet. Enkelte underleverandører, for eksempel for e-postutsending, behandler opplysninger utenfor EØS, med EUs standardkontrakter (GDPR art. 46) som grunnlag.</p>
+          <p>I datasentre innenfor EU/EØS, kryptert med AES-256. Sikkerhetskopiene lagres separat, også i EU. Enkelte underleverandører, for eksempel for e-postutsending, behandler opplysninger utenfor EØS, med EUs standardkontrakter (GDPR art. 46) som grunnlag.</p>
         </details>
         <details>
           <summary>Hvem har tilgang til byråets data?</summary>
-          <p>Bare byråets egne brukere, med rollene byrået selv tildeler. Tilgangen til produksjonsmiljøet hos oss er begrenset og krever to-trinns autentisering.</p>
+          <p>Bare byråets egne brukere, med rollene byrået selv tildeler. Hvert byrå er strengt skilt fra de andre, så ingen andre byråer kan se dataene.</p>
         </details>
         <details>
           <summary>Brukes dataene til å trene AI?</summary>
