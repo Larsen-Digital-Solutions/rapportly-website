@@ -344,6 +344,25 @@
       .section .faq p { padding-right: 0; }
     }
   </style>
+  <style id="ordforklaring">
+    .term { position: relative; cursor: help; outline: none; border-radius: 3px;
+      text-decoration: underline dotted 1.5px; text-decoration-color: oklch(58% .22 260 / .55); text-underline-offset: 3px; }
+    .term.vis { text-decoration-color: var(--accent); }
+    @media (hover: hover) { .term:hover { text-decoration-color: var(--accent); } }
+    .term:focus-visible { box-shadow: 0 0 0 2px var(--accent-light); }
+    .term-tip { position: absolute; left: 50%; bottom: calc(100% + 10px); z-index: 60; width: max-content; max-width: 290px;
+      display: none; transform: translate(calc(-50% + var(--skyv, 0px)), 0); pointer-events: none;
+      background: oklch(20% .08 258); color: oklch(88% .02 250); text-align: left; white-space: normal;
+      font-size: .8125rem; line-height: 1.55; font-weight: 400; letter-spacing: 0; padding: .75rem .9rem; border-radius: 10px;
+      box-shadow: 0 12px 32px oklch(0% 0 0 / .22); animation: term-inn 140ms var(--ease); }
+    @keyframes term-inn { from { opacity: 0; margin-bottom: -4px; } to { opacity: 1; margin-bottom: 0; } }
+    .term-tip strong { display: block; color: #fff; font-weight: 700; margin-bottom: .2rem; }
+    .term-tip::after { content: ''; position: absolute; top: 100%; left: calc(50% - var(--skyv, 0px)); transform: translateX(-50%);
+      border: 6px solid transparent; border-top-color: oklch(20% .08 258); }
+    /* Skjult = display:none, så boksene ikke tar plass (ellers horisontal rulling på mobil) */
+    @media (hover: hover) { .term:hover .term-tip { display: block; } }
+    .term:focus-visible .term-tip, .term.vis .term-tip { display: block; }
+  </style>
   <style id="sf-css">
     footer.sf { display: block; max-width: none; margin: 0; padding: 0; gap: 0; flex-direction: initial; align-items: initial;
       background: oklch(19% .07 262); color: oklch(86% .02 250); border-top: 1px solid oklch(100% 0 0 / .08);
@@ -469,17 +488,17 @@
         <div class="item">
           <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm89.8,96H173.89c-1.54-40.77-18.48-68.23-30.43-82.67A90.19,90.19,0,0,1,217.8,122ZM128,215.83a110,110,0,0,1-15.19-19.45A128.37,128.37,0,0,1,94.13,134h67.74a128.37,128.37,0,0,1-18.68,62.38A110,110,0,0,1,128,215.83ZM94.13,122a128.37,128.37,0,0,1,18.68-62.38A110,110,0,0,1,128,40.17a110,110,0,0,1,15.19,19.45A128.37,128.37,0,0,1,161.87,122Zm18.41-82.67c-12,14.44-28.89,41.9-30.43,82.67H38.2A90.19,90.19,0,0,1,112.54,39.33ZM38.2,134H82.11c1.54,40.77,18.48,68.23,30.43,82.67A90.19,90.19,0,0,1,38.2,134Zm105.26,82.67c11.95-14.44,28.89-41.9,30.43-82.67H217.8A90.19,90.19,0,0,1,143.46,216.67Z"/></svg></div>
           <h3>Lagret i EU/EØS</h3>
-          <p>Dataene deres lagres i datasentre innenfor EU/EØS, hos leverandører som er sertifisert etter ISO/IEC 27001.</p>
+          <p>Dataene deres lagres i datasentre innenfor <span class="term" tabindex="0" aria-describedby="ord-1">EU/EØS<span class="term-tip" role="tooltip" id="ord-1"><strong>EU/EØS</strong>EU-landene og Norge, Island og Liechtenstein. Her gjelder personvernforordningen (GDPR) fullt ut.</span></span>, hos leverandører som er sertifisert etter <span class="term" tabindex="0" aria-describedby="ord-2">ISO/IEC 27001<span class="term-tip" role="tooltip" id="ord-2"><strong>ISO/IEC 27001</strong>Den internasjonale standarden for styring av informasjonssikkerhet. Sertifiseringen betyr at leverandøren har dokumenterte sikkerhetsrutiner som kontrolleres av en uavhengig revisor hvert år.</span></span>.</p>
         </div>
         <div class="item">
           <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M208,82H174V56a46,46,0,0,0-92,0V82H48A14,14,0,0,0,34,96V208a14,14,0,0,0,14,14H208a14,14,0,0,0,14-14V96A14,14,0,0,0,208,82ZM94,56a34,34,0,0,1,68,0V82H94ZM210,208a2,2,0,0,1-2,2H48a2,2,0,0,1-2-2V96a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2Zm-72-56a10,10,0,1,1-10-10A10,10,0,0,1,138,152Z"/></svg></div>
           <h3>Kryptert hele veien</h3>
-          <p>All data krypteres med AES-256 når de lagres, og med TLS 1.2 eller nyere når de sendes. Appen tvinger kryptert tilkobling (HSTS) og begrenser hva nettleseren får laste inn (CSP).</p>
+          <p>All data krypteres med <span class="term" tabindex="0" aria-describedby="ord-3">AES-256<span class="term-tip" role="tooltip" id="ord-3"><strong>AES-256</strong>Krypteringsstandard med 256-biters nøkkel, brukt av banker og myndigheter. Lagrede data er uleselige uten riktig nøkkel.</span></span> når de lagres, og med <span class="term" tabindex="0" aria-describedby="ord-4">TLS 1.2<span class="term-tip" role="tooltip" id="ord-4"><strong>TLS 1.2</strong>Protokollen som krypterer data mens de sendes over internett, den samme som gir hengelåsen i nettleseren. Versjon 1.2 og nyere regnes som sikre.</span></span> eller nyere når de sendes. Appen tvinger kryptert tilkobling (<span class="term" tabindex="0" aria-describedby="ord-5">HSTS<span class="term-tip" role="tooltip" id="ord-5"><strong>HSTS (HTTP Strict Transport Security)</strong>Får nettleseren til alltid å bruke kryptert tilkobling til appen, og hindrer at tilkoblingen kan tvinges over på en ukryptert.</span></span>) og begrenser hva nettleseren får laste inn (<span class="term" tabindex="0" aria-describedby="ord-6">CSP<span class="term-tip" role="tooltip" id="ord-6"><strong>CSP (Content Security Policy)</strong>Bestemmer hvilke kilder nettleseren får laste kode og innhold fra, og beskytter mot at uvedkommende kode kjøres i appen.</span></span>).</p>
         </div>
         <div class="item">
           <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M208,138H48a14,14,0,0,0-14,14v40a14,14,0,0,0,14,14H208a14,14,0,0,0,14-14V152A14,14,0,0,0,208,138Zm2,54a2,2,0,0,1-2,2H48a2,2,0,0,1-2-2V152a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2ZM208,50H48A14,14,0,0,0,34,64v40a14,14,0,0,0,14,14H208a14,14,0,0,0,14-14V64A14,14,0,0,0,208,50Zm2,54a2,2,0,0,1-2,2H48a2,2,0,0,1-2-2V64a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2Z"/></svg></div>
           <h3>Isolert på radnivå</h3>
-          <p>Hvert byrå er logisk isolert i databasen med tilgangskontroll på radnivå (Row-Level Security). Hver forespørsel kontrolleres mot den innloggede brukerens tilgang før data returneres, så et byrå kan ikke lese et annet byrås data.</p>
+          <p>Hvert byrå er logisk isolert i databasen med tilgangskontroll på radnivå (<span class="term" tabindex="0" aria-describedby="ord-7">Row-Level Security<span class="term-tip" role="tooltip" id="ord-7"><strong>Row-Level Security</strong>Tilgangskontroll på radnivå i databasen. Databasen sjekker selv hver rad mot den innloggede brukeren, så et byrå bare får se sine egne data.</span></span>). Hver forespørsel kontrolleres mot den innloggede brukerens tilgang før data returneres, så et byrå kan ikke lese et annet byrås data.</p>
         </div>
         <div class="item">
           <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M245.48,125.57c-.34-.78-8.66-19.23-27.24-37.81C201,70.54,171.38,50,128,50S55,70.54,37.76,87.76c-18.58,18.58-26.9,37-27.24,37.81a6,6,0,0,0,0,4.88c.34.77,8.66,19.22,27.24,37.8C55,185.47,84.62,206,128,206s73-20.53,90.24-37.75c18.58-18.58,26.9-37,27.24-37.8A6,6,0,0,0,245.48,125.57ZM128,194c-31.38,0-58.78-11.42-81.45-33.93A134.77,134.77,0,0,1,22.69,128,134.56,134.56,0,0,1,46.55,95.94C69.22,73.42,96.62,62,128,62s58.78,11.42,81.45,33.94A134.56,134.56,0,0,1,233.31,128C226.94,140.21,195,194,128,194Zm0-112a46,46,0,1,0,46,46A46.06,46.06,0,0,0,128,82Zm0,80a34,34,0,1,1,34-34A34,34,0,0,1,128,162Z"/></svg></div>
@@ -489,7 +508,7 @@
         <div class="item">
           <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M215.15,40.85A78,78,0,0,0,86.2,121.31l-56.1,56.1a13.94,13.94,0,0,0-4.1,9.9V216a14,14,0,0,0,14,14H72a6,6,0,0,0,6-6V206H96a6,6,0,0,0,6-6V182h18a6,6,0,0,0,4.24-1.76l10.45-10.44A77.59,77.59,0,0,0,160,174h.1A78,78,0,0,0,215.15,40.85ZM226,98.16c-1.12,35.16-30.67,63.8-65.88,63.84a65.93,65.93,0,0,1-24.51-4.67,6,6,0,0,0-6.64,1.26L117.51,170H96a6,6,0,0,0-6,6v18H72a6,6,0,0,0-6,6v18H40a2,2,0,0,1-2-2V187.31a2,2,0,0,1,.58-1.41l58.83-58.83a6,6,0,0,0,1.26-6.64A65.61,65.61,0,0,1,94,95.92C94,60.71,122.68,31.16,157.83,30A66,66,0,0,1,226,98.16ZM190,76a10,10,0,1,1-10-10A10,10,0,0,1,190,76Z"/></svg></div>
           <h3>Dere styrer tilgangen</h3>
-          <p>Byrået bestemmer selv hvem som har tilgang, med egne roller for administrator og ansatt. To-trinns innlogging (2FA) kan slås på for ekstra sikkerhet.</p>
+          <p>Byrået bestemmer selv hvem som har tilgang, med egne roller for administrator og ansatt. To-trinns innlogging (<span class="term" tabindex="0" aria-describedby="ord-8">2FA<span class="term-tip" role="tooltip" id="ord-8"><strong>2FA (to-trinns innlogging)</strong>Innlogging som krever noe mer enn passordet, for eksempel en engangskode fra en app på mobilen.</span></span>) kan slås på for ekstra sikkerhet.</p>
         </div>
         <div class="item">
           <div class="item-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M214,112v96a14,14,0,0,1-14,14H56a14,14,0,0,1-14-14V112A14,14,0,0,1,56,98H80a6,6,0,0,1,0,12H56a2,2,0,0,0-2,2v96a2,2,0,0,0,2,2H200a2,2,0,0,0,2-2V112a2,2,0,0,0-2-2H176a6,6,0,0,1,0-12h24A14,14,0,0,1,214,112ZM92.24,68.24,122,38.49V136a6,6,0,0,0,12,0V38.49l29.76,29.75a6,6,0,1,0,8.48-8.48l-40-40a6,6,0,0,0-8.48,0l-40,40a6,6,0,1,0,8.48,8.48Z"/></svg></div>
@@ -544,7 +563,7 @@
           </div>
           <div class="panel-punkt">
             <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M166,224a6,6,0,0,1-6,6H96a6,6,0,0,1,0-12h64A6,6,0,0,1,166,224Zm54.11-33a13.83,13.83,0,0,1-12.1,7H48a14,14,0,0,1-12.06-21.06C41.59,167.2,50,139.74,50,104a78,78,0,1,1,156,0c0,35.73,8.42,63.2,14.08,72.94A13.9,13.9,0,0,1,220.11,191Zm-10.41-8C202.13,170,194,139.68,194,104a66,66,0,1,0-132,0c0,35.69-8.14,66-15.71,79a2,2,0,0,0,0,2,1.9,1.9,0,0,0,1.7,1H208a1.9,1.9,0,0,0,1.7-1A2,2,0,0,0,209.7,183Z"/></svg></div>
-            <div><h3>Hendelseshåndtering</h3><p>Dokumenterte rutiner for håndtering av sikkerhetshendelser. Berørte byråer varsles uten ugrunnet opphold, slik GDPR artikkel 33 krever.</p></div>
+            <div><h3>Hendelseshåndtering</h3><p>Dokumenterte rutiner for håndtering av sikkerhetshendelser. Berørte byråer varsles uten ugrunnet opphold, slik <span class="term" tabindex="0" aria-describedby="ord-9">GDPR artikkel 33<span class="term-tip" role="tooltip" id="ord-9"><strong>GDPR artikkel 33</strong>Regler for varsling ved brudd på personopplysningssikkerheten. Databehandleren skal varsle den behandlingsansvarlige uten ugrunnet opphold.</span></span> krever.</p></div>
           </div>
       </div>
       <div class="panel" id="personvern">
@@ -552,7 +571,7 @@
         <h2>Personvern og GDPR</h2>
           <div class="panel-punkt">
             <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M208,42H48A14,14,0,0,0,34,56v56c0,51.94,25.12,83.4,46.2,100.64,22.73,18.6,45.27,24.89,46.22,25.15a6,6,0,0,0,3.16,0c.95-.26,23.49-6.55,46.22-25.15C196.88,195.4,222,163.94,222,112V56A14,14,0,0,0,208,42Zm2,70c0,37.76-13.94,68.39-41.44,91.06A131.17,131.17,0,0,1,128,225.72a130.94,130.94,0,0,1-40.56-22.66C59.94,180.39,46,149.76,46,112V56a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2ZM172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76Z"/></svg></div>
-            <div><h3>Innebygd personvern</h3><p>Personvern er bygget inn i løsningen. Byrået er behandlingsansvarlig, og Rapportly AS er databehandler etter en databehandleravtale i tråd med GDPR artikkel 28.</p></div>
+            <div><h3>Innebygd personvern</h3><p>Personvern er bygget inn i løsningen. Byrået er behandlingsansvarlig, og Rapportly AS er databehandler etter en databehandleravtale i tråd med <span class="term" tabindex="0" aria-describedby="ord-10">GDPR artikkel 28<span class="term-tip" role="tooltip" id="ord-10"><strong>GDPR artikkel 28</strong>Krever en skriftlig databehandleravtale når en leverandør behandler personopplysninger på vegne av en virksomhet.</span></span>.</p></div>
           </div>
           <div class="panel-punkt">
             <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M198,136a6,6,0,0,1-6,6H64a6,6,0,0,1,0-12H192A6,6,0,0,1,198,136Zm34-54H24a6,6,0,0,0,0,12H232a6,6,0,0,0,0-12Zm-80,96H104a6,6,0,0,0,0,12h48a6,6,0,0,0,0-12Z"/></svg></div>
@@ -560,7 +579,7 @@
           </div>
           <div class="panel-punkt">
             <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224.42,104.2c-3.9-4.07-7.93-8.27-9.55-12.18-1.5-3.63-1.58-9-1.67-14.68-.14-9.38-.3-20-7.42-27.12S188,42.94,178.66,42.8c-5.68-.09-11-.17-14.68-1.67-3.91-1.62-8.11-5.65-12.18-9.55C145.16,25.22,137.64,18,128,18s-17.16,7.22-23.8,13.58c-4.07,3.9-8.27,7.93-12.18,9.55-3.63,1.5-9,1.58-14.68,1.67-9.38.14-20,.3-27.12,7.42S42.94,68,42.8,77.34c-.09,5.68-.17,11-1.67,14.68-1.62,3.91-5.65,8.11-9.55,12.18C25.22,110.84,18,118.36,18,128s7.22,17.16,13.58,23.8c3.9,4.07,7.93,8.27,9.55,12.18,1.5,3.63,1.58,9,1.67,14.68.14,9.38.3,20,7.42,27.12S68,213.06,77.34,213.2c5.68.09,11,.17,14.68,1.67,3.91,1.62,8.11,5.65,12.18,9.55C110.84,230.78,118.36,238,128,238s17.16-7.22,23.8-13.58c4.07-3.9,8.27-7.93,12.18-9.55,3.63-1.5,9-1.58,14.68-1.67,9.38-.14,20-.3,27.12-7.42s7.28-17.74,7.42-27.12c.09-5.68.17-11,1.67-14.68,1.62-3.91,5.65-8.11,9.55-12.18C230.78,145.16,238,137.64,238,128S230.78,110.84,224.42,104.2Zm-8.66,39.3c-4.67,4.86-9.5,9.9-12,15.9-2.38,5.74-2.48,12.52-2.58,19.08-.11,7.44-.23,15.14-3.9,18.82s-11.38,3.79-18.82,3.9c-6.56.1-13.34.2-19.08,2.58-6,2.48-11,7.31-15.91,12-5.25,5-10.68,10.24-15.49,10.24s-10.24-5.21-15.5-10.24c-4.86-4.67-9.9-9.5-15.9-12-5.74-2.38-12.52-2.48-19.08-2.58-7.44-.11-15.14-.23-18.82-3.9s-3.79-11.38-3.9-18.82c-.1-6.56-.2-13.34-2.58-19.08-2.48-6-7.31-11-12-15.91C35.21,138.24,30,132.81,30,128s5.21-10.24,10.24-15.5c4.67-4.86,9.5-9.9,12-15.9,2.38-5.74,2.48-12.52,2.58-19.08.11-7.44.23-15.14,3.9-18.82s11.38-3.79,18.82-3.9c6.56-.1,13.34-.2,19.08-2.58,6-2.48,11-7.31,15.91-12C117.76,35.21,123.19,30,128,30s10.24,5.21,15.5,10.24c4.86,4.67,9.9,9.5,15.9,12,5.74,2.38,12.52,2.48,19.08,2.58,7.44.11,15.14.23,18.82,3.9s3.79,11.38,3.9,18.82c.1,6.56.2,13.34,2.58,19.08,2.48,6,7.31,11,12,15.91,5,5.25,10.24,10.68,10.24,15.49S220.79,138.24,215.76,143.5ZM172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76Z"/></svg></div>
-            <div><h3>Leverandørstyring</h3><p>Alle underleverandører er underlagt databehandleravtale, og er sertifisert etter ISO/IEC 27001 eller revidert etter SOC 2 Type II.</p></div>
+            <div><h3>Leverandørstyring</h3><p>Alle underleverandører er underlagt databehandleravtale, og er sertifisert etter ISO/IEC 27001 eller revidert etter <span class="term" tabindex="0" aria-describedby="ord-11">SOC 2 Type II<span class="term-tip" role="tooltip" id="ord-11"><strong>SOC 2 Type II</strong>Uavhengig revisjonsrapport etter en amerikansk standard (AICPA). Den bekrefter at sikkerhetskontrollene faktisk har fungert over en lengre periode.</span></span>.</p></div>
           </div>
           <div class="panel-punkt">
             <div class="panel-ikon"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,66a38,38,0,1,0,38,38A38,38,0,0,0,128,66Zm0,64a26,26,0,1,1,26-26A26,26,0,0,1,128,130Zm0-112a86.1,86.1,0,0,0-86,86c0,30.91,14.34,63.74,41.47,94.94a252.32,252.32,0,0,0,41.09,38,6,6,0,0,0,6.88,0,252.32,252.32,0,0,0,41.09-38c27.13-31.2,41.47-64,41.47-94.94A86.1,86.1,0,0,0,128,18Zm0,206.51C113,212.93,54,163.62,54,104a74,74,0,0,1,148,0C202,163.62,143,212.93,128,224.51Z"/></svg></div>
@@ -589,7 +608,7 @@
       <div class="faq">
         <details>
           <summary>Hvor lagres dataene?</summary>
-          <p>I datasentre innenfor EU/EØS, kryptert med AES-256. Sikkerhetskopiene lagres separat, også i EU. Enkelte underleverandører, for eksempel for e-postutsending, behandler opplysninger utenfor EØS, med EUs standardkontrakter (GDPR art. 46) som grunnlag.</p>
+          <p>I datasentre innenfor EU/EØS, kryptert med AES-256. Sikkerhetskopiene lagres separat, også i EU. Enkelte underleverandører, for eksempel for e-postutsending, behandler opplysninger utenfor EØS, med EUs standardkontrakter (<span class="term" tabindex="0" aria-describedby="ord-12">GDPR art. 46<span class="term-tip" role="tooltip" id="ord-12"><strong>GDPR artikkel 46</strong>Krav om egne garantier ved overføring av personopplysninger ut av EØS, for eksempel EUs standardkontrakter.</span></span>) som grunnlag.</p>
         </details>
         <details>
           <summary>Hvem har tilgang til byråets data?</summary>
@@ -716,6 +735,25 @@
         if (menu.classList.contains('open') && !e.target.closest('#navMobile') && !e.target.closest('#navToggle')) setOpen(false);
       });
       window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    })();
+  </script>
+  <script>
+    // Ordforklaringene: holdes innenfor skjermen, åpnes med trykk på mobil, lukkes med Esc eller trykk utenfor
+    (() => {
+      const plasser = (t) => {
+        const tip = t.querySelector('.term-tip'); tip.style.setProperty('--skyv', '0px');
+        const r = tip.getBoundingClientRect(); const m = 12; let skyv = 0;
+        if (r.left < m) skyv = m - r.left; else if (r.right > document.documentElement.clientWidth - m) skyv = document.documentElement.clientWidth - m - r.right; // innerWidth vokser på mobil når boksen stikker ut
+        tip.style.setProperty('--skyv', skyv + 'px');
+      };
+      const terms = [...document.querySelectorAll('.term')];
+      terms.forEach((t) => { t.addEventListener('mouseenter', () => plasser(t)); t.addEventListener('focus', () => plasser(t)); });
+      document.addEventListener('click', (e) => {
+        const t = e.target.closest('.term');
+        terms.forEach((x) => { if (x !== t) x.classList.remove('vis'); });
+        if (t) { t.classList.toggle('vis'); if (t.classList.contains('vis')) plasser(t); }
+      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { terms.forEach((x) => x.classList.remove('vis')); document.activeElement?.blur?.(); } });
     })();
   </script>
 </body>
